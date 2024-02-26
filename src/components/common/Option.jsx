@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import IconButton from './IconButton';
+import CardSample from './CardSample';
 const initialState = {
   orange: false,
   purple: false,
@@ -23,40 +23,17 @@ const Styled = {
       grid-template-columns: repeat(2, 1fr);
     }
   `,
-  Card: styled.div`
-    display: flex;
-    width: 16.8rem;
-    height: 16.8rem;
-    border-radius: 1.6rem;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background: ${({ color, theme }) => {
-      switch (color) {
-        case 'orange':
-          return theme.color.lightOr2;
-        case 'purple':
-          return theme.color.lightPu2;
-        case 'blue':
-          return theme.color.lightBl2;
-        case 'green':
-          return theme.color.lightGn2;
-      }
-    }};
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  `,
 };
 
 function Option() {
   const [checkStatus, setCheckStatus] = useState(initialState);
 
   const handleCardCheck = (color) => {
-    setCheckStatus((prev) => ({
-      prev: initialState,
-      [color]: !prev[color],
+    setCheckStatus(() => ({
+      ...initialState,
+      [color]: true,
     }));
   };
-
   const cards = [
     { key: 'orange', color: 'orange' },
     { key: 'purple', color: 'purple' },
@@ -68,13 +45,12 @@ function Option() {
     <Styled.Background>
       <Styled.Container>
         {cards.map((card) => (
-          <Styled.Card
+          <CardSample
             key={card.key}
             color={card.color}
             onClick={() => handleCardCheck(card.color)}
-          >
-            {checkStatus[card.color] && <IconButton shape="check" />}
-          </Styled.Card>
+            isChecked={checkStatus[card.color]}
+          />
         ))}
       </Styled.Container>
     </Styled.Background>
