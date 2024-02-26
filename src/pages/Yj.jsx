@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ToggleButton from '@components/common/ToggleButton';
 
 function Yj() {
-  return <div>Yj</div>;
+  const [isToggled, setIsToggled] = useState(false);
+  const handleToggle = () => {
+    setIsToggled(!isToggled);
+  };
+
+  return (
+    <div className="App">
+      <ToggleButton
+        isToggled={isToggled}
+        onToggle={handleToggle}
+      ></ToggleButton>
+    </div>
+  );
 }
 
 export default Yj;
