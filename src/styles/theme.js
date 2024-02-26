@@ -35,7 +35,7 @@ const theme = Object.freeze({
     badgeBg: '#0000008A',
   },
 
-  boder: {
+  border: {
     // Gray
     gr1: '1px solid #CCCCCC',
     gr2: '1px solid #555555',
