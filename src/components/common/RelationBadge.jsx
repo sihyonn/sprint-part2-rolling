@@ -5,7 +5,7 @@ import theme from '@styles/theme';
 
 const badgeColors = {
   지인: { background: theme.color.lightOr1, color: theme.color.textOr },
-  동료: { background: theme.color.lightPu, color: theme.color.mainPu },
+  동료: { background: theme.color.lightPu1, color: theme.color.mainPu },
   가족: { background: theme.color.lightGn1, color: theme.color.textGn },
   친구: { background: theme.color.lightBl1, color: theme.color.textBl },
 };
@@ -22,7 +22,7 @@ const Styled = {
     letter-spacing: -0.01rem;
     padding: 0 0.8rem;
     gap: 1rem;
-    width: 2.5rem;
+    width: 4.1rem;
     height: 2rem;
     background-color: ${({ children }) =>
       badgeColors[children]?.background || '#fff'};
