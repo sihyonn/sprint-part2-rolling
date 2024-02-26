@@ -16,13 +16,13 @@ const Styled = {
     align-items: center;
     border-radius: 0.375rem;
     border: 2px solid
-      ${({ isToggled }) =>
-        isToggled ? `var(--Purple-600, #9935ff)` : `transparent`};
+      ${({ isToggled, theme }) =>
+        isToggled ? theme.color.mainPu : `transparent`};
     background: ${({ isToggled, theme }) =>
-      isToggled ? `var(--white, #fff)` : theme.color.lightGr};
+      isToggled ? theme.color.white : theme.color.lightGr};
 
-    color: ${({ isToggled }) =>
-      isToggled ? `var(--Purple-700, #861dee)` : `var(--gray-900, #181818)`};
+    color: ${({ isToggled, theme }) =>
+      isToggled ? theme.color.hoverPu : `#181818`};
     text-align: center;
     cursor: pointer;
   `,
