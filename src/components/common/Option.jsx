@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import CardSample from './CardSample';
+import CardSample from '@/components/common/Option';
 const initialState = {
   orange: false,
   purple: false,
