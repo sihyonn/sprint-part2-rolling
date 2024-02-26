@@ -12,21 +12,21 @@ const badgeColors = {
 
 const Styled = {
   Badge: styled.div`
-    font-family: pretendard;
     display: flex;
-    border-radius: 0.4rem;
     justify-content: center;
     align-items: center;
-    font-size: 1.4rem;
-    line-height: 2rem;
-    letter-spacing: -0.01rem;
-    padding: 0 0.8rem;
     gap: 1rem;
-    width: 4.1rem;
+
+    width: 2.5rem;
     height: 2rem;
+    padding: 0 0.8rem;
     background-color: ${({ children }) =>
       badgeColors[children]?.background || '#fff'};
     color: ${({ children }) => badgeColors[children]?.color || '#fff'};
+    border-radius: 0.4rem;
+
+    font-size: 1.4rem;
+    line-height: 2rem;
   `,
 };
 
