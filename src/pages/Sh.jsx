@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Sihyonn() {
-  return <div>Sihyonn</div>;
+function Sh() {
+  const s = 'string';
+  return <div>{s}</div>;
 }
 
 export default Sh;
