@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import check from '@/assets/check.svg';
-import plus from '@/assets/plus.svg';
+import { BUTTON_STATUS } from '@/constants/BUTTON_STATUS';
+import check from '@/assets/checkIcon.svg';
+import plus from '@/assets/plusIcon.svg';
 
 const Styled = {
   BackGround: styled.div`
@@ -31,11 +32,10 @@ const Styled = {
 
 function IconButton({ status, shape }) {
   const [buttonStatus, setButtonStatus] = useState('Enabled');
-  const handleMouseEnter = () => setButtonStatus('Hover');
-  const handleMouseLeave = () => setButtonStatus('Enabled');
-  const handleMouseDown = () => setButtonStatus('Pressed');
-  const handleFocus = () => setButtonStatus('Focus');
-  const handleBlur = () => setButtonStatus('Enabled');
+
+  const handleButtonStateChange = (newStatus) => {
+    setButtonStatus(newStatus);
+  };
 
   const imagePath = shape === 'check' ? check : plus;
 
@@ -44,11 +44,11 @@ function IconButton({ status, shape }) {
   return (
     <Styled.BackGround
       status={finalButtonStatus}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
+      onMouseEnter={() => handleButtonStateChange(BUTTON_STATUS.Hover)}
+      onMouseLeave={() => handleButtonStateChange(BUTTON_STATUS.Enabled)}
+      onMouseDown={() => handleButtonStateChange(BUTTON_STATUS.Pressed)}
+      onFocus={() => handleButtonStateChange(BUTTON_STATUS.Focus)}
+      onBlur={() => handleButtonStateChange(BUTTON_STATUS.Enabled)}
     >
       <img src={imagePath} alt="IconButton" />
     </Styled.BackGround>
