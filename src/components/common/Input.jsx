@@ -15,8 +15,9 @@ const Styled = {
     justify-content: center;
 
     border-radius: 0.5rem;
-    border: ${({ theme }) => theme.border.gr1};
-    background: var(--white, #fff);
+    border: ${({ isEmpty, theme }) =>
+      isEmpty ? theme.border.rd1 : theme.border.gr1};
+    background: ${({ theme }) => theme.color.white};
 
     color: var(--gray-900, #181818);
     font-size: 1.6rem;
@@ -25,33 +26,27 @@ const Styled = {
     line-height: 2.6rem; /* 162.5% */
     letter-spacing: -0.016rem;
 
-    ${({ isEmpty }) =>
-      isEmpty &&
-      `
-  border: 1px solid var(--Error, #DC3A3A);`}
-
     &::placeholder {
-      color: var(--gray-500, #555);
+      color: ${({ theme }) => theme.color.btnGr};
     }
 
     &:active {
-      border: 2px solid var(--gray-700, #3a3a3a);
+      border: ${({ theme }) => theme.border.gr4};
     }
     &:hover {
-      border: 1px solid var(--gray-500, #555);
+      border: ${({ theme }) => theme.border.gr2};
     }
     &:focus {
-      border: 2px solid var(--gray-500, #555);
+      border: ${({ theme }) => theme.border.gr3};
     }
   `,
 
   InputError: styled.span`
-    color: var(--Error, #dc3a3a);
+    color: ${({ theme }) => theme.color.red};
     font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.8rem; /* 150% */
-    letter-spacing: -0.006rem;
   `,
 };
 
