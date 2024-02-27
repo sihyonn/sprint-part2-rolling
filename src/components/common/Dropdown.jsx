@@ -12,35 +12,33 @@ const Styled = {
     justify-content: space-between;
     align-items: center;
     border-radius: 0.8rem;
-    border: ${({ $isOpen }) =>
-      $isOpen
-        ? '2px solid var(--gray-500, #555)'
-        : '1px solid var(--gray-300, #ccc)'};
-    color: var(--gray-500, #555);
+    border: ${({ $isOpen, theme }) =>
+      $isOpen ? theme.border.gr3 : theme.border.gr1};
 
+    color: ${({ theme }) => theme.color.btnGr};
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 2.6rem; /* 162.5% */
 
     cursor: pointer;
+
     &:active {
-      border: 2px solid var(--gray-500, #555);
+      border: ${({ theme }) => theme.border.gr3};
     }
     &:focus {
-      border: 2px solid var(--gray-500, #555);
+      border: ${({ theme }) => theme.border.gr3};
     }
     &:hover {
-      border: ${({ $isOpen }) =>
-        $isOpen
-          ? '2px solid var(--gray-500, #555)'
-          : '1px solid var(--gray-500, #555)'};
+      border: ${({ $isOpen, theme }) =>
+        $isOpen ? theme.border.gr3 : theme.border.gr2};
     }
   `,
   Button: styled.button`
     border: none;
     background: none;
     cursor: pointer;
+
     img {
       width: 1.6rem;
       height: 1.6rem;
@@ -51,11 +49,11 @@ const Styled = {
     display: ${({ $isOpen }) => ($isOpen ? 'inline-flex' : 'none')};
     flex-direction: column;
     align-items: flex-start;
+    background: ${({ theme }) => theme.color.white};
 
     border-radius: 0.8rem;
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--white, #fff);
-    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+    border: ${({ theme }) => theme.border.gr1};
+    box-shadow: ${({ theme }) => theme.boxShadow.card};
   `,
   Item: styled.li`
     width: 31.6rem;
@@ -64,7 +62,7 @@ const Styled = {
     align-items: center;
     gap: 1rem;
 
-    color: var(--gray-900, #181818);
+    color: ${({ theme }) => theme.color.textGr};
 
     font-size: 1.6rem;
     font-style: normal;
@@ -73,8 +71,9 @@ const Styled = {
     letter-spacing: -0.016rem;
 
     cursor: pointer;
+
     &:hover {
-      background: var(--gray-100, #f6f6f6);
+      background: ${({ theme }) => theme.color.lightGr};
     }
   `,
 };
