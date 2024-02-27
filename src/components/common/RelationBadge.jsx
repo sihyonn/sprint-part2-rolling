@@ -13,9 +13,7 @@ const getBadgeStyle = (type, theme) => {
 };
 
 const StyledBadge = styled.div`
-  font-family: pretendard;
   display: flex;
-  border-radius: 0.4rem;
   justify-content: center;
   align-items: center;
 
@@ -26,7 +24,7 @@ const StyledBadge = styled.div`
 
   width: 4.1rem;
   height: 2rem;
-
+  border-radius: 0.4rem;
   /* props에서 받은 type과 theme를 이용하여 스타일을 적용합니다. */
   ${({ type, theme }) => {
     const { background, color } = getBadgeStyle(type, theme);
