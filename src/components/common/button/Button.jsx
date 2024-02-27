@@ -1,25 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { styled } from 'styled-components';
-
-const SIZE = {
-  S: { padding: '0.7rem 1.6rem', width: '12rem' },
-  M: { padding: '1.4rem 2.4rem', width: '28rem' },
-  L: { padding: '1.4rem 2.4rem', width: '72rem' },
-};
-
-const getButtonStyleBySize = (size) => SIZE[size] || SIZE.S;
+import { primaryButtonStyles } from '@styles/buttonStyleBySize';
 
 const Styled = {
   Button: styled.button`
-    max-width: ${({ size }) => getButtonStyleBySize(size).width};
-    padding: ${({ size }) => getButtonStyleBySize(size).padding};
-    border-radius: ${({ size }) => (size === 'S' ? '0.6rem' : '1.2rem')};
+    ${({ size }) => primaryButtonStyles[size]}
     background-color: ${({ theme }) => theme.color.mainPu};
     color: ${({ theme }) => theme.color.white};
-
-    font-size: ${({ size }) => (size === 'S' ? '1.6rem' : '1.8rem')};
-    font-weight: ${({ size }) => (size === 'S' ? '400' : '700')};
-    line-height: ${({ size }) => (size === 'S' ? '2.6rem' : '2.8rem')};
     white-space: nowrap;
     text-align: center;
 
