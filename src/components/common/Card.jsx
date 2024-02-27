@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import IconButton from '@/components/common/IconButton';
 import ProfileBadgeCard from '@/components/common/ProfileBadgeCard';
@@ -100,10 +101,12 @@ const mockdata = {
   createdAt: '2023-10-31T09:58:47.272896Z',
 };
 
-function CardAdd(isEditCard) {
+function CardAdd({ data, isEditCard }) {
   return (
     <Styled.CardContainer isEditCard={isEditCard}>
-      <IconButton shape="plus" />
+      <Link to={`/post/${data.id}/message`}>
+        <IconButton shape="plus" />
+      </Link>
     </Styled.CardContainer>
   );
 }
@@ -111,7 +114,7 @@ function CardAdd(isEditCard) {
 function Card({ data = mockdata, isEditCard = false, isEditPage = true }) {
   // data는 부모 컴포넌트에서 받아오기
   return isEditCard ? (
-    <CardAdd isEditCard={isEditCard} />
+    <CardAdd data={data} isEditCard={isEditCard} />
   ) : (
     <Styled.CardContainer>
       <Styled.TopContainer>
