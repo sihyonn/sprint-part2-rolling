@@ -1,41 +1,44 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import theme from '@styles/theme';
+import styled, { css } from 'styled-components';
 
-const badgeColors = {
-  지인: { background: theme.color.lightOr1, color: theme.color.textOr },
-  동료: { background: theme.color.lightPu1, color: theme.color.mainPu },
-  가족: { background: theme.color.lightGn1, color: theme.color.textGn },
-  친구: { background: theme.color.lightBl1, color: theme.color.textBl },
+// 이제 badgeColors 대신 아래 getBadgeStyle 함수를 사용
+const getBadgeStyle = (type, theme) => {
+  const styles = {
+    지인: { background: theme.color.lightOr1, color: theme.color.textOr },
+    동료: { background: theme.color.lightPu1, color: theme.color.mainPu },
+    가족: { background: theme.color.lightGn1, color: theme.color.textGn },
+    친구: { background: theme.color.lightBl1, color: theme.color.textBl },
+  };
+  return styles[type] || { background: '#fff', color: '#000' }; // 기본 스타일을 설정
 };
 
-const Styled = {
-  Badge: styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+const StyledBadge = styled.div`
+  font-family: pretendard;
+  display: flex;
+  border-radius: 0.4rem;
+  justify-content: center;
+  align-items: center;
 
-    width: 2.5rem;
-    height: 2rem;
-    padding: 0 0.8rem;
-    background-color: ${({ children }) =>
-      badgeColors[children]?.background || '#fff'};
-    color: ${({ children }) => badgeColors[children]?.color || '#fff'};
-    border-radius: 0.4rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  padding: 0 0.8rem;
+  gap: 1rem;
 
-    font-size: 1.4rem;
-    line-height: 2rem;
-  `,
-};
+  width: 4.1rem;
+  height: 2rem;
 
-function RelationBadge({ children = '지인' }) {
-  return <Styled.Badge>{children}</Styled.Badge>;
+  /* props에서 받은 type과 theme를 이용하여 스타일을 적용합니다. */
+  ${({ type, theme }) => {
+    const { background, color } = getBadgeStyle(type, theme);
+    return css`
+      background-color: ${background};
+      color: ${color};
+    `;
+  }}
+`;
+
+function RelationBadge({ type = '지인' }) {
+  return <StyledBadge type={type}>{type}</StyledBadge>;
 }
-
-RelationBadge.propTypes = {
-  children: PropTypes.string,
-};
 
 export default RelationBadge;
