@@ -27,6 +27,7 @@ const theme = Object.freeze({
     lightGr: '#F6F6F6',
     mainGr: '#CCCCCC',
     btnGr: '#555555',
+    textGr: '#181818',
 
     white: '#FFFFFF',
     black: '#000000',
@@ -39,11 +40,16 @@ const theme = Object.freeze({
     // Gray
     gr1: '1px solid #CCCCCC',
     gr2: '1px solid #555555',
+    gr3: '2px solid #555555',
+    gr4: '2px solid #3a3a3a',
 
     //Purple
     pu1: '1px solid #9935FF',
     pu2: '1px solid #6E0AD1',
     pu3: '2px solid #9935FF',
+
+    //Red
+    rd1: '1px solid #DC3A3A',
   },
 
   boxShadow: {
