@@ -27,6 +27,7 @@ const theme = Object.freeze({
     lightGr: '#F6F6F6',
     mainGr: '#CCCCCC',
     btnGr: '#555555',
+    textGr: '#181818',
 
     white: '#FFFFFF',
     black: '#000000',
