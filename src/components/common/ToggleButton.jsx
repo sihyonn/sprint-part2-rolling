@@ -11,9 +11,9 @@ const Styled = {
   `,
   Toggle: styled.div`
     display: flex;
-    padding: 0.8rem 1.6rem;
     justify-content: center;
     align-items: center;
+    padding: 0.8rem 1.6rem;
     border-radius: 0.6rem;
     border: 2px solid
       ${({ isToggled, theme }) =>
@@ -25,6 +25,7 @@ const Styled = {
       isToggled ? theme.color.hoverPu : `#181818`};
     text-align: center;
     cursor: pointer;
+
     &:hover {
       background: ${({ isToggled, theme }) =>
         isToggled ? theme.color.lightPu1 : theme.color.mainGr};
@@ -32,9 +33,9 @@ const Styled = {
   `,
   ToggleText: styled.span`
     width: 9rem;
+
     font-size: 1.6rem;
     font-style: normal;
-
     line-height: 2.6rem; /* 162.5% */
     font-weight: ${({ isToggled }) => (isToggled ? `700` : `400`)};
   `,
