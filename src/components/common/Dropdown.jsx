@@ -46,6 +46,7 @@ const Styled = {
   `,
   List: styled.ul`
     padding: 1rem 0.1rem;
+    margin-top: 0.6rem;
     display: ${({ $isOpen }) => ($isOpen ? 'inline-flex' : 'none')};
     flex-direction: column;
     align-items: flex-start;
