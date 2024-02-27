@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 const Styled = {
   ToggleContainer: styled.div`
-    width: 15.25rem;
-    height: 2.5rem;
+    width: 24.4rem;
+    height: 4rem;
     display: flex;
-    border-radius: 0.375rem;
+    border-radius: 0.6rem;
     background: ${({ theme }) => theme.color.lightGr};
   `,
   Toggle: styled.div`
     display: flex;
-    padding: 0.4375rem 1rem;
+    padding: 0.8rem 1.6rem;
     justify-content: center;
     align-items: center;
-    border-radius: 0.375rem;
+    border-radius: 0.6rem;
     border: 2px solid
       ${({ isToggled, theme }) =>
         isToggled ? theme.color.mainPu : `transparent`};
@@ -25,11 +25,17 @@ const Styled = {
       isToggled ? theme.color.hoverPu : `#181818`};
     text-align: center;
     cursor: pointer;
+    &:hover {
+      background: ${({ isToggled, theme }) =>
+        isToggled ? theme.color.lightPu1 : theme.color.mainGr};
+    }
   `,
   ToggleText: styled.span`
-    width: 5.625rem;
-    font-size: 1rem;
+    width: 9rem;
+    font-size: 1.6rem;
     font-style: normal;
+
+    line-height: 2.6rem; /* 162.5% */
     font-weight: ${({ isToggled }) => (isToggled ? `700` : `400`)};
   `,
 };
