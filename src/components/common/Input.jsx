@@ -8,18 +8,18 @@ const Styled = {
     gap: 0.4rem;
   `,
   Input: styled.input`
+  width: 100%;
+  padding: 1.2rem 1.6rem;
     display: flex;
-    width: 100%;
-    padding: 1.2rem 1.6rem;
     align-items: center;
     justify-content: center;
 
     border-radius: 0.5rem;
-    border: ${({ isEmpty, theme }) =>
-      isEmpty ? theme.border.rd1 : theme.border.gr1};
+    border: ${({ $isEmpty, theme }) =>
+      $isEmpty ? theme.border.rd1 : theme.border.gr1};
     background: ${({ theme }) => theme.color.white};
 
-    color: var(--gray-900, #181818);
+    color: ${({ theme }) => theme.color.textGr}
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
@@ -50,7 +50,7 @@ const Styled = {
   `,
 };
 
-const Input = ({ value, dest, onInputChange }) => {
+const Input = ({ value, placeholder, onInputChange }) => {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const handleInputChange = (e) => {
@@ -67,12 +67,8 @@ const Input = ({ value, dest, onInputChange }) => {
         type="text"
         id="name"
         value={value}
-        placeholder={
-          dest === 'to'
-            ? '받는 사람 이름을 입력해 주세요.'
-            : '이름을 입력해 주세요.'
-        }
-        isEmpty={isEmpty}
+        placeholder={placeholder}
+        $isEmpty={isEmpty}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
       />
