@@ -1,5 +1,5 @@
-import EmojiBadge from 'components/EmojiBadge';
 import React from 'react';
+import EmojiBadge from '@components/common/EmojiBadge';
 
 function Hi() {
   return (
