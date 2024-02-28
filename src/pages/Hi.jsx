@@ -1,19 +1,13 @@
-import ProfileBadgeCard from 'src/components/common/ProfileBadgeCard';
-import ProfileBadgeSelect from 'src/components/common/ProfileBadgeSelect';
 import React from 'react';
-
-const mockData = {
-  default: '',
-  img1: 'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-};
+import EmojiBadge from '@components/common/EmojiBadge';
 
 function Hi() {
   return (
     <>
-      <ProfileBadgeCard profileImg={mockData.img1} />
-      <ProfileBadgeCard profileImg={mockData.default} />
-      <ProfileBadgeSelect profileImg={mockData.img1} />
-      <ProfileBadgeSelect profileImg={mockData.default} />
+      <EmojiBadge emoji="" count={14} />
+      <EmojiBadge emoji="😍" count={24} />
+      <EmojiBadge emoji="😍" count={24999} />
+      <EmojiBadge emoji="😍" count={100} />
     </>
   );
 }
