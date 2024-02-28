@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';
 import routes from '@constants/routes';
 
@@ -28,6 +28,7 @@ function MainLayout({ children }) {
 
   return (
     <Styled.Container style={{ paddingTop: calPadding() }}>
+      <Outlet />
       {children}
     </Styled.Container>
   );

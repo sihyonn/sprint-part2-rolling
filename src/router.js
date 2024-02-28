@@ -10,6 +10,8 @@ import Yj from '@pages/Yj';
 import Choi from '@pages/Choi';
 
 import Layout from '@components/template/Layout';
+import MainLayout from '@components/template/MainLayout';
+
 import MainPage from '@pages/MainPage';
 import PaperListPage from '@pages/PaperListPage';
 import PaperViewerPage from '@pages/PaperViewerPage';
@@ -25,16 +27,22 @@ const router = createBrowserRouter([
     path: '',
     element: <Layout />,
     children: [
-      // 매인
       {
-        path: routes.home,
-        element: <MainPage />,
+        element: <MainLayout />,
+        children: [
+          // 매인
+          {
+            path: routes.home,
+            element: <MainPage />,
+          },
+          // 페이퍼목록(캐러셀)
+          {
+            path: routes.list,
+            element: <PaperListPage />,
+          },
+        ],
       },
-      // 페이퍼목록(캐러셀)
-      {
-        path: routes.list,
-        element: <PaperListPage />,
-      },
+
       // 페이퍼 생성(to)
       {
         path: routes.post,
