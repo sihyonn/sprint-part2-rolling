@@ -8,8 +8,8 @@ const Styled = {
     gap: 0.4rem;
   `,
   Input: styled.input`
-  width: 100%;
-  padding: 1.2rem 1.6rem;
+    width: 100%;
+    padding: 1.2rem 1.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,7 @@ const Styled = {
       $isEmpty ? theme.border.rd1 : theme.border.gr1};
     background: ${({ theme }) => theme.color.white};
 
-    color: ${({ theme }) => theme.color.textGr}
+    color: ${({ theme }) => theme.color.textGr};
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
