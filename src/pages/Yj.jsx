@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import ToggleButton from '@components/common/ToggleButton';
 
 function Yj() {
-  const [isToggled, setIsToggled] = useState(false);
-  const handleToggle = () => {
+  const [isToggled, setIsToggled] = useState(true);
+  const [toggleValue, setToggleValue] = useState('컬러');
+
+  const handleToggle = (value) => {
     setIsToggled(!isToggled);
+    setToggleValue(value);
   };
 
   return (
@@ -13,6 +16,7 @@ function Yj() {
         isToggled={isToggled}
         onToggle={handleToggle}
       ></ToggleButton>
+      <h2>{toggleValue}</h2>
     </div>
   );
 }
