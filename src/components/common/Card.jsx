@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import IconButton from '@/components/common/button/IconButton';
 import ProfileBadgeCard from '@/components/common/ProfileBadgeCard';
 import RelationBadge from '@/components/common/RelationBadge';
-import deleteIcon from '@/assets/deletedIcon.svg';
+import OutlinedButton from '@/components/common/button/OutlinedButton';
 
 const Styled = {
   CardContainer: styled.div`
@@ -127,7 +127,7 @@ function Card({ data = mockdata, isEditCard = false, isEditPage = true }) {
             <RelationBadge type={data.relationship} />
           </Styled.NameContainer>
         </Styled.ProfileContainer>
-        {isEditPage && <img src={deleteIcon} alt="delete" />}
+        {isEditPage && <OutlinedButton iconType={'delete'} />}
       </Styled.TopContainer>
       <Styled.Bar />
       <Styled.Message font={data.font}>
