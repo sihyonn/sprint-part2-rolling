@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import IconButton from '@/components/common/button/IconButton';
 import ProfileBadgeCard from '@/components/common/ProfileBadgeCard';
@@ -102,11 +102,13 @@ const mockdata = {
 };
 
 function CardAdd({ data, isEditCard }) {
+  const navigate = useNavigate();
   return (
     <Styled.CardContainer isEditCard={isEditCard}>
-      <Link to={`/post/${data.id}/message`}>
-        <IconButton shape="plus" />
-      </Link>
+      <IconButton
+        shape="plus"
+        onClick={() => navigate(`/post/${data.id}/message`)}
+      />
     </Styled.CardContainer>
   );
 }
