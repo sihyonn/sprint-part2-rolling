@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import CardSample from '@/components/common/Option';
+import CardSample from '@/components/common/CardSample';
 const initialState = {
   orange: false,
   purple: false,
@@ -47,6 +47,7 @@ function Option() {
         {cards.map((card) => (
           <CardSample
             key={card.key}
+            usage="option"
             color={card.color}
             onClick={() => handleCardCheck(card.color)}
             isChecked={checkStatus[card.color]}
