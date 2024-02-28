@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import IconButton from '@/components/common/IconButton';
+import IconButton from '@/components/common/button/IconButton';
 import ProfileBadgeCard from '@/components/common/ProfileBadgeCard';
 import RelationBadge from '@/components/common/RelationBadge';
 import deleteIcon from '@/assets/deletedIcon.svg';
