@@ -8,9 +8,13 @@ const Styled = {
     width: 100%;
     min-height: 100vh;
     padding: 0 calc((100vw - 120rem) / 2); //콘텐츠 사이즈 1200
+    padding-top: ${({ $isListPage }) => ($isListPage ? '5rem' : '6rem')};
 
-    @media (max-width: 1247px) {
-      padding: 5rem 2.4rem;
+    @media (min-width: 768px) and (max-width: 1247px) {
+      padding: 5rem 2.4rem 2.4rem;
+    }
+    @media (max-width: 767px) {
+      padding: 4.2rem 2.4rem 2.4rem;
     }
   `,
 };
@@ -22,12 +26,8 @@ function MainLayout({ children }) {
   const location = useLocation();
   const isListPage = location.pathname === routes.list;
 
-  const calPadding = () => {
-    return isListPage ? '5rem' : '6rem';
-  };
-
   return (
-    <Styled.Container style={{ paddingTop: calPadding() }}>
+    <Styled.Container $isListPage={isListPage}>
       <Outlet />
       {children}
     </Styled.Container>
