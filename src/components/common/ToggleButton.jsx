@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Styled = {
@@ -34,10 +34,14 @@ const Styled = {
   `,
 };
 
-const ToggleButton = ({ isToggled, onToggle }) => {
+const ToggleButton = ({ onToggle }) => {
+  const [isToggled, setIsToggled] = useState(true);
+
   const handleToggle = (value) => {
+    setIsToggled(!isToggled);
     onToggle(value);
   };
+
   return (
     <Styled.ToggleContainer>
       <Styled.Toggle isToggled={isToggled} onClick={() => handleToggle('컬러')}>
