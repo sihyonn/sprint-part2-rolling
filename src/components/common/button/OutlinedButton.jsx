@@ -9,6 +9,7 @@ const Styled = {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     gap: 0.4rem;
 
     padding: ${({ $iconType }) =>
@@ -47,13 +48,15 @@ const ICONS = {
  * @param {React.ReactNode} children 버튼의 라벨
  * @param {React.htmlAttributes} htmlButtonProps 기타 버튼 props
  */
-function OutlinedButton({ iconType, children, ...htmlButtonProps }) {
-  return (
-    <Styled.Button $iconType={iconType} {...htmlButtonProps}>
-      {ICONS[iconType]}
-      {children}
-    </Styled.Button>
-  );
-}
-
+const OutlinedButton = React.forwardRef(
+  ({ iconType, children, ...htmlButtonProps }, ref) => {
+    return (
+      <Styled.Button ref={ref} $iconType={iconType} {...htmlButtonProps}>
+        {ICONS[iconType]}
+        {children}
+      </Styled.Button>
+    );
+  },
+);
+OutlinedButton.displayName = 'OutlinedButton';
 export default OutlinedButton;

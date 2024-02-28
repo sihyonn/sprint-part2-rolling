@@ -2,8 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import EmojiPicker from 'emoji-picker-react';
 import styled from 'styled-components';
-import add from '@/assets/addIcon.svg';
-
+import OutlinedButton from '@components/common/button/OutlinedButton';
 const Styled = {
   Container: styled.div`
     position: relative; // postion:absolute용도
@@ -59,33 +58,29 @@ function EmojiAddButton() {
     const handleClickOutside = (event) => {
       if (
         emojiPickerRef.current &&
-        emojiPickerRef.current.contains(event.target)
+        !emojiPickerRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
       ) {
-        setIsClicked(true);
-        return;
-      }
-      if (!buttonRef.current.contains(event.target)) {
+        console.log(selectedEmoji);
         setIsClicked(false);
       }
     };
+
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [isClicked]);
-  console.log(selectedEmoji);
+  }, [isClicked, selectedEmoji]);
   return (
     <Styled.Container>
-      <Styled.AddButton
+      <OutlinedButton
         ref={buttonRef}
         onClick={handleButtonClick}
-        type="button"
+        iconType={'add'}
       >
-        <Styled.ButtonInfo>
-          <img src={add} alt="addIcon" />
-          <span>추가</span>
-        </Styled.ButtonInfo>
-      </Styled.AddButton>
+        추가
+      </OutlinedButton>
       {isClicked && (
         <Styled.EmojiPickerContainer ref={emojiPickerRef}>
           <Styled.StyledEmojiPicker onEmojiClick={onEmojiClick} />
