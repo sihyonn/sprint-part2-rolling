@@ -30,7 +30,7 @@ const Styled = {
   `,
 };
 
-function CircleIconButton({ status, shape }) {
+function IconButton({ status, shape }) {
   const [buttonStatus, setButtonStatus] = useState('Enabled');
 
   const handleButtonStateChange = (newStatus) => {
@@ -54,4 +54,4 @@ function CircleIconButton({ status, shape }) {
     </Styled.BackGround>
   );
 }
-export default CircleIconButton;
+export default IconButton;

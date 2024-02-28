@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircleIconButton from '@/components/common/button/CircleIconButton';
+import IconButton from '@/components/common/IconButton';
 
 const Styled = {
   Card: styled.div`
@@ -30,7 +30,7 @@ const Styled = {
 function CardSample({ key, color, isChecked, onClick }) {
   return (
     <Styled.Card key={key} color={color} onClick={onClick}>
-      {isChecked && <CircleIconButton shape="check" />}
+      {isChecked && <IconButton shape="check" />}
     </Styled.Card>
   );
 }
