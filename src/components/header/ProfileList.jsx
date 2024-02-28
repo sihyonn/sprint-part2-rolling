@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProfileBadgeCount from '@/components/common/header/ProfileBadgeCount';
-import ProfileBadgeFirst from '@/components/common/header/ProfileBadgeFirst';
-import ProfileBadgeSecond from '@/components/common/header/ProfileBadgeSecond';
-import ProfileBadgeThird from '@/components/common/header/ProfileBadgeThird';
+import ProfileBadgeCount from '@components/header/ProfileBadgeCount';
+import ProfileBadgeFirst from '@components/header/ProfileBadgeFirst';
+import ProfileBadgeSecond from '@components/header/ProfileBadgeSecond';
+import ProfileBadgeThird from '@components/header/ProfileBadgeThird';
 
 const mockdata1 = {
   messageCount: 9,
