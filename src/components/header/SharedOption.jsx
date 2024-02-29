@@ -16,6 +16,10 @@ const Styled = {
     border: ${({ theme }) => theme.border.gr1};
     background: ${({ theme }) => theme.color.white};
     box-shadow: ${({ theme }) => theme.boxShadow.card};
+
+    @media (max-width: 767px) {
+      left: -8rem;
+    }
   `,
   SharedList: styled.div`
     display: flex;

@@ -13,7 +13,15 @@ const Styled = {
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 4rem;
+    left: ${({ count }) =>
+      (() => {
+        switch (count) {
+          case 3:
+            return '6rem';
+          default:
+            return '4rem';
+        }
+      })()};
     width: 2.8rem;
     height: 2.8rem;
     padding: 0.84rem;
@@ -45,9 +53,9 @@ const Styled = {
   `,
 };
 
-function ProfileBadgeHeader({ profileImg }) {
+function ProfileBadgeHeader({ profileImg, count }) {
   return (
-    <Styled.Container profileImg={profileImg}>
+    <Styled.Container profileImg={profileImg} count={count}>
       <Styled.Div>
         <Styled.Head profileImg={profileImg} />
         <Styled.Body profileImg={profileImg} />
