@@ -14,7 +14,7 @@ const Styled = {
         ? `url(${$cardUrl}) center/cover`
         : (() => {
             switch (color) {
-              case 'orange':
+              case 'beige':
                 return theme.color.lightOr2;
               case 'purple':
                 return theme.color.lightPu2;
