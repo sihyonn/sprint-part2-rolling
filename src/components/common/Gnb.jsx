@@ -7,15 +7,15 @@ import Icon from '@/assets/RollingIcon.svg';
 const Styled = {
   Container: styled.nav`
     display: flex;
-    width: 100vw;
     align-items: center;
-    padding: 0 max(2.4rem, calc((100vw - 120rem) / 2));
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 6.6rem;
+    padding: 0 max(2.4rem, calc((100vw - 120rem) / 2));
     z-index: 100;
     background: ${({ theme }) => theme.color.white};
-    border-bottom: 1px solid #ededed;
   `,
   GnbContainer: styled.div`
     display: flex;
@@ -53,6 +53,9 @@ const Styled = {
     line-height: 2.6rem;
     letter-spacing: -0.02rem;
     text-decoration: none;
+    @media (min-width: 768px) and (max-width: 1280px) {
+      display: none;
+    }
   `,
 };
 

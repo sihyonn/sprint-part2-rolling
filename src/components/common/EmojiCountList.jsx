@@ -13,7 +13,7 @@ const Styled = {
 function EmojiCountList({ data }) {
   return (
     <Styled.ListContainer>
-      {data.results.map((items) => (
+      {data.map((items) => (
         <EmojiBadge key={items.id} emoji={items.emoji} count={items.count} />
       ))}
     </Styled.ListContainer>

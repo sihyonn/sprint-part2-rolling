@@ -17,70 +17,18 @@ const Styled = {
     background: ${({ theme }) => theme.color.white};
     box-shadow: ${({ theme }) => theme.boxShadow.card};
     z-index: 10;
+
+    @media (max-width: 767px) {
+      left: -22rem;
+    }
   `,
 };
 
-const mockdata1 = {
-  count: 4,
-  next: null,
-  previous: '',
-  results: [
-    {
-      id: 34,
-      emoji: '👍',
-      count: 24,
-    },
-    {
-      id: 28,
-      emoji: '😍',
-      count: 16,
-    },
-    {
-      id: 26,
-      emoji: '🎉',
-      count: 10,
-    },
-    {
-      id: 26,
-      emoji: '😂',
-      count: 19,
-    },
-  ],
-};
-
-const mockdata2 = {
-  count: 4,
-  next: null,
-  previous: '',
-  results: [
-    {
-      id: 34,
-      emoji: '👍',
-      count: 70,
-    },
-    {
-      id: 28,
-      emoji: '😍',
-      count: 50,
-    },
-    {
-      id: 26,
-      emoji: '🎉',
-      count: 30,
-    },
-    {
-      id: 26,
-      emoji: '😂',
-      count: 10,
-    },
-  ],
-};
-
-function EmojiExpand() {
+function EmojiExpand({ data1, data2 }) {
   return (
     <Styled.Container>
-      <EmojiCountList data={mockdata1} />
-      <EmojiCountList data={mockdata2} />
+      <EmojiCountList data={data1} />
+      <EmojiCountList data={data2} />
     </Styled.Container>
   );
 }

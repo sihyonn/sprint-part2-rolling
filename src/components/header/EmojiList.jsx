@@ -4,28 +4,6 @@ import styled from 'styled-components';
 import EmojiCountList from '@components/common/EmojiCountList';
 import EmojiExpand from './EmojiExpand';
 import arrowdown from '@/assets/arrowdownIcon.svg';
-const mockdata = {
-  count: 3,
-  next: null,
-  previous: '',
-  results: [
-    {
-      id: 34,
-      emoji: '👍',
-      count: 24,
-    },
-    {
-      id: 28,
-      emoji: '😍',
-      count: 16,
-    },
-    {
-      id: 26,
-      emoji: '🎉',
-      count: 10,
-    },
-  ],
-};
 
 const Styled = {
   Container: styled.div`
@@ -43,7 +21,7 @@ const Styled = {
     align-items: center;
   `,
 };
-function EmojiList() {
+function EmojiList({ EmojiCountData }) {
   const [isClicked, setIsClicked] = useState(false);
   const buttonRef = useRef(null);
   const handleButtonClick = () => {
@@ -61,16 +39,20 @@ function EmojiList() {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [isClicked]);
+
+  const EmojiTopThreeData = EmojiCountData.topReactions.slice(0, 3);
+  const data1 = EmojiCountData.topReactions.slice(0, 4);
+  const data2 = EmojiCountData.topReactions.slice(4, 8);
   return (
     <Styled.Container>
-      <EmojiCountList data={mockdata} />
+      <EmojiCountList data={EmojiTopThreeData} />
       <Styled.EmojiButton
         ref={buttonRef}
         onClick={handleButtonClick}
         type="button"
       >
         <img src={arrowdown} alt="arrowdownIcon" />
-        {isClicked && <EmojiExpand />}
+        {isClicked && <EmojiExpand data1={data1} data2={data2} />}
       </Styled.EmojiButton>
     </Styled.Container>
   );

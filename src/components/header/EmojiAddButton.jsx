@@ -41,11 +41,23 @@ const Styled = {
   `,
 };
 
-function EmojiAddButton() {
+function EmojiAddButton({ id }) {
+  //id는 post용
   const [isClicked, setIsClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const [isMobile, setIsMobile] = useState(true);
   const buttonRef = useRef(null);
   const emojiPickerRef = useRef(null);
+  console.log(id);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleButtonClick = () => {
     setIsClicked((prev) => !prev);
@@ -74,13 +86,21 @@ function EmojiAddButton() {
   }, [isClicked, selectedEmoji]);
   return (
     <Styled.Container>
-      <OutlinedButton
-        ref={buttonRef}
-        onClick={handleButtonClick}
-        iconType={'add'}
-      >
-        추가
-      </OutlinedButton>
+      {isMobile ? (
+        <OutlinedButton
+          ref={buttonRef}
+          onClick={handleButtonClick}
+          iconType={'add'}
+        ></OutlinedButton>
+      ) : (
+        <OutlinedButton
+          ref={buttonRef}
+          onClick={handleButtonClick}
+          iconType={'add'}
+        >
+          추가
+        </OutlinedButton>
+      )}
       {isClicked && (
         <Styled.EmojiPickerContainer ref={emojiPickerRef}>
           <Styled.StyledEmojiPicker onEmojiClick={onEmojiClick} />

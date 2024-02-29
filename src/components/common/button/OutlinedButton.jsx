@@ -20,6 +20,11 @@ const Styled = {
     font-size: 1.6rem;
     font-weight: 500;
 
+    @media (max-width: 767px) {
+      padding: ${({ $iconType }) =>
+        $iconType === 'delete' ? '0.8rem' : '0.6rem 0.8rem'};
+    }
+
     &:hover,
     &:focus {
       background-color: #f6f6f6;

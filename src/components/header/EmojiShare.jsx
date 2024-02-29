@@ -15,10 +15,10 @@ const Styled = {
     background: #eee;
   `,
 };
-function EmojiShare() {
+function EmojiShare({ EmojiData }) {
   return (
     <Styled.Container>
-      <EmojiOption />
+      <EmojiOption EmojiData={EmojiData} />
       <Styled.Bar />
       <SharedButton />
     </Styled.Container>
