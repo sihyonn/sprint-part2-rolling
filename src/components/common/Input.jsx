@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Styled = {
   Input: styled.input`
+    width: 100%;
     max-width: 72rem;
     padding: 1.2rem 1.6rem;
     display: flex;
@@ -48,7 +49,7 @@ const Styled = {
   `,
 };
 
-const Input = ({ className, value, placeholder, onInputChange }) => {
+const Input = ({ value, placeholder, onInputChange }) => {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const handleInputChange = (e) => {
@@ -62,7 +63,6 @@ const Input = ({ className, value, placeholder, onInputChange }) => {
   return (
     <>
       <Styled.Input
-        className={className}
         type="text"
         id="name"
         value={value}
