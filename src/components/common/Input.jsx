@@ -37,6 +37,9 @@ const Styled = {
   `,
 
   InputError: styled.span`
+    display: flex;
+    max-width: 72rem;
+    width: 100%;
     color: ${({ theme }) => theme.color.red};
     font-size: 1.2rem;
     font-style: normal;
