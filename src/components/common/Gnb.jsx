@@ -13,8 +13,9 @@ const Styled = {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 100;
     background: ${({ theme }) => theme.color.white};
+    border-bottom: 1px solid #ededed;
   `,
   GnbContainer: styled.div`
     display: flex;
