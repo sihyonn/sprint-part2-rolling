@@ -5,13 +5,13 @@ import IconButton from '@/components/common/button/IconButton';
 const Styled = {
   Card: styled.div`
     display: flex;
-    width: ${({ usage }) => (usage == 'option' ? '16.8rem' : '27.5rem')};
-    height: ${({ usage }) => (usage == 'option' ? '16.8rem' : '26rem')};
+    width: ${({ $usage }) => ($usage == 'option' ? '16.8rem' : '27.5rem')};
+    height: ${({ $usage }) => ($usage == 'option' ? '16.8rem' : '26rem')};
     border-radius: 1.6rem;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    background: ${({ color, theme, cardUrl }) =>
-      cardUrl
-        ? `url(${cardUrl}) center/cover`
+    background: ${({ color, theme, $cardUrl }) =>
+      $cardUrl
+        ? `url(${$cardUrl}) center/cover`
         : (() => {
             switch (color) {
               case 'orange':
@@ -32,22 +32,14 @@ const Styled = {
   `,
 };
 
-function CardSample({
-  key,
-  usage = 'option',
-  color,
-  isChecked,
-  onClick,
-  cardUrl,
-}) {
+function CardSample({ usage = 'option', color, isChecked, onClick, cardUrl }) {
   return (
     <Styled.Card
-      key={key}
-      usage={usage}
+      $usage={usage}
       color={color}
       onClick={onClick}
-      cardUrl={cardUrl}
-      isChecked={isChecked}
+      $cardUrl={cardUrl}
+      $isChecked={isChecked}
     >
       {isChecked && <IconButton shape="check" />}
     </Styled.Card>
