@@ -1,0 +1,28 @@
+.ql-toolbar {
+  border-top-left-radius: 0.8em;
+  border-top-right-radius: 0.8em;
+  background: #eee;
+}
+
+.ql-container {
+  border-bottom-left-radius: 0.8em;
+  border-bottom-right-radius: 0.8em;
+  font-family: 'Noto Sans KR', Pretendard;
+  font-size: 1.6rem;
+}
+
+.ql-container strong {
+  font-weight: 600;
+}
+
+.ql-container em {
+  font-style: italic;
+}
+
+.ql-container u {
+  text-decoration: underline;
+}
+
+.ql-container s {
+  text-decoration: line-through;
+}
