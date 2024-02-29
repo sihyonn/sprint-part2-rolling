@@ -13,14 +13,21 @@ const Styled = {
     align-items: center;
     gap: 1.2rem;
     width: 100%;
-    margin-bottom: 5rem;
   `,
   BackgroundSection: styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 72rem;
+    margin-top: 5rem;
     margin-bottom: 6.9rem;
+    @media (min-width: 768px) and (max-width: 1247px) {
+      margin-bottom: 34rem;
+    }
+    @media (max-width: 767px) {
+      margin-top: 4.8rem;
+      margin-bottom: 8.2rem;
+    }
   `,
   Text: styled.h1`
     display: flex;
@@ -48,6 +55,12 @@ const Styled = {
   `,
   Toggle: styled(ToggleButton)`
     margin-bottom: 4.5rem;
+    @media (min-width: 768px) and (max-width: 1247px) {
+      margin-bottom: 4rem;
+    }
+    @media (max-width: 767px) {
+      margin-bottom: 2.8rem;
+    }
   `,
   DisabledButton: styled(Button)`
     width: 100%;
