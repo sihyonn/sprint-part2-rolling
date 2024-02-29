@@ -34,7 +34,7 @@ const Styled = {
   `,
 };
 
-const ToggleButton = ({ onToggle }) => {
+const ToggleButton = ({ className, onToggle }) => {
   const [isToggled, setIsToggled] = useState(true);
 
   const handleToggle = (value) => {
@@ -43,7 +43,7 @@ const ToggleButton = ({ onToggle }) => {
   };
 
   return (
-    <Styled.ToggleContainer>
+    <Styled.ToggleContainer className={className}>
       <Styled.Toggle isToggled={isToggled} onClick={() => handleToggle('컬러')}>
         컬러
       </Styled.Toggle>
