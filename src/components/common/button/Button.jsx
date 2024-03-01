@@ -21,6 +21,10 @@ const Styled = {
     &:active {
       background-color: ${({ theme }) => theme.color.pressePu};
     }
+    &:disabled {
+      background: ${({ theme }) => theme.color.mainGr};
+      cursor: not-allowed;
+    }
   `,
 };
 
