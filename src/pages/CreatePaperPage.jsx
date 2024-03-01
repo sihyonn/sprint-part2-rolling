@@ -62,22 +62,6 @@ const Styled = {
       margin-bottom: 2.8rem;
     }
   `,
-  DisabledButton: styled(Button)`
-    width: 100%;
-    margin-bottom: 2.4rem;
-    background: ${({ theme }) => theme.color.mainGr};
-    cursor: initial;
-    &:hover {
-      background-color: ${({ theme }) => theme.color.mainGr};
-    }
-    &:focus {
-      background-color: ${({ theme }) => theme.color.mainGr};
-      border: none;
-    }
-    &:active {
-      background-color: ${({ theme }) => theme.color.mainGr};
-    }
-  `,
 };
 
 function CreatePaperPage() {
@@ -111,7 +95,7 @@ function CreatePaperPage() {
       <Styled.ToSection>
         <Styled.Text>To.</Styled.Text>
         <Input
-          placeholder={PLACEHOLDER.To}
+          placeholder={PLACEHOLDER.TO}
           value={name}
           onInputChange={(value) => handleInputChange(value)}
         />
@@ -125,20 +109,19 @@ function CreatePaperPage() {
 
         <Styled.Toggle onToggle={handleToggledValue} />
 
-        {toggledValue === '컬러' ? (
-          <Option background="color" onSelect={handleBackground} />
-        ) : (
-          <Option background="img" onSelect={handleBackground} />
-        )}
+        <Option
+          background={toggledValue === '컬러' ? 'color' : 'img'}
+          onSelect={handleBackground}
+        />
       </Styled.BackgroundSection>
 
-      {name === '' ? (
-        <Styled.DisabledButton size="L">생성하기</Styled.DisabledButton>
-      ) : (
-        <Button size="L" style={{ width: '100%', marginBottom: '2.4rem' }}>
-          생성하기
-        </Button>
-      )}
+      <Button
+        size="L"
+        disabled={!name}
+        style={{ width: '100%', marginBottom: '2.4rem' }}
+      >
+        생성하기
+      </Button>
     </div>
   );
 }
