@@ -17,9 +17,10 @@ import PaperCreationLayout from '@components/template/PaperCreationLayout';
 import MainPage from '@pages/MainPage';
 import PaperListPage from '@pages/PaperListPage';
 import PaperViewerPage from '@pages/PaperViewerPage';
+import PaperEditPage from '@pages/PaperEditPage';
 import CreatePaperPage from '@pages/CreatePaperPage';
 import WirteMessagePage from '@pages/WirteMessagePage';
-import PaperEditPage from '@pages/PaperEditPage';
+import ErrorPage from '@pages/ErrorPage';
 
 const router = createBrowserRouter([
   /**
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
   {
     path: '',
     element: <Layout />,
+    errorElement: (
+      <Layout>
+        <ErrorPage />
+      </Layout>
+    ),
     children: [
       {
         element: <MainLayout />,
