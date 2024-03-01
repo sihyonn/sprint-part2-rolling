@@ -42,6 +42,7 @@ const theme = Object.freeze({
     gr2: '1px solid #555555',
     gr3: '2px solid #555555',
     gr4: '2px solid #3a3a3a',
+    gr5: '1px solid #EEEEEE',
 
     //Purple
     pu1: '1px solid #9935FF',
