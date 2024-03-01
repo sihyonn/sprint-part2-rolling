@@ -1,7 +1,7 @@
 export const BUTTON_STATUS = {
-  Enabled: 'Enabled',
-  Disabled: 'Disabled',
-  Hover: 'Hover',
-  Pressed: 'Pressed',
-  Focus: 'Focus',
+  ENABLED: 'Enabled',
+  DISABLED: 'Disabled',
+  HOVER: 'Hover',
+  PRESSED: 'Pressed',
+  FOCUS: 'Focus',
 };

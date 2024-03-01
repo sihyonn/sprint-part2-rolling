@@ -17,38 +17,48 @@ const Styled = {
     padding: 0.8rem 1.6rem;
     border-radius: 0.6rem;
     border: 2px solid
-      ${({ isToggled, theme }) =>
-        isToggled ? theme.color.mainPu : `transparent`};
-    background: ${({ isToggled, theme }) =>
-      isToggled ? theme.color.white : theme.color.lightGr};
+      ${({ $isToggled, theme }) =>
+        $isToggled ? theme.color.mainPu : `transparent`};
+    background: ${({ $isToggled, theme }) =>
+      $isToggled ? theme.color.white : theme.color.lightGr};
 
     font-size: 1.6rem;
     font-style: normal;
     line-height: 2.6rem; /* 162.5% */
-    font-weight: ${({ isToggled }) => (isToggled ? `700` : `400`)};
-    color: ${({ isToggled, theme }) =>
-      isToggled ? theme.color.hoverPu : `#181818`};
+    font-weight: ${({ $isToggled }) => ($isToggled ? `700` : `400`)};
+    color: ${({ $isToggled, theme }) =>
+      $isToggled ? theme.color.hoverPu : `#181818`};
     text-align: center;
 
     cursor: pointer;
   `,
 };
 
-const ToggleButton = ({ onToggle }) => {
-  const [isToggled, setIsToggled] = useState(true);
+const ToggleButton = ({ className, onToggle }) => {
+  const initialToggle = {
+    컬러: false,
+    이미지: false,
+  };
+  const [isToggled, setIsToggled] = useState({ ...initialToggle, 컬러: true });
 
   const handleToggle = (value) => {
-    setIsToggled(!isToggled);
+    setIsToggled(() => ({
+      ...initialToggle,
+      [value]: true,
+    }));
     onToggle(value);
   };
 
   return (
-    <Styled.ToggleContainer>
-      <Styled.Toggle isToggled={isToggled} onClick={() => handleToggle('컬러')}>
+    <Styled.ToggleContainer className={className}>
+      <Styled.Toggle
+        $isToggled={isToggled['컬러']}
+        onClick={() => handleToggle('컬러')}
+      >
         컬러
       </Styled.Toggle>
       <Styled.Toggle
-        isToggled={!isToggled}
+        $isToggled={isToggled['이미지']}
         onClick={() => handleToggle('이미지')}
       >
         이미지
