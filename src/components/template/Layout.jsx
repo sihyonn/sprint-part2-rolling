@@ -28,7 +28,7 @@ function Layout({ children }) {
   return (
     <>
       {!invisibelGnb && <Gnb />}
-      <Styled.Container $invisibelGnb={invisibelGnb}>
+      <Styled.Container className="내가 맨위" $invisibelGnb={invisibelGnb}>
         <Outlet />
         {children}
       </Styled.Container>
