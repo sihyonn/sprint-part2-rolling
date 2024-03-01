@@ -1,80 +1,73 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { showToast } from '@components/common/Toast';
+
+import useKakaoShare from '@hooks/useKakaoShare';
+import useOutsideClick from '@hooks/useOutsideClick';
+import { copyToClipboard } from '@utils/copyToClipBoard';
+
 const Styled = {
   Shared: styled.div`
-    display: flex;
     position: absolute;
     top: 4.5rem;
     left: -5.8rem;
-    padding: 1rem 0.1rem;
+
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 0.8rem;
-    white-space: nowrap;
+
+    padding: 1rem 0.1rem;
     border: ${({ theme }) => theme.border.gr1};
+    border-radius: 0.8rem;
     background: ${({ theme }) => theme.color.white};
     box-shadow: ${({ theme }) => theme.boxShadow.card};
+    white-space: nowrap;
 
     @media (max-width: 767px) {
       left: -8rem;
     }
   `,
   SharedList: styled.div`
-    display: flex;
     width: 100%;
     padding: 1.2rem 1.6rem;
+
+    display: flex;
     align-items: center;
     gap: 1rem;
+
     color: #181818;
-    font-family: Pretendard;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 400;
     line-height: 2.6rem;
     letter-spacing: -0.016rem;
+
     &:hover {
       background: ${({ theme }) => theme.color.lightGr};
     }
   `,
 };
-const { Kakao } = window;
-function SharedOption() {
-  const shareUrl = `${window.location.origin}`;
 
-  useEffect(() => {
-    Kakao.cleanup();
-    Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-    console.log(Kakao.isInitialized());
-  }, []);
+/**
+ * SharedOption - 헤더의 공유버튼을 눌렀을 때 보이는 popover(카카오톡/url 공유)
+ */
 
-  const shareKakao = () => {
-    Kakao.Share.sendDefault({
-      objectType: 'text',
-      text: '세상에 모든 정보를 쉽게 저장하고 관리해보세요',
-      link: {
-        mobileWebUrl: 'shareUrl',
-        webUrl: 'shareUrl',
-      },
-    });
-  };
+function SharedOption({ isChecked, setIsChecked }) {
+  const optionRef = useRef();
+  const shareUrl = window.location.href;
 
-  const copyToClipboard = () => {
-    navigator.clipboard
-      .writeText(shareUrl)
-      .then(() => {
-        showToast('URL이 복사 되었습니다.');
-      })
-      .catch((err) => {
-        console.error('클립보드 복사에 실패했습니다.', err);
-        showToast('클립보드 복사에 실패했습니다.');
-      });
-  };
+  useOutsideClick(optionRef, () => {
+    if (isChecked) setIsChecked(false);
+  });
+
+  const { shareKakao } = useKakaoShare(shareUrl);
+
   return (
-    <Styled.Shared>
+    <Styled.Shared ref={optionRef}>
       <Styled.SharedList onClick={shareKakao}>카카오톡 공유</Styled.SharedList>
-      <Styled.SharedList onClick={copyToClipboard}>URL 공유</Styled.SharedList>
+      <Styled.SharedList
+        onClick={() => {
+          copyToClipboard(shareUrl);
+        }}
+      >
+        URL 공유
+      </Styled.SharedList>
     </Styled.Shared>
   );
 }

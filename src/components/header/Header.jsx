@@ -99,14 +99,17 @@ const mockdata = {
 
 const Styled = {
   Container: styled.nav`
-    display: flex;
     width: 100vw;
+    display: flex;
+
     position: fixed;
-    top: 0;
+    top: 6.6rem; // gnb가 fixed되어있어서 top은 gnb높이를 제외
     left: 0;
     padding: 0;
     z-index: 100;
+
     background: ${({ theme }) => theme.color.white};
+
     @media (max-width: 767px) {
       display: inline-block;
       top: 0;
