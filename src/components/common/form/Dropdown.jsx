@@ -6,11 +6,13 @@ import downIcon from '@/assets/dropDownIcon.svg';
 
 const Styled = {
   Select: styled.div`
-    width: 32rem;
+    width: 100%;
+    max-width: 32rem;
     padding: 1.2rem 1.6rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+
+    position: relative;
     border-radius: 0.8rem;
     border: ${({ $isOpen, theme }) =>
       $isOpen ? theme.border.gr3 : theme.border.gr1};
@@ -50,6 +52,9 @@ const Styled = {
     display: ${({ $isOpen }) => ($isOpen ? 'inline-flex' : 'none')};
     flex-direction: column;
     align-items: flex-start;
+    position: absolute;
+    z-index: 1;
+
     background: ${({ theme }) => theme.color.white};
 
     border-radius: 0.8rem;
@@ -81,7 +86,7 @@ const Styled = {
 
 const Dropdown = ({ data, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(data['default']);
+  const [selectedOption, setSelectedOption] = useState(data['DEFAULT']);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -94,7 +99,7 @@ const Dropdown = ({ data, onSelect }) => {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: '72rem', width: '100%' }}>
       <Styled.Select $isOpen={isOpen} onClick={toggleDropdown}>
         {selectedOption}
         <Styled.Button>
@@ -103,7 +108,7 @@ const Dropdown = ({ data, onSelect }) => {
       </Styled.Select>
 
       <Styled.List $isOpen={isOpen}>
-        {data['options'].map((option, idx) => (
+        {data['OPTIONS'].map((option, idx) => (
           <Styled.Item
             key={idx}
             value={option}
