@@ -6,7 +6,7 @@ import { API_MESSAGES } from '@constants/API';
  */
 const getCardMessage = (messageId) => {
   return instance({
-    url: API_MESSAGES(messageId),
+    url: API_MESSAGES.BY_ID(messageId),
     method: 'GET',
   });
 };
@@ -16,7 +16,7 @@ const getCardMessage = (messageId) => {
  */
 const putCardMessage = ({ messageId, message }) => {
   return instance({
-    url: API_MESSAGES(messageId),
+    url: API_MESSAGES.BY_ID(messageId),
     method: 'PUT',
     data: { message },
   });
@@ -27,7 +27,7 @@ const putCardMessage = ({ messageId, message }) => {
  */
 const patchCardMessage = ({ messageId, message }) => {
   return instance({
-    url: API_MESSAGES(messageId),
+    url: API_MESSAGES.BY_ID(messageId),
     method: 'PATCH',
     data: { message },
   });
@@ -38,7 +38,7 @@ const patchCardMessage = ({ messageId, message }) => {
  */
 const deleteCardMessage = (messageId) => {
   return instance({
-    url: API_MESSAGES(messageId),
+    url: API_MESSAGES.BY_ID(messageId),
     method: 'DELETE',
   });
 };
