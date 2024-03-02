@@ -5,7 +5,11 @@ import 'react-quill/dist/quill.snow.css';
 import '@/styles/quill.custom.css';
 
 const Styled = {
-  Container: styled.div``,
+  Container: styled.div`
+    width: 100%;
+    max-width: 72rem;
+    height: 26rem;
+  `,
 };
 
 /**
