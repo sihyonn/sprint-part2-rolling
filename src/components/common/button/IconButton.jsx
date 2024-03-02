@@ -10,8 +10,8 @@ const Styled = {
     display: flex;
     padding: 1.6rem;
     border-radius: 100px;
-    background: ${({ status, theme }) => {
-      switch (status) {
+    background: ${({ $status, theme }) => {
+      switch ($status) {
         case 'Enabled':
           return theme.color.btnGr;
         case 'Disabled':
@@ -26,7 +26,8 @@ const Styled = {
           return theme.color.btnGr;
       }
     }};
-    border: ${({ status }) => (status === 'Focus' ? '1px solid #2B2B2B' : '')};
+    border: ${({ $status }) =>
+      $status === 'Focus' ? '1px solid #2B2B2B' : ''};
   `,
 };
 
@@ -43,12 +44,12 @@ function IconButton({ status, shape }) {
 
   return (
     <Styled.BackGround
-      status={finalButtonStatus}
-      onMouseEnter={() => handleButtonStateChange(BUTTON_STATUS.Hover)}
-      onMouseLeave={() => handleButtonStateChange(BUTTON_STATUS.Enabled)}
-      onMouseDown={() => handleButtonStateChange(BUTTON_STATUS.Pressed)}
-      onFocus={() => handleButtonStateChange(BUTTON_STATUS.Focus)}
-      onBlur={() => handleButtonStateChange(BUTTON_STATUS.Enabled)}
+      $status={finalButtonStatus}
+      onMouseEnter={() => handleButtonStateChange(BUTTON_STATUS.HOVER)}
+      onMouseLeave={() => handleButtonStateChange(BUTTON_STATUS.ENABLED)}
+      onMouseDown={() => handleButtonStateChange(BUTTON_STATUS.PRESSED)}
+      onFocus={() => handleButtonStateChange(BUTTON_STATUS.FOCUS)}
+      onBlur={() => handleButtonStateChange(BUTTON_STATUS.ENABLED)}
     >
       <img src={imagePath} alt="IconButton" />
     </Styled.BackGround>

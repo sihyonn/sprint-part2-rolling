@@ -1,13 +1,14 @@
 import RelationBadge from '@components/common/RelationBadge';
 import React from 'react';
+import EmojiBadge from '@components/common/EmojiBadge';
 
 function Hi() {
   return (
     <>
-      <RelationBadge type={'지인'} />
-      <RelationBadge type={'동료'} />
-      <RelationBadge type={'가족'} />
-      <RelationBadge type={'친구'} />
+      <EmojiBadge emoji="" count={14} />
+      <EmojiBadge emoji="😍" count={24} />
+      <EmojiBadge emoji="😍" count={24999} />
+      <EmojiBadge emoji="😍" count={100} />
     </>
   );
 }

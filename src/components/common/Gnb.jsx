@@ -7,13 +7,14 @@ import Icon from '@/assets/RollingIcon.svg';
 const Styled = {
   Container: styled.nav`
     display: flex;
-    width: 100vw;
     align-items: center;
-    padding: 0 max(2.4rem, calc((100vw - 120rem) / 2));
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    width: 100vw;
+    height: 6.6rem;
+    padding: 0 max(2.4rem, calc((100vw - 120rem) / 2));
+    z-index: 100;
     background: ${({ theme }) => theme.color.white};
   `,
   GnbContainer: styled.div`

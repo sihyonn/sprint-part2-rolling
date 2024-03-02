@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Styled = {
-  InputContainer: styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  `,
   Input: styled.input`
-  width: 100%;
-  padding: 1.2rem 1.6rem;
+    width: 100%;
+    max-width: 72rem;
+    padding: 1.2rem 1.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +15,7 @@ const Styled = {
       $isEmpty ? theme.border.rd1 : theme.border.gr1};
     background: ${({ theme }) => theme.color.white};
 
-    color: ${({ theme }) => theme.color.textGr}
+    color: ${({ theme }) => theme.color.textGr};
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
@@ -42,6 +38,9 @@ const Styled = {
   `,
 
   InputError: styled.span`
+    display: flex;
+    max-width: 72rem;
+    width: 100%;
     color: ${({ theme }) => theme.color.red};
     font-size: 1.2rem;
     font-style: normal;
@@ -62,7 +61,7 @@ const Input = ({ value, placeholder, onInputChange }) => {
   };
 
   return (
-    <Styled.InputContainer>
+    <>
       <Styled.Input
         type="text"
         id="name"
@@ -73,7 +72,7 @@ const Input = ({ value, placeholder, onInputChange }) => {
         onBlur={handleInputBlur}
       />
       {isEmpty && <Styled.InputError>값을 입력해 주세요.</Styled.InputError>}
-    </Styled.InputContainer>
+    </>
   );
 };
 
