@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Input from '@components/common/Input';
+
 import Option from '@components/common/Option';
-import ToggleButton from '@components/common/ToggleButton';
+import Input from '@components/common/form/Input';
+import ToggleButton from '@components/common/button/ToggleButton';
 import Button from '@components/common/button/Button';
 import { PLACEHOLDER } from '@constants/PLACEHOLDER';
 
