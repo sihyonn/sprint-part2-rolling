@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import EmojiBadge from '@components/common/EmojiBadge';
+import EmojiBadge from '@components/common/badge/EmojiBadge';
 
 const Styled = {
   ListContainer: styled.div`

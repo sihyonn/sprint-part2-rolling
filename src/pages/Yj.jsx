@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ToggleButton from '@components/common/ToggleButton';
+import ToggleButton from '@components/common/button/ToggleButton';
 
 function Yj() {
   const [toggleValue, setToggleValue] = useState('컬러');
