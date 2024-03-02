@@ -17,7 +17,7 @@ const Styled = {
     padding: 1.9rem 3rem;
     border-radius: 0.8rem;
     background: rgba(0, 0, 0, 0.8);
-    animation: fadeInOut 5s;
+    animation: fadeInOut 6s;
 
     @media (max-width: 560px) {
       min-width: 32rem;
