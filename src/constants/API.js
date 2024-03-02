@@ -4,6 +4,7 @@ export const API_IMAGES = Object.freeze({
 });
 
 export const API_MESSAGES = Object.freeze({
+  MESSAGES: '/messages/',
   BY_ID: (messageId) => `/messages/${messageId}`,
 });
 
