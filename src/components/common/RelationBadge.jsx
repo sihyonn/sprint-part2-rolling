@@ -16,13 +16,16 @@ const StyledBadge = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: 1.4rem;
   line-height: 2rem;
   padding: 0 0.8rem;
   gap: 1rem;
+
   width: 4.1rem;
   height: 2rem;
   border-radius: 0.4rem;
+
   /* props에서 받은 type과 theme를 이용하여 스타일을 적용합니다. */
   ${({ type, theme }) => {
     const { background, color } = getBadgeStyle(type, theme);
