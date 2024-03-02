@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import IconButton from '@/components/common/button/IconButton';
-import ProfileBadgeCard from '@/components/common/ProfileBadgeCard';
-import RelationBadge from '@/components/common/RelationBadge';
+import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
+import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
 
