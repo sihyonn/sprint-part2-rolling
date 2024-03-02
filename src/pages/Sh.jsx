@@ -2,6 +2,7 @@ import React from 'react';
 
 import imagesAPI from '@/api/imagesAPI';
 import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
+import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
 import { API_IMAGES } from '@constants/API';
 
 function Sh() {
@@ -15,8 +16,15 @@ function Sh() {
     imagesAPI.getProfileImages,
   );
 
-  console.log('백그라운드이미지 여기', backgroundImages);
-  console.log('프로필이미지', profileImages);
+  // const recipientData = {
+  //   name: '15팀',
+  //   backgroundColor: 'beige',
+  // };
+
+  const { mutate: postRecipient } = usePostRecipientMutation();
+  const handleCreateRecipient = () => {
+    postRecipient({ name: '15팀 뭔가 끝이보이나?', backgroundColor: 'purple' });
+  };
 
   return (
     <>
@@ -30,6 +38,7 @@ function Sh() {
         alt="서버에서온 이미지 테스트"
         width="300rem"
       />
+      <button onClick={handleCreateRecipient}>대상추가</button>
     </>
   );
 }
