@@ -18,7 +18,7 @@ const Styled = {
     display: flex;
     padding: 6rem 0 6rem 6rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 15.2rem;
     border-radius: 1.6rem;
     background: ${({ theme }) => theme.color.surface};
@@ -30,10 +30,9 @@ const Styled = {
       gap: 3.3rem;
     }
     @media (max-width: 767px) {
-      align-items: center;
       width: 100%;
       height: 35.2rem;
-      padding: 2.4rem 0 6.23rem 0;
+      padding: 2.4rem 2.4rem 6.23rem 2.4rem;
       flex-direction: column;
       gap: 5rem;
       overflow: hidden;
@@ -113,7 +112,7 @@ const Styled = {
     display: flex;
     padding: 6rem 19.2rem 6rem 0;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 0;
     border-radius: 1.6rem;
     background: ${({ theme }) => theme.color.surface};
@@ -125,10 +124,9 @@ const Styled = {
       gap: 3.3rem;
     }
     @media (max-width: 767px) {
-      align-items: center;
       width: 100%;
       height: 35.2rem;
-      padding: 2.4rem 0 6.23rem 0;
+      padding: 2.4rem 2.4rem 6.23rem 2.4rem;
       flex-direction: column;
       gap: 5rem;
       overflow: hidden;
@@ -139,15 +137,16 @@ const Styled = {
     width: 72rem;
     height: 20.4rem;
     padding: 2.1rem 4rem 2.1rem 0rem;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 1.18rem;
     @media (min-width: 768px) and (max-width: 1248px) {
       padding: 0;
       order: 2;
+      width: 100%;
     }
     @media (max-width: 767px) {
-      justify-content: center;
+      width: 100%;
       padding: 0;
       order: 2;
       margin-bottom: -1.3rem;
@@ -163,10 +162,11 @@ const Styled = {
     @media (min-width: 768px) and (max-width: 1248px) {
       order: 2;
       padding: 0;
+      width: 100%;
     }
     @media (max-width: 767px) {
       order: 2;
-      justify-content: center;
+      width: 100%;
       padding: 0;
       img {
         width: 32rem;
