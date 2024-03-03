@@ -29,6 +29,10 @@ const Styled = {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    @media (max-width: 767px) {
+      width: 20.8rem;
+      height: 23.2rem;
+    }
   `,
 };
 
