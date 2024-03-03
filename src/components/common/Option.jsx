@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import CardSample from '@/components/common/CardSample';
+import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
+import { API_IMAGES } from '@constants/API';
+import imagesAPI from '@/api/imagesAPI';
 
 const initialState = {
   beige: false,
@@ -48,7 +51,7 @@ function Option({ background, onSelect }) {
   };
 
   const handleImgCheck = (img) => {
-    const imgIndex = imgUrls.indexOf(img);
+    const imgIndex = backgroundImages['imageUrls'].indexOf(img);
     setCheckImg(() => ({
       ...initialImgState,
       [imgIndex]: true,
@@ -62,40 +65,35 @@ function Option({ background, onSelect }) {
     { key: 'blue', color: 'blue' },
     { key: 'green', color: 'green' },
   ];
-  const imgUrls = [
-    'https://picsum.photos/id/683/3840/2160',
-    'https://picsum.photos/id/24/3840/2160',
-    'https://picsum.photos/id/599/3840/2160',
-    'https://picsum.photos/id/1058/3840/2160',
-  ];
+
+  const { data: backgroundImages } = useImagesQuery(
+    API_IMAGES.BACKGROUND,
+    imagesAPI.getBackgroundImages,
+  );
 
   return (
     <Styled.Background>
-      {background === 'color' ? (
-        <Styled.Container>
-          {cards.map((card) => (
-            <CardSample
-              key={card.key}
-              usage="option"
-              color={card.color}
-              onClick={() => handleCardCheck(card.color)}
-              isChecked={checkStatus[card.color]}
-            />
-          ))}
-        </Styled.Container>
-      ) : (
-        <Styled.Container>
-          {imgUrls.map((img, idx) => (
-            <CardSample
-              key={idx}
-              usage="option"
-              cardUrl={img}
-              onClick={() => handleImgCheck(img)}
-              isChecked={checkImg[idx]}
-            />
-          ))}
-        </Styled.Container>
-      )}
+      <Styled.Container>
+        {background === 'color'
+          ? cards.map((card) => (
+              <CardSample
+                key={card.key}
+                usage="option"
+                color={card.color}
+                onClick={() => handleCardCheck(card.color)}
+                isChecked={checkStatus[card.color]}
+              />
+            ))
+          : backgroundImages['imageUrls'].map((img, idx) => (
+              <CardSample
+                key={idx}
+                usage="option"
+                cardUrl={img}
+                onClick={() => handleImgCheck(img)}
+                isChecked={checkImg[idx]}
+              />
+            ))}
+      </Styled.Container>
     </Styled.Background>
   );
 }
