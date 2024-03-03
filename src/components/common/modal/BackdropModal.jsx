@@ -28,6 +28,7 @@ const Styled = {
 
     position: fixed;
     top: 0;
+    z-index: 110;
 
     display: flex;
     justify-content: center;
@@ -39,8 +40,6 @@ const Styled = {
   Container: styled.section`
     position: relative;
 
-    min-width: 60rem;
-    min-height: 47.6rem;
     padding: 4rem;
 
     border-radius: 1.6rem;
