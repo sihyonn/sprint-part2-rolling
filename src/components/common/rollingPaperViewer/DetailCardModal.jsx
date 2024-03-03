@@ -44,13 +44,18 @@ const Styled = {
   `,
   MessageBox: styled.div`
     max-width: 50rem;
-    max-height: 24rem;
+    height: 24rem;
     margin: 1.6rem 0 2.4rem;
     overflow-y: auto;
 
     font-size: 1.8rem;
     line-height: 2.8rem;
     color: #5a5a5a;
+
+    @media (max-width: 767px) {
+      max-width: 100%;
+      height: 20rem;
+    }
   `,
 };
 

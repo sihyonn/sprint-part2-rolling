@@ -39,7 +39,7 @@ const Styled = {
 
   Container: styled.section`
     position: relative;
-
+    min-width: 60rem;
     padding: 4rem;
 
     border-radius: 1.6rem;
@@ -47,6 +47,12 @@ const Styled = {
     box-shadow: ${({ theme }) => theme.boxShadow.card};
 
     animation: ${Keyframes.appear} 0.3s 1;
+
+    @media (max-width: 767px) {
+      min-width: auto;
+      width: 90%;
+      max-width: 100%;
+    }
   `,
 };
 
