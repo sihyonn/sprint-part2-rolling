@@ -11,6 +11,6 @@ export const API_MESSAGES = Object.freeze({
 export const API_RECIPIENTS = Object.freeze({
   RECIPIENTS: '/recipients/',
   BY_ID: (recipientId) => `/recipients/${recipientId}`,
-  MESSAGES: (recipientId) => `/recipients/${recipientId}/messages`,
-  REACTIONS: (recipientId) => `/recipients/${recipientId}/reactions`,
+  MESSAGES: (recipientId) => `/recipients/${recipientId}/messages/`,
+  REACTIONS: (recipientId) => `/recipients/${recipientId}/reactions/`,
 });
