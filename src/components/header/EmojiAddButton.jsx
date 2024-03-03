@@ -65,6 +65,7 @@ function EmojiAddButton({ id }) {
   const onEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
   };
+  console.log(selectedEmoji);
   useEffect(() => {
     if (!isClicked) return;
     const handleClickOutside = (event) => {
@@ -74,7 +75,6 @@ function EmojiAddButton({ id }) {
         buttonRef.current &&
         !buttonRef.current.contains(event.target)
       ) {
-        console.log(selectedEmoji);
         setIsClicked(false);
       }
     };
