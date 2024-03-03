@@ -31,7 +31,7 @@ const Styled = {
   `,
 };
 
-function IconButton({ status, shape }) {
+function IconButton({ status, shape, onClick }) {
   const [buttonStatus, setButtonStatus] = useState('Enabled');
 
   const handleButtonStateChange = (newStatus) => {
@@ -44,12 +44,14 @@ function IconButton({ status, shape }) {
 
   return (
     <Styled.BackGround
+      type="button"
       $status={finalButtonStatus}
       onMouseEnter={() => handleButtonStateChange(BUTTON_STATUS.HOVER)}
       onMouseLeave={() => handleButtonStateChange(BUTTON_STATUS.ENABLED)}
       onMouseDown={() => handleButtonStateChange(BUTTON_STATUS.PRESSED)}
       onFocus={() => handleButtonStateChange(BUTTON_STATUS.FOCUS)}
       onBlur={() => handleButtonStateChange(BUTTON_STATUS.ENABLED)}
+      onClick={onClick}
     >
       <img src={imagePath} alt="IconButton" />
     </Styled.BackGround>

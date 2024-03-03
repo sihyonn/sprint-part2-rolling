@@ -1,6 +1,7 @@
 import React from 'react';
-import Card from '@components/common/Card';
+import Card from '@components/common/rollingPaperViewer/Card';
 import { GridTemplate } from '@styles/commonStyle';
+import AddCard from '@components/common/rollingPaperViewer/AddCard';
 
 const mockdata = [
   {
@@ -78,8 +79,11 @@ const mockdata = [
 ];
 
 function PaperViewerPage() {
+  const isEditData = { recipientId: 3 }; //대상의 아이디 넘겨야함
+
   return (
     <GridTemplate>
+      <AddCard recipientId={isEditData} />
       {mockdata.map((data) => (
         <Card key={data.id} data={data} />
       ))}
