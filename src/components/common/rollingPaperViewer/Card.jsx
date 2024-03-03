@@ -1,8 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import IconButton from '@/components/common/button/IconButton';
 import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
 import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
@@ -12,10 +10,11 @@ const Styled = {
   CardContainer: styled.div`
     display: flex;
     justify-content: center;
-    align-items: ${({ isEditCard }) => (isEditCard ? 'center' : 'start')};
+    align-items: start;
     flex-direction: column;
     gap: 1.6rem;
 
+    height: 100%;
     padding: 2.8rem 2.4rem 2.4rem;
     border-radius: 1.6rem;
     background: ${({ theme }) => theme.color.white};
@@ -70,7 +69,7 @@ const Styled = {
       text-overflow: ellipsis;
 
       color: #4a4a4a;
-      font-family: ${({ font }) => font};
+      font-family: ${({ $font }) => $font};
       font-size: 1.75rem;
       line-height: 2.8rem;
       letter-spacing: -0.018rem;
@@ -85,22 +84,8 @@ const Styled = {
   `,
 };
 
-function CardAdd({ data, isEditCard }) {
-  const navigate = useNavigate();
+function Card({ data, isEditPage = false }) {
   return (
-    <Styled.CardContainer isEditCard={isEditCard}>
-      <IconButton
-        shape="plus"
-        onClick={() => navigate(`/post/${data.id}/message`)}
-      />
-    </Styled.CardContainer>
-  );
-}
-
-function Card({ data, isEditCard = false, isEditPage = true }) {
-  return isEditCard ? (
-    <CardAdd data={data} isEditCard={isEditCard} />
-  ) : (
     <Styled.CardContainer>
       <Styled.TopContainer>
         <Styled.ProfileContainer>
@@ -112,7 +97,7 @@ function Card({ data, isEditCard = false, isEditPage = true }) {
         </Styled.ProfileContainer>
         {isEditPage && <OutlinedButton iconType={'delete'} />}
       </Styled.TopContainer>
-      <Styled.Message font={data.font}>
+      <Styled.Message $font={data.font}>
         <span>{data.content}</span>
       </Styled.Message>
       <Styled.Date>{formatDateToYYYYMMDD(data.createdAt)}</Styled.Date>
