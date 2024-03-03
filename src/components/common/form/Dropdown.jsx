@@ -84,7 +84,7 @@ const Styled = {
   `,
 };
 
-const Dropdown = ({ data, onSelect }) => {
+const Dropdown = ({ data, onSelect, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(data['DEFAULT']);
 
@@ -107,7 +107,7 @@ const Dropdown = ({ data, onSelect }) => {
         </Styled.Button>
       </Styled.Select>
 
-      <Styled.List $isOpen={isOpen}>
+      <Styled.List $isOpen={isOpen} {...props}>
         {data['OPTIONS'].map((option, idx) => (
           <Styled.Item
             key={idx}

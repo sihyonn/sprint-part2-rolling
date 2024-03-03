@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { css } from 'styled-components';
 
 const setBackgroundColor = css`
-  background-color: ${(props) => (props.profileImg ? 'transparent' : '#fff')};
+  background-color: ${(props) => (props.$profileImg ? 'transparent' : '#fff')};
 `;
 
 const Styled = {
@@ -20,9 +20,11 @@ const Styled = {
     border-radius: 100px;
     border: 1px solid #eee;
     background-color: ${({ theme }) => theme.color.mainGr};
-    background-image: url(${(props) => props.profileImg || ''});
+    background-image: url(${(props) => props.$profileImg || ''});
     background-position: top;
     background-size: cover;
+
+    cursor: pointer;
   `,
   Div: styled.div`
     display: flex;
@@ -45,12 +47,15 @@ const Styled = {
   `,
 };
 
-function ProfileBadgeCard({ profileImg }) {
+function ProfileBadgeCard({ profileImg, onSelect }) {
   return (
-    <Styled.Container profileImg={profileImg}>
+    <Styled.Container
+      $profileImg={profileImg}
+      onClick={() => onSelect(profileImg)}
+    >
       <Styled.Div>
-        <Styled.Head profileImg={profileImg} />
-        <Styled.Body profileImg={profileImg} />
+        <Styled.Head $profileImg={profileImg} />
+        <Styled.Body $profileImg={profileImg} />
       </Styled.Div>
     </Styled.Container>
   );

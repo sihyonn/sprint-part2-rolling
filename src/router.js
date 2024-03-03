@@ -19,7 +19,7 @@ import PaperListPage from '@pages/PaperListPage';
 import PaperViewerPage from '@pages/PaperViewerPage';
 import PaperEditPage from '@pages/PaperEditPage';
 import CreatePaperPage from '@pages/CreatePaperPage';
-import WirteMessagePage from '@pages/WirteMessagePage';
+import WriteMessagePage from '@pages/WriteMessagePage';
 import ErrorPage from '@pages/ErrorPage';
 
 const router = createBrowserRouter([
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
           // 메세지 작성(from)
           {
             path: `${routes.post}/:id/message`,
-            element: <WirteMessagePage />,
+            element: <WriteMessagePage />,
           },
         ],
       },
