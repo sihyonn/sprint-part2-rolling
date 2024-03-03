@@ -15,7 +15,7 @@ const getRecipientsList = ({ limit, offset }) => {
 /**
  * 롤링페이퍼 받는 대상 생성 API
  */
-const postRecipient = ({ data }) => {
+const postRecipient = (data) => {
   return instance({
     url: API_RECIPIENTS.RECIPIENTS,
     method: 'POST',
@@ -78,7 +78,7 @@ const getReactions = ({ recipientId, limit, offset }) => {
 /**
  * 대상에게 달 리액션(이모지) 생성 API
  */
-const postReactions = ({ recipientId }) => {
+const postReactions = ({ recipientId, data }) => {
   return instance({
     url: API_RECIPIENTS.REACTIONS(recipientId),
     method: 'POST',

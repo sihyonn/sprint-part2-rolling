@@ -1,37 +1,44 @@
 import React from 'react';
-import Button from '@components/common/button/Button';
+
 import imagesAPI from '@/api/imagesAPI';
-import messagesAPI from '@/api/messagesAPI';
+import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
+import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
+import { API_IMAGES } from '@constants/API';
 
 function Sh() {
-  // 데이터 받아오기! test중~ 리액트쿼리 들어오면 변경
-  const loadBackgroundImages = async () => {
-    try {
-      const res = await imagesAPI.getBackgroundImages();
-      console.log(res);
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  loadBackgroundImages();
+  const { data: backgroundImages } = useImagesQuery(
+    API_IMAGES.BACKGROUND,
+    imagesAPI.getBackgroundImages,
+  );
 
-  const cardData = async () => {
-    try {
-      const res = await messagesAPI.getCardMessage(1);
-      console.log('카드 데이터', res);
-    } catch (error) {
-      console.error(error);
-    }
+  const { data: profileImages } = useImagesQuery(
+    API_IMAGES.PROFILE,
+    imagesAPI.getProfileImages,
+  );
+
+  // const recipientData = {
+  //   name: '15팀',
+  //   backgroundColor: 'beige',
+  // };
+
+  const { mutate: postRecipient } = usePostRecipientMutation();
+  const handleCreateRecipient = () => {
+    postRecipient({ name: '15팀 뭔가 끝이보이나?', backgroundColor: 'purple' });
   };
-  cardData();
+
   return (
     <>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <Button size="S">확인</Button>
-        <Button size="M">구경가기</Button>
-        <Button size="L">삭제하기</Button>
-      </div>
+      <img
+        src={backgroundImages?.imageUrls[0]}
+        alt="서버에서온 이미지 테스트"
+        width="500rem"
+      />
+      <img
+        src={profileImages?.imageUrls[0]}
+        alt="서버에서온 이미지 테스트"
+        width="300rem"
+      />
+      <button onClick={handleCreateRecipient}>대상추가</button>
     </>
   );
 }
