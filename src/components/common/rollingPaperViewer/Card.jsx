@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
 import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
+import DetailCardModal from '@/components/common/rollingPaperViewer/DetailCardModal';
 
 const Styled = {
   CardContainer: styled.div`
@@ -19,6 +20,11 @@ const Styled = {
     border-radius: 1.6rem;
     background: ${({ theme }) => theme.color.white};
     box-shadow: ${({ theme }) => theme.boxShadow.card};
+
+    &:hover {
+      transform: translateY(-8px);
+      transition: all ease-in-out 0.25s;
+    }
     cursor: pointer;
   `,
 
@@ -85,23 +91,28 @@ const Styled = {
 };
 
 function Card({ data, isEditPage = false }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <Styled.CardContainer>
-      <Styled.TopContainer>
-        <Styled.ProfileContainer>
-          <ProfileBadgeCard profileImg={data.profileImageURL} />
-          <Styled.NameContainer>
-            <span>From. {data.sender}</span>
-            <RelationBadge type={data.relationship} />
-          </Styled.NameContainer>
-        </Styled.ProfileContainer>
-        {isEditPage && <OutlinedButton iconType={'delete'} />}
-      </Styled.TopContainer>
-      <Styled.Message $font={data.font}>
-        <span>{data.content}</span>
-      </Styled.Message>
-      <Styled.Date>{formatDateToYYYYMMDD(data.createdAt)}</Styled.Date>
-    </Styled.CardContainer>
+    <>
+      <Styled.CardContainer onClick={() => setIsModalOpen(true)}>
+        <Styled.TopContainer>
+          <Styled.ProfileContainer>
+            <ProfileBadgeCard profileImg={data.profileImageURL} />
+            <Styled.NameContainer>
+              <span>From. {data.sender}</span>
+              <RelationBadge type={data.relationship} />
+            </Styled.NameContainer>
+          </Styled.ProfileContainer>
+          {isEditPage && <OutlinedButton iconType={'delete'} />}
+        </Styled.TopContainer>
+        <Styled.Message $font={data.font}>
+          <span>{data.content}</span>
+        </Styled.Message>
+        <Styled.Date>{formatDateToYYYYMMDD(data.createdAt)}</Styled.Date>
+      </Styled.CardContainer>
+      {isModalOpen && <DetailCardModal setOpen={setIsModalOpen} data={data} />}
+    </>
   );
 }
 
