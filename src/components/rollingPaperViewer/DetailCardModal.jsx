@@ -1,5 +1,5 @@
 import React from 'react';
-import BackdropModal from '../modal/BackdropModal';
+import BackdropModal from '../common/modal/BackdropModal';
 import { styled } from 'styled-components';
 import Button from '@/components/common/button/Button';
 import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';

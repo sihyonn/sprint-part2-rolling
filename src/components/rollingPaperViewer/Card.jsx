@@ -5,7 +5,7 @@ import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
 import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
-import DetailCardModal from '@/components/common/rollingPaperViewer/DetailCardModal';
+import DetailCardModal from '@components/rollingPaperViewer/DetailCardModal';
 
 const Styled = {
   CardContainer: styled.div`
@@ -93,6 +93,7 @@ const Styled = {
 function Card({ data, isEditPage = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  console.log(data);
   return (
     <>
       <Styled.CardContainer onClick={() => setIsModalOpen(true)}>
