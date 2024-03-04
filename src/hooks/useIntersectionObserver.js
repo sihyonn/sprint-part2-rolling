@@ -7,7 +7,7 @@ function useIntersectionObserver(callback, loaderRef) {
         if (!entry.isIntersecting) return;
         callback?.();
       },
-      { threshold: 0.7 },
+      { threshold: 0.4 },
     );
 
     const observe = (element) => {
