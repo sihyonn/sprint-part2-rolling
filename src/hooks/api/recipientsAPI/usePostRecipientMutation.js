@@ -9,7 +9,7 @@ import recipientsAPI from '@/api/recipientsAPI';
  */
 
 function usePostRecipientMutation() {
-  return useMutation({
+  const mutation = useMutation({
     mutationFn: async (recipientData) => {
       return recipientsAPI.postRecipient(recipientData);
     },
@@ -17,9 +17,16 @@ function usePostRecipientMutation() {
       showErrorToast('롤링페이퍼 받을 대상을 생성하는데 실패했어요🥹');
     },
     onSuccess: () => {
-      showToast('성공적으로 롤링페이퍼 대상 신청을 완료했어요!🥳');
+      showToast('롤링페이퍼를 성공적으로 만들었어요!🥳');
     },
   });
+  return {
+    ...mutation,
+    postRecipient: async (recipientData) => {
+      const data = await mutation.mutateAsync(recipientData);
+      return data;
+    },
+  };
 }
 
 export default usePostRecipientMutation;
