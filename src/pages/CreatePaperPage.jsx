@@ -6,6 +6,8 @@ import Input from '@components/common/form/Input';
 import ToggleButton from '@components/common/button/ToggleButton';
 import Button from '@components/common/button/Button';
 import { PLACEHOLDER } from '@constants/PLACEHOLDER';
+import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
+import { useNavigate } from 'react-router-dom';
 
 const Styled = {
   ToSection: styled.div`
@@ -69,6 +71,7 @@ function CreatePaperPage() {
   const [name, setName] = useState('');
   const [toggledValue, setToggledValue] = useState('컬러');
   const [background, setBackground] = useState({ color: 'beige', img: null });
+  const navigate = useNavigate();
 
   const handleInputChange = (value) => {
     setName(value);
@@ -81,7 +84,19 @@ function CreatePaperPage() {
       ...prev,
       [type]: value,
     }));
-    console.log(background);
+  };
+  const { postRecipient } = usePostRecipientMutation();
+  const handleCreateRecipient = async () => {
+    try {
+      const response = await postRecipient({
+        name: name,
+        backgroundColor: background.color,
+        backgroundImageURL: background.img,
+      });
+      navigate(`/post/${response['data']['id']}`, { replace: true });
+    } catch (error) {
+      console.error('Failed to create recipient', error);
+    }
   };
 
   return (
@@ -120,6 +135,7 @@ function CreatePaperPage() {
         size="L"
         disabled={!name}
         style={{ width: '100%', marginBottom: '2.4rem' }}
+        onClick={handleCreateRecipient}
       >
         생성하기
       </Button>
