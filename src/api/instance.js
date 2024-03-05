@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import { API_IMAGES } from '@constants/API';
-import { showErrorToast } from '@components/common/Toast';
 
 const baseURL = process.env.REACT_APP_ROLLING_BaseURL;
 
@@ -33,7 +32,6 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    showErrorToast(`[ERROR] ${error.message}`);
     return Promise.reject(error);
   },
 );
