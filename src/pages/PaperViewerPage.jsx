@@ -1,9 +1,9 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
 import Button from '@components/common/button/Button';
-import { styled } from 'styled-components';
-import { useNavigate, useParams } from 'react-router-dom';
 import routes from '@constants/routes';
 
 const Styled = {
