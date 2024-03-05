@@ -7,21 +7,17 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useInfiniteCardMessagesQuery from '@hooks/api/messagesAPI/useInfiniteCardMessagesQuery';
 import { GridTemplate } from '@styles/commonStyle';
 
-function InfiniteCardMessages() {
-  const recipientId = 4028;
+function InfiniteCardMessages({ recipientId }) {
   const loaderRef = useRef();
 
   const { data: cardMessagesData, fetchNextPage } =
     useInfiniteCardMessagesQuery(recipientId);
 
   const isLastPage = cardMessagesData?.pages?.at(-1)?.next === null;
-  console.log(isLastPage);
 
   useIntersectionObserver(async () => {
     await fetchNextPage();
   }, loaderRef);
-
-  console.log(cardMessagesData);
 
   return (
     <>

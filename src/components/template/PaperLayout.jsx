@@ -27,7 +27,7 @@ const Styled = {
     // PC, Tablet, Mobile별 헤더로부터 카드목록의 시작위치에 관여
     width: 100%;
     max-height: 100vh; //조정 필요해보임
-    padding-top: 11.3rem;
+    padding-top: 6.3rem;
 
     @media (min-width: 768px) and (max-width: 1247px) {
       padding-top: 9.3rem;
