@@ -14,13 +14,19 @@ const Styled = {
     position: relative;
     .slick-list {
       width: 1200px;
+
+      @media (max-width: 360px) {
+        width: 900px;
+      }
     }
   `,
+
   NextArrow: styled.div`
     position: absolute;
     top: 40%;
     right: 0%;
-    @media screen and (max-width: 76.8rem) {
+    cursor: pointer;
+    @media (max-width: 76.8rem) {
       display: none;
     }
   `,
@@ -28,7 +34,8 @@ const Styled = {
     position: absolute;
     top: 40%;
     left: -2%;
-    @media screen and (max-width: 76.8rem) {
+    cursor: pointer;
+    @media (max-width: 76.8rem) {
       display: none;
     }
   `,
@@ -36,8 +43,9 @@ const Styled = {
 
 function Carousel({ data }) {
   const slickRef = useRef(null);
-  const PrevArrow = () => {
+  const PrevArrow = (props) => {
     slickRef.current?.slickPrev();
+    console.log(props);
   };
 
   const NextArrow = () => {
@@ -49,8 +57,16 @@ function Carousel({ data }) {
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
     arrows: false,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 431,
+        settings: {
+          infinite: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -64,7 +80,7 @@ function Carousel({ data }) {
                   name={value.name}
                   color={value.backgroundColor}
                   cardUrl={value.backgroundImageURL}
-                  count={value.messageCount}
+                  messageCount={value.messageCount}
                   recentMessages={value.recentMessages}
                   topReactions={value.topReactions}
                 />
@@ -83,6 +99,3 @@ function Carousel({ data }) {
   );
 }
 export default Carousel;
-/* <div>
-  <CardSample usage="list" color="green" />
-</div>; */
