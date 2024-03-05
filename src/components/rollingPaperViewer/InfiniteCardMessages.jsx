@@ -22,7 +22,7 @@ function InfiniteCardMessages({ recipientId, isEditPage }) {
   return (
     <>
       <GridTemplate>
-        <AddCard recipientId={recipientId} />
+        {!isEditPage && <AddCard recipientId={recipientId} />}
         {cardMessagesData?.pages.map((page) =>
           page.results.map((result) => (
             <Card key={result.id} data={result} isEditPage={isEditPage} />
