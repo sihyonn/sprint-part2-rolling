@@ -8,7 +8,7 @@ import recipientsAPI from '@/api/recipientsAPI';
  * 에러일경우 에러토스트, 성공할경우 일반토스트를 활용해 알림 표시
  */
 
-function usePostMessageMutation() {
+function usePostMessageMutation(handleSuccess) {
   return useMutation({
     mutationFn: async ({ recipientId, data }) => {
       return recipientsAPI.postMessagesToRecipient({
@@ -21,6 +21,7 @@ function usePostMessageMutation() {
     },
     onSuccess: () => {
       showToast('성공적으로 롤링페이퍼를 작성했어요!⭐');
+      handleSuccess();
     },
   });
 }

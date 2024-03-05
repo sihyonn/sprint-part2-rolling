@@ -94,21 +94,20 @@ function WriteMessagePage() {
     API_IMAGES.PROFILE,
     imagesAPI.getProfileImages,
   );
-  const { mutate: postMessage } = usePostMessageMutation();
+  const { mutate: postMessage } = usePostMessageMutation(() =>
+    navigate(`/post/${id}`, { replace: true }),
+  );
   const handleCreateMessage = () => {
-    postMessage(
-      {
-        recipientId: id,
-        data: {
-          sender: name,
-          profileImageURL: image ?? profileImages['imageUrls'][0],
-          relationship: relationship,
-          content: content,
-          font: font,
-        },
+    postMessage({
+      recipientId: id,
+      data: {
+        sender: name,
+        profileImageURL: image ?? profileImages['imageUrls'][0],
+        relationship: relationship,
+        content: content,
+        font: font,
       },
-      { onSuccess: () => navigate(`/post/${id}`, { replace: true }) },
-    );
+    });
   };
 
   const handleInputChange = (value) => {
