@@ -13,7 +13,21 @@ const Styled = {
     margin-bottom: 1.1rem;
 
     @media (max-width: 1247px) {
-      display: none;
+      display: flex;
+      justify-content: center;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      margin-bottom: 2.4rem;
+      width: 100%;
+      z-index: 10;
+
+      .button {
+        min-width: 94%;
+        padding: 1.4rem 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
     }
   `,
 };
@@ -25,10 +39,14 @@ function PaperViewerPage() {
   return (
     <>
       <Styled.ButtonContainer>
-        <Button onClick={() => navigate(`${routes.post}/${recipientId}/edit`)}>
+        <Button
+          className="button"
+          onClick={() => navigate(`${routes.post}/${recipientId}/edit`)}
+        >
           편집하기
         </Button>
       </Styled.ButtonContainer>
+
       <InfiniteCardMessages recipientId={recipientId} />
     </>
   );
