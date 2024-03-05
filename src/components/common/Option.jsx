@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import CardSample from '@/components/common/CardSample';
-import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
-import { API_IMAGES } from '@constants/API';
-import imagesAPI from '@/api/imagesAPI';
 
 const initialState = {
   beige: false,
@@ -35,7 +32,7 @@ const Styled = {
   `,
 };
 
-function Option({ background, onSelect }) {
+function Option({ background, backgroundImages, onSelect }) {
   const [checkStatus, setCheckStatus] = useState({
     ...initialState,
     beige: true,
@@ -65,11 +62,6 @@ function Option({ background, onSelect }) {
     { key: 'blue', color: 'blue' },
     { key: 'green', color: 'green' },
   ];
-
-  const { data: backgroundImages } = useImagesQuery(
-    API_IMAGES.BACKGROUND,
-    imagesAPI.getBackgroundImages,
-  );
 
   return (
     <Styled.Background>
