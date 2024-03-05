@@ -7,7 +7,7 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useInfiniteCardMessagesQuery from '@hooks/api/messagesAPI/useInfiniteCardMessagesQuery';
 import { GridTemplate } from '@styles/commonStyle';
 
-function InfiniteCardMessages({ recipientId }) {
+function InfiniteCardMessages({ recipientId, isEditPage }) {
   const loaderRef = useRef();
 
   const { data: cardMessagesData, fetchNextPage } =
@@ -24,7 +24,9 @@ function InfiniteCardMessages({ recipientId }) {
       <GridTemplate>
         <AddCard recipientId={recipientId} />
         {cardMessagesData?.pages.map((page) =>
-          page.results.map((result) => <Card key={result.id} data={result} />),
+          page.results.map((result) => (
+            <Card key={result.id} data={result} isEditPage={isEditPage} />
+          )),
         )}
       </GridTemplate>
       {/* todo 아래 스켈레톤 로더로 대체하기 */}
