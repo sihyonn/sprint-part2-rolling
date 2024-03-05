@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Input from '@components/common/form/Input';
 import Button from '@components/common/button/Button';
-import { PLACEHOLDER } from '@constants/PLACEHOLDER';
 import Dropdown from '@components/common/form/Dropdown';
-import { DROPDOWN_DATA } from '@constants/DROPDOWN_DATA';
 import TextEditor from '@components/common/TextEditor';
 import ProfileBadgeSelect from '@components/common/badge/ProfileBadgeSelect';
 import ProfileBadgeCard from '@components/common/badge/ProfileBadgeCard';
+
+import { PLACEHOLDER } from '@constants/PLACEHOLDER';
+import { DROPDOWN_DATA } from '@constants/DROPDOWN_DATA';
+import { API_IMAGES } from '@constants/API';
+
+import imagesAPI from '@/api/imagesAPI';
+import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
+import usePostMessageMutation from '@hooks/api/recipientsAPI/usePostMessageMutation';
 
 const Styled = {
   Container: styled.div`
@@ -79,20 +86,29 @@ function WriteMessagePage() {
   );
   const [font, setFont] = useState(DROPDOWN_DATA.FONT.DEFAULT);
   const [content, setContent] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const imageUrls = [
-    'https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/sprint-proj-image/default_avatar.png',
-    'https://picsum.photos/id/522/100/100',
-    'https://picsum.photos/id/547/100/100',
-    'https://picsum.photos/id/268/100/100',
-    'https://picsum.photos/id/1082/100/100',
-    'https://picsum.photos/id/571/100/100',
-    'https://picsum.photos/id/494/100/100',
-    'https://picsum.photos/id/859/100/100',
-    'https://picsum.photos/id/437/100/100',
-    'https://picsum.photos/id/1064/100/100',
-  ];
+  const { data: profileImages } = useImagesQuery(
+    API_IMAGES.PROFILE,
+    imagesAPI.getProfileImages,
+  );
+  const { mutate: postMessage } = usePostMessageMutation(() =>
+    navigate(`/post/${id}`, { replace: true }),
+  );
+  const handleCreateMessage = () => {
+    postMessage({
+      recipientId: id,
+      data: {
+        sender: name,
+        profileImageURL: image ?? profileImages['imageUrls'][0],
+        relationship: relationship,
+        content: content,
+        font: font,
+      },
+    });
+  };
 
   const handleInputChange = (value) => {
     setName(value);
@@ -107,13 +123,7 @@ function WriteMessagePage() {
     setImage(value);
   };
   const handleSubmitMessage = () => {
-    console.log({
-      sender: name,
-      profileImageURL: image,
-      relationship: relationship,
-      content: content,
-      font: font,
-    });
+    handleCreateMessage();
   };
 
   return (
@@ -142,13 +152,14 @@ function WriteMessagePage() {
             <Styled.Section style={{ alignItems: 'flex-start' }}>
               <Styled.SubText>프로필 이미지를 선택해 주세요!</Styled.SubText>
               <Styled.Profile>
-                {imageUrls.map((imgUrl, idx) => (
-                  <ProfileBadgeCard
-                    key={idx}
-                    profileImg={imgUrl}
-                    onSelect={handleImage}
-                  />
-                ))}
+                {profileImages &&
+                  profileImages['imageUrls'].map((imgUrl, idx) => (
+                    <ProfileBadgeCard
+                      key={idx}
+                      profileImg={imgUrl}
+                      onSelect={handleImage}
+                    />
+                  ))}
               </Styled.Profile>
             </Styled.Section>
           </Styled.ProfileSection>
