@@ -6,7 +6,7 @@ const useKakaoShare = (shareUrl) => {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-  }, []);
+  }, [Kakao]);
 
   const shareKakao = () => {
     Kakao.Share.sendDefault({

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import EmojiCountList from '@components/common/EmojiCountList';
-
+import useGetReactionsQuery from '@hooks/api/recipientsAPI/useGetReactions';
+import { API_RECIPIENTS } from '@constants/API';
+import recipientsAPI from '@/api/recipientsAPI';
 const Styled = {
   Container: styled.div`
     display: flex;
@@ -24,7 +27,17 @@ const Styled = {
   `,
 };
 
-function EmojiExpand({ data1, data2 }) {
+function EmojiExpand() {
+  const { id: user_id } = useParams();
+  const { data: EmojiData } = useGetReactionsQuery(
+    API_RECIPIENTS.REACTIONS(user_id),
+    recipientsAPI.getReactions,
+    user_id,
+    8,
+    0,
+  );
+  const data1 = EmojiData?.results ? EmojiData.results.slice(0, 4) : [];
+  const data2 = EmojiData?.results ? EmojiData.results.slice(4, 8) : [];
   return (
     <Styled.Container>
       <EmojiCountList data={data1} />
