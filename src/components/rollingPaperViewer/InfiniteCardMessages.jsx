@@ -7,6 +7,11 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useInfiniteCardMessagesQuery from '@hooks/api/messagesAPI/useInfiniteCardMessagesQuery';
 import { GridTemplate } from '@styles/commonStyle';
 
+/**
+ * InfiniteCardMessages - 카드 메시지 무한 스크롤
+ * @param {string} recipientId 메시지 받는 대상의 id
+ * @param {boolean} iseEditPage 편집모드인지 여부
+ */
 function InfiniteCardMessages({ recipientId, isEditPage }) {
   const loaderRef = useRef();
 

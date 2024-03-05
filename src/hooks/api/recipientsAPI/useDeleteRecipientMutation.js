@@ -2,6 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 import recipientsAPI from '@/api/recipientsAPI';
 import { showErrorToast, showToast } from '@components/common/Toast';
 
+/**
+ * useDeleteRecipientMutation - recipientId에 해당하는 대상의 롤링페이퍼를 삭제하기 위한 리액트 쿼리 커스텀 훅
+ * @param {string} recipientId 삭제 대상의 아이디
+ * @param {Function} mutationFn 메시지 삭제 요청 함수
+ */
+
 function useDeleteRecipientMutation({ recipientId, handleSuccess }) {
   return useMutation({
     mutationFn: async () => {
