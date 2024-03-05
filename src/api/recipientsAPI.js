@@ -50,7 +50,11 @@ const getMessageToRecipient = ({ recipientId, limit, offset }) => {
   return instance({
     url: API_RECIPIENTS.MESSAGES(recipientId),
     method: 'GET',
-    params: { limit, offset },
+    params: {
+      recipientId: recipientId,
+      limit: limit,
+      offset: offset,
+    },
   });
 };
 
