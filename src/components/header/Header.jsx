@@ -1,101 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileEmojiShare from '@/components/header/ProfileEmojiShare';
-
-const mockdata = {
-  id: 2,
-  name: '강영훈',
-  backgroundColor: 'green',
-  backgroundImageURL: null,
-  createdAt: '2023-10-26T13:19:31.401765Z',
-  messageCount: 10,
-  recentMessages: [
-    {
-      id: 32,
-      recipientId: 2,
-      sender: '김하은',
-      profileImageURL: '',
-      relationship: '가족',
-      content: '열심히 일하는 모습 멋있습니다.',
-      font: 'Pretendard',
-      createdAt: '2023-11-01T08:05:25.399056Z',
-    },
-    {
-      id: 31,
-      recipientId: 2,
-      sender: '이영준',
-      profileImageURL:
-        'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-      relationship: '지인',
-      content: '항상 응원합니다',
-      font: 'Noto Sans',
-      createdAt: '2023-11-01T08:04:12.852691Z',
-    },
-    {
-      id: 30,
-      recipientId: 2,
-      sender: '손동욱',
-      profileImageURL: '',
-      relationship: '지인',
-      content: '멋있어요!',
-      font: 'Noto Sans',
-      createdAt: '2023-11-01T08:01:52.605133Z',
-    },
-    {
-      id: 30,
-      recipientId: 2,
-      sender: '손동욱',
-      profileImageURL: '',
-      relationship: '지인',
-      content: '멋있어요!',
-      font: 'Noto Sans',
-      createdAt: '2023-11-01T08:01:52.605133Z',
-    },
-  ],
-  reactionCount: 105,
-  topReactions: [
-    {
-      id: 34,
-      emoji: '👍',
-      count: 50,
-    },
-    {
-      id: 28,
-      emoji: '😍',
-      count: 48,
-    },
-    {
-      id: 26,
-      emoji: '🎉',
-      count: 46,
-    },
-    {
-      id: 26,
-      emoji: '😂',
-      count: 30,
-    },
-    {
-      id: 34,
-      emoji: '👍',
-      count: 24,
-    },
-    {
-      id: 28,
-      emoji: '😍',
-      count: 18,
-    },
-    {
-      id: 26,
-      emoji: '🎉',
-      count: 16,
-    },
-    {
-      id: 26,
-      emoji: '😂',
-      count: 1,
-    },
-  ],
-}; //  'https://rolling-api.vercel.app/{team}/recipients/{id}/'
+import useGetRecipientsQuery from '@hooks/api/recipientsAPI/useGetRecipients';
+import { API_RECIPIENTS } from '@constants/API';
+import recipientsAPI from '@/api/recipientsAPI';
 
 const Styled = {
   Container: styled.nav`
@@ -135,7 +44,6 @@ const Styled = {
   CardOwner: styled.span`
     display: flex;
     align-items: flex-start;
-    width: 22.7rem;
     color: #2b2b2b;
     font-family: Pretendard;
     font-size: 2.8rem;
@@ -150,13 +58,22 @@ const Styled = {
     background: var(--gray-200, #eee);
   `,
 };
-function Header({ data = mockdata }) {
+function Header() {
   // data는 /list에서 /list{id}로 이동시 페이지에서 보내주기
+  const { id: user_id } = useParams();
+
+  const { data } = useGetRecipientsQuery(
+    API_RECIPIENTS.BY_ID(user_id),
+    recipientsAPI.getRecipientDataById,
+    user_id,
+  );
   const [isMobile, setIsMobile] = useState(false);
-  const { messageCount, recentMessages } = data;
-  const profileListData = { messageCount, recentMessages };
-  const { id, topReactions } = data;
-  const EmojiData = { id, topReactions };
+  const profileListData = data
+    ? { messageCount: data.messageCount, recentMessages: data.recentMessages }
+    : {};
+  const EmojiData = data
+    ? { id: data.id, topReactions: data.topReactions }
+    : {};
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
@@ -165,12 +82,12 @@ function Header({ data = mockdata }) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [user_id]);
 
   return isMobile ? (
     <Styled.Container>
       <Styled.MobileContainer>
-        <Styled.CardOwner>To.{data.name}</Styled.CardOwner>
+        <Styled.CardOwner>To.{data?.name}</Styled.CardOwner>
       </Styled.MobileContainer>
       <Styled.Bar />
       <Styled.HeaderContainer>
@@ -183,7 +100,7 @@ function Header({ data = mockdata }) {
   ) : (
     <Styled.Container>
       <Styled.HeaderContainer>
-        <Styled.CardOwner>To.{data.name}</Styled.CardOwner>
+        <Styled.CardOwner>To.{data?.name}</Styled.CardOwner>
         <ProfileEmojiShare
           profileData={profileListData}
           EmojiData={EmojiData}

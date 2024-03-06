@@ -195,7 +195,6 @@ const Styled = {
 function MainPage() {
   const isMobile = useMobile();
   const navigate = useNavigate();
-  console.log(isMobile);
   return (
     <Styled.Landing>
       <Styled.Point1Container>

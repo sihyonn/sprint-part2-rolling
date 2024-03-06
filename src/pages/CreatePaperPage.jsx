@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Option from '@components/common/Option';
@@ -6,6 +7,11 @@ import Input from '@components/common/form/Input';
 import ToggleButton from '@components/common/button/ToggleButton';
 import Button from '@components/common/button/Button';
 import { PLACEHOLDER } from '@constants/PLACEHOLDER';
+import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
+
+import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
+import { API_IMAGES } from '@constants/API';
+import imagesAPI from '@/api/imagesAPI';
 
 const Styled = {
   ToSection: styled.div`
@@ -68,20 +74,43 @@ const Styled = {
 function CreatePaperPage() {
   const [name, setName] = useState('');
   const [toggledValue, setToggledValue] = useState('컬러');
-  const [background, setBackground] = useState({ color: 'beige', img: null });
+  const [selectedColor, setSelectedColor] = useState('beige');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
 
   const handleInputChange = (value) => {
     setName(value);
   };
   const handleToggledValue = (value) => {
+    if (value === '이미지') {
+      isLoading || setSelectedImage(backgroundImages['imageUrls'][0]);
+    }
     setToggledValue(value);
   };
+
   const handleBackground = (type, value) => {
-    setBackground((prev) => ({
-      ...prev,
-      [type]: value,
-    }));
-    console.log(background);
+    if (type === 'color') {
+      setSelectedColor(value);
+    } else if (type === 'img') {
+      setSelectedImage(value);
+    }
+  };
+  const { isLoading, data: backgroundImages } = useImagesQuery(
+    API_IMAGES.BACKGROUND,
+    imagesAPI.getBackgroundImages,
+  );
+  const { postRecipient } = usePostRecipientMutation();
+  const handleCreateRecipient = async () => {
+    try {
+      const response = await postRecipient({
+        name: name,
+        backgroundColor: selectedColor,
+        backgroundImageURL: toggledValue === '컬러' ? null : selectedImage,
+      });
+      navigate(`/post/${response['data']['id']}`, { replace: true });
+    } catch (error) {
+      console.error('Failed to create recipient', error);
+    }
   };
 
   return (
@@ -112,6 +141,7 @@ function CreatePaperPage() {
 
         <Option
           background={toggledValue === '컬러' ? 'color' : 'img'}
+          backgroundImages={backgroundImages}
           onSelect={handleBackground}
         />
       </Styled.BackgroundSection>
@@ -120,6 +150,7 @@ function CreatePaperPage() {
         size="L"
         disabled={!name}
         style={{ width: '100%', marginBottom: '2.4rem' }}
+        onClick={handleCreateRecipient}
       >
         생성하기
       </Button>
