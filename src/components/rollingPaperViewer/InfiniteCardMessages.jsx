@@ -5,6 +5,7 @@ import Card from '@/components/rollingPaperViewer/Card';
 import AddCard from '@/components/rollingPaperViewer/AddCard';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useInfiniteCardMessagesQuery from '@hooks/api/messagesAPI/useInfiniteCardMessagesQuery';
+import InfiniteCardMessagesLoader from './InfiniteCardMessagesLoader';
 import { GridTemplate } from '@styles/commonStyle';
 
 /**
@@ -34,18 +35,12 @@ function InfiniteCardMessages({ recipientId, isEditPage }) {
           )),
         )}
       </GridTemplate>
-      {/* todo 아래 스켈레톤 로더로 대체하기 */}
-      <div
-        ref={loaderRef}
-        style={
-          isLastPage
-            ? { display: 'none' }
-            : { height: '20px', margin: '10px', backgroundColor: 'lightgray' }
-        }
-        aria-label="Loading more messages"
-      >
-        로딩중이라네
-      </div>
+
+      <InfiniteCardMessagesLoader
+        className="skeleton"
+        loaderRef={loaderRef}
+        style={isLastPage ? { display: 'none' } : { display: 'block' }}
+      />
     </>
   );
 }
