@@ -9,39 +9,17 @@ const mock_data = {
   previous: 'https://rolling-api.vercel.app/0-3/recipients/?limit=3&sort=like',
   results: [
     {
-      id: 7,
-      name: '양윤상',
+      id: 11,
+      name: 'Yoonsang',
       backgroundColor: 'blue',
       backgroundImageURL: null,
       createdAt: '2023-10-31T09:58:37.631384Z',
-      messageCount: 6,
+      messageCount: 2,
       recentMessages: [
         {
           id: 28,
           recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 27,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:46.889479Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
-          sender: 'test user2',
+          sender: '김현일',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
           relationship: '지인',
@@ -61,7 +39,7 @@ const mock_data = {
           createdAt: '2023-10-31T09:58:47.272896Z',
         },
         {
-          id: 28,
+          id: 13,
           recipientId: 11,
           sender: 'test user2',
           profileImageURL:
@@ -72,7 +50,18 @@ const mock_data = {
           createdAt: '2023-10-31T09:58:47.272896Z',
         },
         {
-          id: 28,
+          id: 11,
+          recipientId: 11,
+          sender: 'test user2',
+          profileImageURL:
+            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
+          relationship: '지인',
+          content: '테스트 목적의 메세지3',
+          font: '나눔명조',
+          createdAt: '2023-10-31T09:58:47.272896Z',
+        },
+        {
+          id: 16,
           recipientId: 11,
           sender: 'test user2',
           profileImageURL:
@@ -98,38 +87,16 @@ const mock_data = {
       ],
     },
     {
-      id: 11,
+      id: 22,
       name: '김현일',
       backgroundColor: 'beige',
       backgroundImageURL: null,
       createdAt: '2023-10-31T09:58:37.631384Z',
-      messageCount: 6,
+      messageCount: 3,
       recentMessages: [
         {
           id: 28,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 27,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:46.889479Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
+          recipientId: 22,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -140,7 +107,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 22,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -151,18 +118,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
+          recipientId: 22,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -187,71 +143,16 @@ const mock_data = {
       ],
     },
     {
-      id: 3,
+      id: 33,
       name: '최준영',
       backgroundColor: 'purple',
       backgroundImageURL: null,
       createdAt: '2023-10-31T09:58:37.631384Z',
-      messageCount: 6,
+      messageCount: 1,
       recentMessages: [
         {
           id: 28,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 27,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:46.889479Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
-          sender: 'test user2',
-          profileImageURL:
-            'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-          relationship: '지인',
-          content: '테스트 목적의 메세지3',
-          font: '나눔명조',
-          createdAt: '2023-10-31T09:58:47.272896Z',
-        },
-        {
-          id: 28,
-          recipientId: 11,
+          recipientId: 33,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -276,7 +177,7 @@ const mock_data = {
       ],
     },
     {
-      id: 2,
+      id: 44,
       name: '김예진',
       backgroundColor: 'green',
       backgroundImageURL: null,
@@ -285,7 +186,7 @@ const mock_data = {
       recentMessages: [
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 44,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -296,7 +197,7 @@ const mock_data = {
         },
         {
           id: 27,
-          recipientId: 11,
+          recipientId: 44,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -307,7 +208,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 44,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -318,7 +219,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 44,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -329,7 +230,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 44,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -340,7 +241,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 44,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -365,7 +266,7 @@ const mock_data = {
       ],
     },
     {
-      id: 13,
+      id: 55,
       name: '김시현',
       backgroundColor: 'purple',
       backgroundImageURL: null,
@@ -374,7 +275,7 @@ const mock_data = {
       recentMessages: [
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 55,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -385,7 +286,7 @@ const mock_data = {
         },
         {
           id: 27,
-          recipientId: 11,
+          recipientId: 55,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -396,7 +297,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 55,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -407,7 +308,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 55,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -418,7 +319,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 55,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -429,7 +330,7 @@ const mock_data = {
         },
         {
           id: 28,
-          recipientId: 11,
+          recipientId: 55,
           sender: 'test user2',
           profileImageURL:
             'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
@@ -462,14 +363,22 @@ const mock_data = {
 };
 
 const Styled = {
-  H2: styled.h2`
+  Popular: styled.h2`
     font-size: 2.4rem;
     font-style: normal;
     font-weight: 700;
-    margin-top: 5rem;
     margin-bottom: 2.5rem;
     @media (max-width: 767px) {
-      margin-top: 4rem;
+      margin-bottom: 1.2rem;
+    }
+  `,
+  Recent: styled.h2`
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 7.4rem;
+    margin-bottom: 2.5rem;
+    @media (max-width: 767px) {
       margin-bottom: 1.2rem;
     }
   `,
@@ -493,12 +402,12 @@ function PaperListPage() {
     <>
       <div>
         <div>
-          <Styled.H2>인기 롤링 페이퍼 🔥</Styled.H2>
+          <Styled.Popular>인기 롤링 페이퍼 🔥</Styled.Popular>
         </div>
         <Carousel data={mock_data} />
       </div>
       <div>
-        <Styled.H2>최근에 만든 롤링 페이퍼 ⭐️️</Styled.H2>
+        <Styled.Recent>최근에 만든 롤링 페이퍼 ⭐️️</Styled.Recent>
       </div>
       <div>
         <Carousel data={mock_data} />
