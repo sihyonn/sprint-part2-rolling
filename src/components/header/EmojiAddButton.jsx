@@ -3,31 +3,18 @@ import { useState, useEffect, useRef } from 'react';
 import EmojiPicker from 'emoji-picker-react';
 import styled from 'styled-components';
 import OutlinedButton from '@components/common/button/OutlinedButton';
+import usePostRecipient from '@hooks/api/recipientsAPI/usePostRecipient';
+
 const Styled = {
   Container: styled.div`
     position: relative; // postion:absolute용도
-  `,
-  AddButton: styled.button`
-    display: flex;
-    padding: 0.6rem 1.6rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.6rem;
-    border: ${({ theme }) => theme.border.gr1};
-    background: ${({ theme }) => theme.color.white};
-    z-index: 0;
-  `,
-  ButtonInfo: styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
-    color: #181818;
-    font-family: Pretendard;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 2.4rem;
+    @media (max-width: 767px) {
+      .add-emoji-btn {
+        span {
+          display: none;
+        }
+      }
+    }
   `,
   EmojiPickerContainer: styled.div`
     position: absolute;
@@ -45,27 +32,23 @@ function EmojiAddButton({ id }) {
   //id는 post용
   const [isClicked, setIsClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
-  const [isMobile, setIsMobile] = useState(true);
   const buttonRef = useRef(null);
   const emojiPickerRef = useRef(null);
-  console.log(id);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const handleButtonClick = () => {
     setIsClicked((prev) => !prev);
   };
+
+  const { mutate: postReaction } = usePostRecipient();
+
   const onEmojiClick = (emoji) => {
-    setSelectedEmoji(emoji);
+    setSelectedEmoji(emoji?.emoji);
+    postReaction({
+      recipientId: id,
+      recipientData: { emoji: emoji?.emoji, type: 'increase' },
+    });
   };
-  console.log(selectedEmoji);
+
   useEffect(() => {
     if (!isClicked) return;
     const handleClickOutside = (event) => {
@@ -86,21 +69,14 @@ function EmojiAddButton({ id }) {
   }, [isClicked, selectedEmoji]);
   return (
     <Styled.Container>
-      {isMobile ? (
-        <OutlinedButton
-          ref={buttonRef}
-          onClick={handleButtonClick}
-          iconType={'add'}
-        ></OutlinedButton>
-      ) : (
-        <OutlinedButton
-          ref={buttonRef}
-          onClick={handleButtonClick}
-          iconType={'add'}
-        >
-          추가
-        </OutlinedButton>
-      )}
+      <OutlinedButton
+        ref={buttonRef}
+        onClick={handleButtonClick}
+        iconType={'add'}
+        className="add-emoji-btn"
+      >
+        <span>추가</span>
+      </OutlinedButton>
       {isClicked && (
         <Styled.EmojiPickerContainer ref={emojiPickerRef}>
           <Styled.StyledEmojiPicker onEmojiClick={onEmojiClick} />

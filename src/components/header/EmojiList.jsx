@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
+
 import styled from 'styled-components';
 import EmojiCountList from '@components/common/EmojiCountList';
 import EmojiExpand from './EmojiExpand';
@@ -19,14 +20,19 @@ const Styled = {
     padding: 0.6rem;
     justify-content: center;
     align-items: center;
+    cursor: ${({ $count }) => ($count <= 3 ? 'default' : 'pointer')};
+    img {
+      display: ${({ $count }) => ($count <= 3 ? 'none' : '')};
+    }
   `,
 };
-function EmojiList({ EmojiCountData }) {
+function EmojiList({ EmojiCountData, count }) {
   const [isClicked, setIsClicked] = useState(false);
   const buttonRef = useRef(null);
   const handleButtonClick = () => {
     setIsClicked((prev) => !prev);
   };
+
   useEffect(() => {
     if (!isClicked) return;
     const handleClickOutside = (event) => {
@@ -40,9 +46,10 @@ function EmojiList({ EmojiCountData }) {
     };
   }, [isClicked]);
 
-  const EmojiTopThreeData = EmojiCountData.topReactions.slice(0, 3);
-  const data1 = EmojiCountData.topReactions.slice(0, 4);
-  const data2 = EmojiCountData.topReactions.slice(4, 8);
+  const EmojiTopThreeData = EmojiCountData?.topReactions
+    ? EmojiCountData.topReactions.slice(0, 3)
+    : [];
+
   return (
     <Styled.Container>
       <EmojiCountList data={EmojiTopThreeData} />
@@ -50,9 +57,10 @@ function EmojiList({ EmojiCountData }) {
         ref={buttonRef}
         onClick={handleButtonClick}
         type="button"
+        $count={count}
       >
         <img src={arrowdown} alt="arrowdownIcon" />
-        {isClicked && <EmojiExpand data1={data1} data2={data2} />}
+        {isClicked && <EmojiExpand />}
       </Styled.EmojiButton>
     </Styled.Container>
   );

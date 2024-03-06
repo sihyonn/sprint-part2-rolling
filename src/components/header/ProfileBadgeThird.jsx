@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { css } from 'styled-components';
 
 const setBackgroundColor = css`
-  background-color: ${(props) => (props.profileImg ? 'transparent' : '#fff')};
+  background-color: ${({ profileimg }) =>
+    profileimg ? 'transparent' : '#fff'};
 `;
 
 const Styled = {
@@ -28,7 +29,7 @@ const Styled = {
     border-radius: 10rem;
     border: 1px solid #eee;
     background-color: ${({ theme }) => theme.color.mainGr};
-    background-image: url(${(props) => props.profileImg || ''});
+    background-image: url(${({ profileimg }) => profileimg || ''});
     background-position: top;
     background-size: cover;
   `,
@@ -55,10 +56,10 @@ const Styled = {
 
 function ProfileBadgeHeader({ profileImg, count }) {
   return (
-    <Styled.Container profileImg={profileImg} count={count}>
+    <Styled.Container profileimg={profileImg} count={count}>
       <Styled.Div>
-        <Styled.Head profileImg={profileImg} />
-        <Styled.Body profileImg={profileImg} />
+        <Styled.Head profileimg={profileImg} />
+        <Styled.Body profileimg={profileImg} />
       </Styled.Div>
     </Styled.Container>
   );
