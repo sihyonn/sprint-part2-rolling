@@ -9,9 +9,6 @@ import DetailCardModal from '@components/rollingPaperViewer/DetailCardModal';
 import QuillStrToHtml from '@components/common/QuillStrToHtml';
 import useDeleteMessageMutation from '@hooks/api/recipientsAPI/useDeleteMessageMutation';
 
-
-
-
 const Styled = {
   CardContainer: styled.div`
     display: flex;
