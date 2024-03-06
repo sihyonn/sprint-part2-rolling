@@ -1,9 +1,9 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { API_RECIPIENTS } from '@constants/API';
 import recipientsAPI from '@/api/recipientsAPI';
 
-function useInfiniteCardMessagesQuery(recipientId, limit = 5) {
-  return useInfiniteQuery({
+function useInfiniteCardMessagesQuery(recipientId, limit = 6) {
+  return useSuspenseInfiniteQuery({
     queryKey: [API_RECIPIENTS.RECIPIENTS, recipientId],
     queryFn: async ({ pageParam = 0 }) => {
       const { data } = await recipientsAPI.getMessageToRecipient({
