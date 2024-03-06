@@ -7,6 +7,10 @@ import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
 import DetailCardModal from '@components/rollingPaperViewer/DetailCardModal';
 import QuillStrToHtml from '@components/common/QuillStrToHtml';
+import useDeleteMessageMutation from '@hooks/api/recipientsAPI/useDeleteMessageMutation';
+
+
+
 
 const Styled = {
   CardContainer: styled.div`
@@ -98,7 +102,18 @@ const Styled = {
 function Card({ data, isEditPage = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(data);
+  const { mutate: deleteMessageMutate } = useDeleteMessageMutation({
+    messageId: data.id,
+  });
+
+  const handleClickDeleteBtn = (e) => {
+    e.stopPropagation();
+
+    if (window.confirm('정말로 이 카드메시지를 삭제하시겠어요?🤔')) {
+      deleteMessageMutate();
+    }
+  };
+
   return (
     <>
       <Styled.CardContainer onClick={() => setIsModalOpen(true)}>
@@ -112,7 +127,12 @@ function Card({ data, isEditPage = false }) {
               <RelationBadge type={data.relationship} />
             </Styled.NameContainer>
           </Styled.ProfileContainer>
-          {isEditPage && <OutlinedButton iconType={'delete'} />}
+          {isEditPage && (
+            <OutlinedButton
+              iconType={'delete'}
+              onClick={handleClickDeleteBtn}
+            />
+          )}
         </Styled.TopContainer>
         <Styled.Message>
           <QuillStrToHtml htmlStr={data.content} fontStyle={data.font} />
