@@ -34,6 +34,7 @@ const theme = Object.freeze({
     red: '#DC3A3A',
     surface: '#F6F8FF',
     badgeBg: '#0000008A',
+    skeleton: '#e4e4e4',
   },
 
   border: {
