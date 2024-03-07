@@ -1,11 +1,12 @@
 import React from 'react';
-import { styled } from 'styled-components';
+import { styled, useTheme } from 'styled-components';
 import { Outlet, useParams } from 'react-router-dom';
 
 import Header from '@components/header/Header';
 import useGetRecipientsQuery from '@hooks/api/recipientsAPI/useGetRecipients';
 import { API_RECIPIENTS } from '@constants/API';
 import recipientsAPI from '@/api/recipientsAPI';
+import { mapColorToTheme } from '@styles/commonStyle';
 
 const Styled = {
   Container: styled.div`
@@ -14,9 +15,13 @@ const Styled = {
     padding: 0 calc((100vw - 120rem) / 2);
     padding-top: 6.8rem;
     border-top: 1px solid #ededed;
+
     background-color: ${({ backgroundColor }) => backgroundColor};
     background-image: ${({ backgroundImageURL }) =>
       backgroundImageURL ? `url(${backgroundImageURL})` : 'none'};
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     @media (min-width: 768px) and (max-width: 1247px) {
       padding: 6.4rem 2.4rem 0;
@@ -40,21 +45,20 @@ const Styled = {
 };
 
 function PaperLayout({ children }) {
+  const theme = useTheme();
   const { id: user_id } = useParams();
-  console.log(user_id);
 
   const { data } = useGetRecipientsQuery(
     API_RECIPIENTS.BY_ID(user_id),
     recipientsAPI.getRecipientDataById,
     user_id,
   );
-  console.log(data);
 
   return (
     <>
       <Header data={data} user_id={user_id} />
       <Styled.Container
-        backgroundColor={data?.backgroundColor}
+        backgroundColor={mapColorToTheme(data?.backgroundColor, theme)}
         backgroundImageURL={data?.backgroundImageURL}
       >
         <Styled.InnerWrap>
