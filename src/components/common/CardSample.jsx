@@ -43,8 +43,8 @@ const Styled = {
     cursor: pointer;
 
     @media (max-width: 767px) {
-      width: 20.8rem;
-      height: 23.2rem;
+      width: 15.4rem;
+      height: 15.4rem;
     }
   `,
 };
