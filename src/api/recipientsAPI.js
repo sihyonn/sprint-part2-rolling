@@ -4,6 +4,13 @@ import { API_RECIPIENTS } from '@constants/API';
 /**
  * 롤링페이퍼 받는 대상 목록을 조회하는 API
  */
+const getRecipientsLikeList = ({ limit, offset, sort }) => {
+  return instance({
+    url: API_RECIPIENTS.RECIPIENTS,
+    method: 'GET',
+    params: { limit, offset, sort },
+  });
+};
 const getRecipientsList = ({ limit, offset }) => {
   return instance({
     url: API_RECIPIENTS.RECIPIENTS,
@@ -92,6 +99,7 @@ const postReactions = ({ recipientId, data }) => {
 
 export default {
   getRecipientsList,
+  getRecipientsLikeList,
   postRecipient,
   getRecipientDataById,
   deleteRecipientById,
