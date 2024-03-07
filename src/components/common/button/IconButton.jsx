@@ -31,7 +31,7 @@ const Styled = {
   `,
 };
 
-function IconButton({ status, shape, onClick }) {
+function IconButton({ status, shape, onClick, ...props }) {
   const [buttonStatus, setButtonStatus] = useState('Enabled');
 
   const handleButtonStateChange = (newStatus) => {
@@ -52,6 +52,7 @@ function IconButton({ status, shape, onClick }) {
       onFocus={() => handleButtonStateChange(BUTTON_STATUS.FOCUS)}
       onBlur={() => handleButtonStateChange(BUTTON_STATUS.ENABLED)}
       onClick={onClick}
+      {...props}
     >
       <img src={imagePath} alt="IconButton" />
     </Styled.BackGround>
