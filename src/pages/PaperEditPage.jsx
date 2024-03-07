@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import PaperLayout from '@components/template/PaperLayout';
 import Button from '@components/common/button/Button';
 import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
 import InfiniteCardMessagesLoader from '@components/rollingPaperViewer/InfiniteCardMessagesLoader';
@@ -52,7 +51,7 @@ function PaperEditPage() {
   };
 
   return (
-    <PaperLayout>
+    <>
       <Styled.ButtonContainer>
         <Button className="button" onClick={handleClickDeleteBtn}>
           삭제하기
@@ -62,7 +61,7 @@ function PaperEditPage() {
       <React.Suspense fallback={<InfiniteCardMessagesLoader />}>
         <InfiniteCardMessages recipientId={recipientId} isEditPage={true} />
       </React.Suspense>
-    </PaperLayout>
+    </>
   );
 }
 

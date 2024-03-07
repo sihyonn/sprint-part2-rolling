@@ -1,15 +1,22 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { Outlet, useParams } from 'react-router-dom';
 
 import Header from '@components/header/Header';
+import useGetRecipientsQuery from '@hooks/api/recipientsAPI/useGetRecipients';
+import { API_RECIPIENTS } from '@constants/API';
+import recipientsAPI from '@/api/recipientsAPI';
 
 const Styled = {
   Container: styled.div`
     width: 100vw;
+    min-height: 100vh;
     padding: 0 calc((100vw - 120rem) / 2);
     padding-top: 6.8rem;
     border-top: 1px solid #ededed;
-    background: #ffe2ad;
+    background-color: ${({ backgroundColor }) => backgroundColor};
+    background-image: ${({ backgroundImageURL }) =>
+      backgroundImageURL ? `url(${backgroundImageURL})` : 'none'};
 
     @media (min-width: 768px) and (max-width: 1247px) {
       padding: 6.4rem 2.4rem 0;
@@ -33,11 +40,27 @@ const Styled = {
 };
 
 function PaperLayout({ children }) {
+  const { id: user_id } = useParams();
+  console.log(user_id);
+
+  const { data } = useGetRecipientsQuery(
+    API_RECIPIENTS.BY_ID(user_id),
+    recipientsAPI.getRecipientDataById,
+    user_id,
+  );
+  console.log(data);
+
   return (
     <>
-      <Header />
-      <Styled.Container>
-        <Styled.InnerWrap>{children}</Styled.InnerWrap>
+      <Header data={data} user_id={user_id} />
+      <Styled.Container
+        backgroundColor={data?.backgroundColor}
+        backgroundImageURL={data?.backgroundImageURL}
+      >
+        <Styled.InnerWrap>
+          <Outlet />
+          {children}
+        </Styled.InnerWrap>
       </Styled.Container>
     </>
   );

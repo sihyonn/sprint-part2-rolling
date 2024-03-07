@@ -6,6 +6,7 @@ import routes from '@constants/routes';
 import Layout from '@components/template/Layout';
 import MainLayout from '@components/template/MainLayout';
 import PaperCreationLayout from '@components/template/PaperCreationLayout';
+import PaperLayout from '@components/template/PaperLayout';
 
 import MainPage from '@pages/MainPage';
 import PaperListPage from '@pages/PaperListPage';
@@ -55,15 +56,20 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // 생성된 메세지 목록
       {
-        path: `${routes.post}/:id`,
-        element: <PaperViewerPage />,
-      },
-      // 생성된 메세지 수정
-      {
-        path: `${routes.post}/:id/edit`,
-        element: <PaperEditPage />,
+        element: <PaperLayout />,
+        children: [
+          // 생성된 메세지 목록
+          {
+            path: `${routes.post}/:id`,
+            element: <PaperViewerPage />,
+          },
+          // 생성된 메세지 수정
+          {
+            path: `${routes.post}/:id/edit`,
+            element: <PaperEditPage />,
+          },
+        ],
       },
     ],
   },

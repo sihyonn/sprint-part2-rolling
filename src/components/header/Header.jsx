@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+
 import styled from 'styled-components';
 import ProfileEmojiShare from '@/components/header/ProfileEmojiShare';
-import useGetRecipientsQuery from '@hooks/api/recipientsAPI/useGetRecipients';
-import { API_RECIPIENTS } from '@constants/API';
-import recipientsAPI from '@/api/recipientsAPI';
 
 const Styled = {
   Container: styled.nav`
@@ -58,15 +55,9 @@ const Styled = {
     background: var(--gray-200, #eee);
   `,
 };
-function Header() {
+function Header({ data, user_id }) {
   // data는 /list에서 /list{id}로 이동시 페이지에서 보내주기
-  const { id: user_id } = useParams();
 
-  const { data } = useGetRecipientsQuery(
-    API_RECIPIENTS.BY_ID(user_id),
-    recipientsAPI.getRecipientDataById,
-    user_id,
-  );
   const [isMobile, setIsMobile] = useState(false);
   const profileListData = data
     ? { messageCount: data.messageCount, recentMessages: data.recentMessages }
