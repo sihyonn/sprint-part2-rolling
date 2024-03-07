@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import { useRef } from 'react';
 import CardItem from '@components/ListPage/CardItem';
@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 
-//div className="qwe"
 const Styled = {
   Container: styled.div`
     position: relative;
@@ -26,7 +25,10 @@ const Styled = {
     top: 40%;
     right: 0%;
     cursor: pointer;
-    @media (max-width: 76.8rem) {
+    &:hover {
+      transform: scale(1.05);
+    }
+    @media (max-width: 1247px) {
       display: none;
     }
   `,
@@ -35,17 +37,23 @@ const Styled = {
     top: 40%;
     left: -2%;
     cursor: pointer;
-    @media (max-width: 76.8rem) {
+    &:hover {
+      transform: scale(1.05);
+    }
+    @media (max-width: 1247px) {
       display: none;
     }
   `,
 };
 
 function Carousel({ data }) {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleBeforeChange = (oldIndex, newIndex) => {
+    setSlideIndex(newIndex);
+  };
   const slickRef = useRef(null);
-  const PrevArrow = (props) => {
+  const PrevArrow = () => {
     slickRef.current?.slickPrev();
-    console.log(props);
   };
 
   const NextArrow = () => {
@@ -59,6 +67,7 @@ function Carousel({ data }) {
     slidesToShow: 4,
     arrows: false,
     swipeToSlide: true,
+    beforeChange: handleBeforeChange,
     responsive: [
       {
         breakpoint: 1247,
@@ -69,11 +78,13 @@ function Carousel({ data }) {
     ],
   };
 
+  const slideCount = data?.results.length;
+
   return (
     <div>
       <Styled.Container>
         <Slider {...settings} ref={slickRef}>
-          {data.results.map((value) => {
+          {data?.results.map((value) => {
             return (
               <div key={value.id}>
                 <CardItem
@@ -89,12 +100,16 @@ function Carousel({ data }) {
             );
           })}
         </Slider>
-        <Styled.PreArrow role="presentation" onClick={PrevArrow}>
-          <img src={preArrImg} alt="pre" />
-        </Styled.PreArrow>
-        <Styled.NextArrow role="presentation" onClick={NextArrow}>
-          <img src={nextArrImg} alt="next" />
-        </Styled.NextArrow>
+        {slideIndex !== 0 && (
+          <Styled.PreArrow role="presentation" onClick={PrevArrow}>
+            <img src={preArrImg} alt="pre" />
+          </Styled.PreArrow>
+        )}
+        {slideIndex !== slideCount - 4 && (
+          <Styled.NextArrow role="presentation" onClick={NextArrow}>
+            <img src={nextArrImg} alt="next" />
+          </Styled.NextArrow>
+        )}
       </Styled.Container>
     </div>
   );

@@ -2,11 +2,13 @@ import React from 'react';
 import { Avatar, AvatarGroup } from '@mui/material';
 import '@/styles/avatar.custom.css';
 
-function AvatarList({ recentMessages }) {
+function AvatarList({ recentMessages, messageCount }) {
+  console.log(recentMessages);
   return (
     <AvatarGroup
       spacing={13}
       max={4}
+      total={messageCount}
       sx={{
         '& .MuiAvatar-root': {
           width: 24,
@@ -15,7 +17,7 @@ function AvatarList({ recentMessages }) {
           backgroundColor: '#fff',
         },
       }}
-      renderSurplus={(surplus) => {
+      renderSurplus={() => {
         return (
           <div
             style={{
@@ -27,7 +29,7 @@ function AvatarList({ recentMessages }) {
             <span
               style={{ fontSize: '1.2rem', color: '#555', textAlign: 'center' }}
             >
-              +{surplus.toString()[0]}
+              +{messageCount - 3}
             </span>
           </div>
         );
