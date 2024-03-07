@@ -11,7 +11,6 @@ import Choi from '@pages/Choi';
 
 import Layout from '@components/template/Layout';
 import MainLayout from '@components/template/MainLayout';
-import PaperLayout from '@components/template/PaperLayout';
 import PaperCreationLayout from '@components/template/PaperCreationLayout';
 
 import MainPage from '@pages/MainPage';
@@ -23,9 +22,6 @@ import WriteMessagePage from '@pages/WriteMessagePage';
 import ErrorPage from '@pages/ErrorPage';
 
 const router = createBrowserRouter([
-  /**
-   * 진짜 찐 프로젝트 페이지
-   */
   {
     path: '',
     element: <Layout />,
@@ -65,20 +61,15 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // 생성된 메세지 목록
       {
-        element: <PaperLayout />,
-        children: [
-          // 생성된 메세지 목록
-          {
-            path: `${routes.post}/:id`,
-            element: <PaperViewerPage />,
-          },
-          // 생성된 메세지 수정
-          {
-            path: `${routes.post}/:id/edit`,
-            element: <PaperEditPage />,
-          },
-        ],
+        path: `${routes.post}/:id`,
+        element: <PaperViewerPage />,
+      },
+      // 생성된 메세지 수정
+      {
+        path: `${routes.post}/:id/edit`,
+        element: <PaperEditPage />,
       },
     ],
   },

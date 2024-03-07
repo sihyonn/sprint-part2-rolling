@@ -1,5 +1,4 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import Header from '@components/header/Header';
@@ -38,10 +37,7 @@ function PaperLayout({ children }) {
     <>
       <Header />
       <Styled.Container>
-        <Styled.InnerWrap>
-          <Outlet />
-          {children}
-        </Styled.InnerWrap>
+        <Styled.InnerWrap>{children}</Styled.InnerWrap>
       </Styled.Container>
     </>
   );

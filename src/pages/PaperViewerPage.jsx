@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+import PaperLayout from '@components/template/PaperLayout';
 import Button from '@components/common/button/Button';
 import routes from '@constants/routes';
 import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
@@ -38,7 +39,7 @@ function PaperViewerPage() {
   const { id: recipientId } = useParams();
 
   return (
-    <>
+    <PaperLayout>
       <Styled.ButtonContainer>
         <Button
           className="button"
@@ -51,7 +52,7 @@ function PaperViewerPage() {
       <React.Suspense fallback={<InfiniteCardMessagesLoader />}>
         <InfiniteCardMessages recipientId={recipientId} />
       </React.Suspense>
-    </>
+    </PaperLayout>
   );
 }
 
