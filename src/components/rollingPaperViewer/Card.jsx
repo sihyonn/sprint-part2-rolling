@@ -72,20 +72,17 @@ const Styled = {
     width: 100%;
     height: 10.6rem;
 
-    span {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      word-break: break-word;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-      color: #4a4a4a;
-      /* font-family: ${({ $font }) => $font}; */
-      font-size: 1.75rem;
-      line-height: 2.8rem;
-      letter-spacing: -0.018rem;
-    }
+    color: #4a4a4a;
+    font-size: 1.75rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.018rem;
   `,
 
   Date: styled.span`
