@@ -75,14 +75,17 @@ function Header() {
     ? { id: data.id, topReactions: data.topReactions }
     : {};
   useEffect(() => {
+    const checkIfMobile = () => window.innerWidth <= 767;
+    setIsMobile(checkIfMobile());
+
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 767);
+      setIsMobile(checkIfMobile());
     };
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [user_id]);
+  }, []);
 
   return isMobile ? (
     <Styled.Container>
