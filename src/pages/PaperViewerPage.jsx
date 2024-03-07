@@ -1,10 +1,11 @@
 import React from 'react';
-
-import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
-import Button from '@components/common/button/Button';
-import { styled } from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
+import { styled } from 'styled-components';
+
+import Button from '@components/common/button/Button';
 import routes from '@constants/routes';
+import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
+import InfiniteCardMessagesLoader from '@components/rollingPaperViewer/InfiniteCardMessagesLoader';
 
 const Styled = {
   ButtonContainer: styled.div`
@@ -47,7 +48,9 @@ function PaperViewerPage() {
         </Button>
       </Styled.ButtonContainer>
 
-      <InfiniteCardMessages recipientId={recipientId} />
+      <React.Suspense fallback={<InfiniteCardMessagesLoader />}>
+        <InfiniteCardMessages recipientId={recipientId} />
+      </React.Suspense>
     </>
   );
 }

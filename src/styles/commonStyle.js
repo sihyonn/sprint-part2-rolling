@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 export const GridTemplate = styled.div`
   display: grid;
@@ -16,4 +16,29 @@ export const GridTemplate = styled.div`
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1.6rem;
   }
+`;
+
+export const Shimmer = styled.div`
+  width: 70%;
+  height: 100%;
+  background-color: #e0e0e0;
+  box-shadow: 0 0 50px 50px #e0e0e0;
+  animation: loading 2s infinite;
+  @keyframes loading {
+    0% {
+      transform: translateX(-50%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translate(200%);
+    }
+  }
+`;
+
+export const skeletonStyle = css`
+  background-color: ${({ theme }) => theme.color.skeleton};
+  overflow: hidden;
+  border-radius: 0.25rem;
 `;

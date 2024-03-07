@@ -6,6 +6,8 @@ import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
 import DetailCardModal from '@components/rollingPaperViewer/DetailCardModal';
+import QuillStrToHtml from '@components/common/QuillStrToHtml';
+import useDeleteMessageMutation from '@hooks/api/recipientsAPI/useDeleteMessageMutation';
 
 const Styled = {
   CardContainer: styled.div`
@@ -60,26 +62,27 @@ const Styled = {
       font-size: 2rem;
       line-height: 2.4rem;
     }
+
+    strong {
+      font-weight: 700;
+    }
   `,
 
   Message: styled.div`
     width: 100%;
     height: 10.6rem;
 
-    span {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      word-break: break-word;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-      color: #4a4a4a;
-      font-family: ${({ $font }) => $font};
-      font-size: 1.75rem;
-      line-height: 2.8rem;
-      letter-spacing: -0.018rem;
-    }
+    color: #4a4a4a;
+    font-size: 1.75rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.018rem;
   `,
 
   Date: styled.span`
@@ -93,7 +96,18 @@ const Styled = {
 function Card({ data, isEditPage = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(data);
+  const { mutate: deleteMessageMutate } = useDeleteMessageMutation({
+    messageId: data.id,
+  });
+
+  const handleClickDeleteBtn = (e) => {
+    e.stopPropagation();
+
+    if (window.confirm('정말로 이 카드메시지를 삭제하시겠어요?🤔')) {
+      deleteMessageMutate();
+    }
+  };
+
   return (
     <>
       <Styled.CardContainer onClick={() => setIsModalOpen(true)}>
@@ -101,14 +115,21 @@ function Card({ data, isEditPage = false }) {
           <Styled.ProfileContainer>
             <ProfileBadgeCard profileImg={data.profileImageURL} />
             <Styled.NameContainer>
-              <span>From. {data.sender}</span>
+              <span>
+                From. <strong>{data.sender}</strong>
+              </span>
               <RelationBadge type={data.relationship} />
             </Styled.NameContainer>
           </Styled.ProfileContainer>
-          {isEditPage && <OutlinedButton iconType={'delete'} />}
+          {isEditPage && (
+            <OutlinedButton
+              iconType={'delete'}
+              onClick={handleClickDeleteBtn}
+            />
+          )}
         </Styled.TopContainer>
-        <Styled.Message $font={data.font}>
-          <span>{data.content}</span>
+        <Styled.Message>
+          <QuillStrToHtml htmlStr={data.content} fontStyle={data.font} />
         </Styled.Message>
         <Styled.Date>{formatDateToYYYYMMDD(data.createdAt)}</Styled.Date>
       </Styled.CardContainer>

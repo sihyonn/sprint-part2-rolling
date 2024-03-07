@@ -1,9 +1,11 @@
 import React from 'react';
-import BackdropModal from '../common/modal/BackdropModal';
 import { styled } from 'styled-components';
+
+import BackdropModal from '@/components/common/modal/BackdropModal';
 import Button from '@/components/common/button/Button';
 import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
 import RelationBadge from '@/components/common/badge/RelationBadge';
+import QuillStrToHtml from '@components/common/QuillStrToHtml';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
 
 const Styled = {
@@ -47,11 +49,10 @@ const Styled = {
     height: 24rem;
     margin: 1.6rem 0 2.4rem;
     overflow-y: auto;
-
     font-size: 1.8rem;
     line-height: 2.8rem;
     color: #5a5a5a;
-
+    word-wrap: break-word;
     @media (max-width: 767px) {
       max-width: 100%;
       height: 20rem;
@@ -74,7 +75,9 @@ function DetailCardModal({ setOpen, data }) {
         </Styled.From>
         <Styled.Date>{formatDateToYYYYMMDD(data.createdAt)}</Styled.Date>
       </Styled.WriteInfoBox>
-      <Styled.MessageBox>{data.content}</Styled.MessageBox>
+      <Styled.MessageBox>
+        <QuillStrToHtml htmlStr={data.content} fontStyle={data.font} />
+      </Styled.MessageBox>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button onClick={() => setOpen(false)} style={{ width: '90rem' }}>
           확인
