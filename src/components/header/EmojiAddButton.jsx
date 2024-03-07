@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import EmojiPicker from 'emoji-picker-react';
 import styled from 'styled-components';
+
 import OutlinedButton from '@components/common/button/OutlinedButton';
-import usePostRecipient from '@hooks/api/recipientsAPI/usePostRecipient';
+import usePostReactionMutation from '@hooks/api/recipientsAPI/usePostReactionMutation';
 
 const Styled = {
   Container: styled.div`
@@ -39,7 +40,7 @@ function EmojiAddButton({ id }) {
     setIsClicked((prev) => !prev);
   };
 
-  const { mutate: postReaction } = usePostRecipient();
+  const { mutate: postReaction } = usePostReactionMutation();
 
   const onEmojiClick = (emoji) => {
     setSelectedEmoji(emoji?.emoji);
