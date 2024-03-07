@@ -7,7 +7,7 @@ const Styled = {
   Container: styled.div`
     width: 100%;
     min-height: 100vh;
-    padding: 0 calc((100vw - 72rem) / 2); //콘텐츠 사이즈 720
+    padding: 0 calc((100vw - 72rem) / 2);
     padding-top: ${({ $isCreatePage }) =>
       $isCreatePage ? '5.7rem' : '4.7rem'};
 

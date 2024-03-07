@@ -7,7 +7,7 @@ const Styled = {
   Container: styled.div`
     width: 100%;
     min-height: 100vh;
-    padding: 0 calc((100vw - 120rem) / 2); //콘텐츠 사이즈 1200
+    padding: 0 calc((100vw - 120rem) / 2);
     padding-top: ${({ $isListPage }) => ($isListPage ? '5rem' : '6rem')};
     overflow: ${({ $isListPage }) => ($isListPage ? 'hidden' : '')};
     @media (min-width: 768px) and (max-width: 1247px) {
