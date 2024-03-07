@@ -3,7 +3,6 @@ import { Avatar, AvatarGroup } from '@mui/material';
 import '@/styles/avatar.custom.css';
 
 function AvatarList({ recentMessages, messageCount }) {
-  console.log(recentMessages);
   return (
     <AvatarGroup
       spacing={13}

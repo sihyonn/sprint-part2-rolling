@@ -21,6 +21,7 @@ const Styled = {
     justify-content: center;
     align-items: center;
     cursor: ${({ $count }) => ($count <= 3 ? 'default' : 'pointer')};
+    pointer-events: ${({ $count }) => ($count <= 3 ? 'none' : 'auto')};
     img {
       display: ${({ $count }) => ($count <= 3 ? 'none' : '')};
     }
