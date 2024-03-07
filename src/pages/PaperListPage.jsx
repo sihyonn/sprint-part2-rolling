@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Carousel from '@components/ListPage/Carousel';
 import styled from 'styled-components';
 import Button from '@components/common/button/Button';
@@ -398,6 +399,10 @@ const Styled = {
 };
 
 function PaperListPage() {
+  const navigate = useNavigate();
+  const goToPostPage = () => {
+    navigate(`/post`);
+  };
   return (
     <>
       <div>
@@ -407,13 +412,18 @@ function PaperListPage() {
         <Carousel data={mock_data} />
       </div>
       <div>
-        <Styled.Recent>최근에 만든 롤링 페이퍼 ⭐️️</Styled.Recent>
+        <Styled.Recent>최근에 만든 롤링 페이퍼️️ ⭐️️</Styled.Recent>
       </div>
       <div>
         <Carousel data={mock_data} />
       </div>
       <Styled.Container1>
-        <Button className="Button" size="M" style={{ width: '100%' }}>
+        <Button
+          onClick={goToPostPage}
+          className="Button"
+          size="M"
+          style={{ width: '100%' }}
+        >
           나도 만들어보기
         </Button>
       </Styled.Container1>

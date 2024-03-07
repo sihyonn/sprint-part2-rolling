@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import EmojiBadge from '@components/common/badge/EmojiBadge';
 import AvatarList from './AvatarList';
@@ -81,6 +82,7 @@ const Styled = {
 };
 
 function CardItem({
+  id,
   name,
   color,
   cardUrl,
@@ -88,8 +90,12 @@ function CardItem({
   topReactions,
   messageCount,
 }) {
+  const navigate = useNavigate();
+  const goToPostPage = () => {
+    navigate(`/post/${id}`);
+  };
   return (
-    <Styled.Card color={color} $cardUrl={cardUrl}>
+    <Styled.Card onClick={goToPostPage} color={color} $cardUrl={cardUrl}>
       <Styled.Container>
         <Styled.Info>
           <Styled.Name>To. {name}</Styled.Name>

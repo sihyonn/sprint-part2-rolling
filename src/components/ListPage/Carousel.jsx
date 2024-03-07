@@ -61,7 +61,7 @@ function Carousel({ data }) {
     swipeToSlide: true,
     responsive: [
       {
-        breakpoint: 431,
+        breakpoint: 1247,
         settings: {
           infinite: true,
         },
@@ -77,6 +77,7 @@ function Carousel({ data }) {
             return (
               <div key={value.id}>
                 <CardItem
+                  id={value.id}
                   name={value.name}
                   color={value.backgroundColor}
                   cardUrl={value.backgroundImageURL}
