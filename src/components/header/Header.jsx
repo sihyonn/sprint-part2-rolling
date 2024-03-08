@@ -55,7 +55,7 @@ const Styled = {
     background: var(--gray-200, #eee);
   `,
 };
-function Header({ data, user_id }) {
+function Header({ data }) {
   // data는 /list에서 /list{id}로 이동시 페이지에서 보내주기
 
   const [isMobile, setIsMobile] = useState(false);

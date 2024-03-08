@@ -56,7 +56,7 @@ function PaperLayout({ children }) {
 
   return (
     <>
-      <Header data={data} user_id={user_id} />
+      <Header data={data} />
       <Styled.Container
         backgroundColor={mapColorToTheme(data?.backgroundColor, theme)}
         backgroundImageURL={data?.backgroundImageURL}
