@@ -15,7 +15,15 @@ const Styled = {
  * @param {html.Attributes} containerProps container props
  */
 
+const font = {
+  나눔명조: "'Nanum Myeongjo', serif",
+  '나눔손글씨 손편지체': "'Nanum Pen Script', cursive",
+  Pretendard: "'Pretendard', sans-serif",
+  'Noto Sans': "'Noto Sans KR', sans-serif",
+};
+
 function QuillStrToHtml({ htmlStr = '', fontStyle, ...containerProps }) {
+  console.log(fontStyle);
   return (
     <Styled.Container
       className={'to-html'}
@@ -25,7 +33,7 @@ function QuillStrToHtml({ htmlStr = '', fontStyle, ...containerProps }) {
           ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'],
         }),
       }}
-      style={{ fontFamily: fontStyle }}
+      style={{ fontFamily: font[fontStyle] }}
       {...containerProps}
     />
   );

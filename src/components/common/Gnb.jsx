@@ -60,8 +60,8 @@ function Gnb() {
   const location = useLocation();
   const { pathname } = location;
 
-  const invisibeButton = pathname !== '/post';
-
+  const invisibeButton = pathname === '/list' || pathname === '/';
+  console.log(invisibeButton);
   return (
     <Styled.Container>
       <Styled.GnbContainer>
