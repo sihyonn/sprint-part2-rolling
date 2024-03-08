@@ -8,6 +8,7 @@ const Styled = {
   Container: styled.nav`
     display: flex;
     width: 100vw;
+    height: 6.7rem;
     align-items: center;
     padding: 0 max(2.4rem, calc((100vw - 120rem) / 2));
     position: fixed;
