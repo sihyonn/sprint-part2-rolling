@@ -41,6 +41,11 @@ const Styled = {
     }
   `,
   Name: styled.h2`
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-word;
+    overflow: hidden;
     text-overflow: ellipsis;
     /* Font/24 Bold */
     color: ${({ $cardUrl }) => ($cardUrl ? '#fff' : '#181818')};

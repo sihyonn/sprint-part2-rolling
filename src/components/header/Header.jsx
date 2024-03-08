@@ -81,7 +81,7 @@ function Header({ data }) {
   return isMobile ? (
     <Styled.Container>
       <Styled.MobileContainer>
-        <Styled.CardOwner>To.{data?.name}</Styled.CardOwner>
+        <Styled.CardOwner>To. {data?.name}</Styled.CardOwner>
       </Styled.MobileContainer>
       <Styled.Bar />
       <Styled.HeaderContainer>
@@ -94,7 +94,7 @@ function Header({ data }) {
   ) : (
     <Styled.Container>
       <Styled.HeaderContainer>
-        <Styled.CardOwner>To.{data?.name}</Styled.CardOwner>
+        <Styled.CardOwner>To. {data?.name}</Styled.CardOwner>
         <ProfileEmojiShare
           profileData={profileListData}
           EmojiData={EmojiData}
