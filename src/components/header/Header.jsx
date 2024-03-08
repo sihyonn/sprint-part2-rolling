@@ -29,12 +29,11 @@ const Styled = {
 
     @media (max-width: 767px) {
       padding: 1.2rem 2rem;
-      height: 6.4rem;
     }
   `,
   MobileContainer: styled.div`
     display: flex;
-    height: 6.4rem;
+
     padding: 1rem 2rem;
     align-items: center;
   `,
