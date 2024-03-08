@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import styled from 'styled-components';
 import Dompurify from 'dompurify';
 import '@/styles/quill.strToHtml.css';
-
+import { FONT } from '@/constants/FONT';
 const Styled = {
   Container: styled.div`
     width: 100%;
@@ -15,13 +15,6 @@ const Styled = {
  * @param {html.Attributes} containerProps container props
  */
 
-const font = {
-  나눔명조: "'Nanum Myeongjo', serif",
-  '나눔손글씨 손편지체': "'Nanum Pen Script', cursive",
-  Pretendard: "'Pretendard', sans-serif",
-  'Noto Sans': "'Noto Sans KR', sans-serif",
-};
-
 function QuillStrToHtml({ htmlStr = '', fontStyle, ...containerProps }) {
   return (
     <Styled.Container
@@ -32,7 +25,7 @@ function QuillStrToHtml({ htmlStr = '', fontStyle, ...containerProps }) {
           ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'],
         }),
       }}
-      style={{ fontFamily: font[fontStyle] }}
+      style={{ fontFamily: FONT[fontStyle] }}
       {...containerProps}
     />
   );

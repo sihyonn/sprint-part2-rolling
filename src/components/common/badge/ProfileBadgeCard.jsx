@@ -20,7 +20,7 @@ const Styled = {
     border-radius: 100px;
     border: 1px solid #eee;
     background-color: ${({ theme }) => theme.color.mainGr};
-    background-image: url(${(props) => props.$profileImg || ''});
+    background-image: url(${({ $profileImg }) => $profileImg || ''});
     background-position: top;
     background-size: cover;
 

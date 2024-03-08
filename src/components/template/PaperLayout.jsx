@@ -16,9 +16,9 @@ const Styled = {
     padding-top: 6.8rem;
     border-top: 1px solid #ededed;
 
-    background-color: ${({ backgroundColor }) => backgroundColor};
-    background-image: ${({ backgroundImageURL }) =>
-      backgroundImageURL ? `url(${backgroundImageURL})` : 'none'};
+    background-color: ${({ $backgroundColor }) => $backgroundColor};
+    background-image: ${({ $backgroundImageURL }) =>
+      $backgroundImageURL ? `url(${$backgroundImageURL})` : 'none'};
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -58,8 +58,8 @@ function PaperLayout({ children }) {
     <>
       <Header data={data} />
       <Styled.Container
-        backgroundColor={mapColorToTheme(data?.backgroundColor, theme)}
-        backgroundImageURL={data?.backgroundImageURL}
+        $backgroundColor={mapColorToTheme(data?.backgroundColor, theme)}
+        $backgroundImageURL={data?.backgroundImageURL}
       >
         <Styled.InnerWrap>
           <Outlet />
