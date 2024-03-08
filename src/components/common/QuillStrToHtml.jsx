@@ -23,7 +23,6 @@ const font = {
 };
 
 function QuillStrToHtml({ htmlStr = '', fontStyle, ...containerProps }) {
-  console.log(fontStyle);
   return (
     <Styled.Container
       className={'to-html'}
