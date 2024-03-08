@@ -60,8 +60,8 @@ function Gnb() {
   const location = useLocation();
   const { pathname } = location;
 
-  const invisibeButton = pathname === '/list' || pathname === '/';
-  console.log(invisibeButton);
+  const visibeButton = pathname === '/list' || pathname === '/';
+
   return (
     <Styled.Container>
       <Styled.GnbContainer>
@@ -69,7 +69,7 @@ function Gnb() {
           <img src={Icon} alt="Logo" />
           <span className="logoName">Rolling</span>
         </Styled.LogoFrame>
-        {invisibeButton && (
+        {visibeButton && (
           <Styled.MakeRollingButton to="/post">
             롤링 페이퍼 만들기
           </Styled.MakeRollingButton>
