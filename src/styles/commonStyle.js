@@ -40,7 +40,7 @@ export const Shimmer = styled.div`
 export const skeletonStyle = css`
   background-color: ${({ theme }) => theme.color.skeleton};
   overflow: hidden;
-  border-radius: 0.25rem;
+  border-radius: 0.4rem;
 `;
 
 export const mapColorToTheme = (color, theme) => {

@@ -39,7 +39,7 @@ function InfiniteCardMessages({ recipientId, isEditPage }) {
       <InfiniteCardMessagesLoader
         className="skeleton"
         loaderRef={loaderRef}
-        style={isLastPage ? { display: 'none' } : { display: 'block' }}
+        style={isLastPage ? { display: 'none' } : { marginTop: '2rem' }}
       />
     </>
   );
