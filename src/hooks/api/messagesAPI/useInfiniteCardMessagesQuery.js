@@ -25,7 +25,7 @@ function useInfiniteCardMessagesQuery(recipientId, isEditPage, limit = 6) {
       }
 
       const isFirstPage = allPages.length === 1 && !isEditPage;
-      const nextPage = isFirstPage ? initialLimit : allPages.length * limit;
+      const nextPage = isFirstPage ? initialLimit : allPages.length * limit - 1;
 
       if (lastPage?.count <= nextPage) {
         return undefined;
