@@ -9,7 +9,7 @@ const Styled = {
     display: flex;
 
     position: fixed;
-    top: 6.6rem; // gnb가 fixed되어있어서 top은 gnb높이를 제외
+    top: 6.7rem; // gnb가 fixed되어있어서 top은 gnb높이를 제외
     left: 0;
     padding: 0;
     z-index: 100;

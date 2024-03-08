@@ -8,6 +8,7 @@ const Styled = {
   Container: styled.nav`
     display: flex;
     width: 100vw;
+    height: 6.7rem;
     align-items: center;
     padding: 0 max(2.4rem, calc((100vw - 120rem) / 2));
     position: fixed;
@@ -60,7 +61,7 @@ function Gnb() {
   const location = useLocation();
   const { pathname } = location;
 
-  const invisibeButton = pathname !== '/post';
+  const visibeButton = pathname === '/list' || pathname === '/';
 
   return (
     <Styled.Container>
@@ -69,7 +70,7 @@ function Gnb() {
           <img src={Icon} alt="Logo" />
           <span className="logoName">Rolling</span>
         </Styled.LogoFrame>
-        {invisibeButton && (
+        {visibeButton && (
           <Styled.MakeRollingButton to="/post">
             롤링 페이퍼 만들기
           </Styled.MakeRollingButton>
