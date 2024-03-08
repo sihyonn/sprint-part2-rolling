@@ -55,7 +55,7 @@ const Styled = {
     background: var(--gray-200, #eee);
   `,
 };
-function Header({ data, user_id }) {
+function Header({ data }) {
   // data는 /list에서 /list{id}로 이동시 페이지에서 보내주기
 
   const [isMobile, setIsMobile] = useState(false);
@@ -81,7 +81,7 @@ function Header({ data, user_id }) {
   return isMobile ? (
     <Styled.Container>
       <Styled.MobileContainer>
-        <Styled.CardOwner>To.{data?.name}</Styled.CardOwner>
+        <Styled.CardOwner>To. {data?.name}</Styled.CardOwner>
       </Styled.MobileContainer>
       <Styled.Bar />
       <Styled.HeaderContainer>
@@ -94,7 +94,7 @@ function Header({ data, user_id }) {
   ) : (
     <Styled.Container>
       <Styled.HeaderContainer>
-        <Styled.CardOwner>To.{data?.name}</Styled.CardOwner>
+        <Styled.CardOwner>To. {data?.name}</Styled.CardOwner>
         <ProfileEmojiShare
           profileData={profileListData}
           EmojiData={EmojiData}

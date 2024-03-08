@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Icon from '@/assets/RollingIcon.svg';
@@ -57,6 +57,11 @@ const Styled = {
 };
 
 function Gnb() {
+  const location = useLocation();
+  const { pathname } = location;
+
+  const invisibeButton = pathname !== '/post';
+
   return (
     <Styled.Container>
       <Styled.GnbContainer>
@@ -64,9 +69,11 @@ function Gnb() {
           <img src={Icon} alt="Logo" />
           <span className="logoName">Rolling</span>
         </Styled.LogoFrame>
-        <Styled.MakeRollingButton to="/post">
-          롤링 페이퍼 만들기
-        </Styled.MakeRollingButton>
+        {invisibeButton && (
+          <Styled.MakeRollingButton to="/post">
+            롤링 페이퍼 만들기
+          </Styled.MakeRollingButton>
+        )}
       </Styled.GnbContainer>
     </Styled.Container>
   );
