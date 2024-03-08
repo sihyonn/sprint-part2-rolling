@@ -5,8 +5,6 @@ import { styled } from 'styled-components';
 const Styled = {
   CardContainer: styled.div`
     display: flex;
-    justify-content: center;
-    align-items: start;
     flex-direction: column;
     gap: 1.6rem;
 
@@ -23,22 +21,15 @@ const Styled = {
     border-bottom: ${({ theme }) => theme.border.gr5};
 
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    gap: 1.4rem;
   `,
 
   ProfileContainer: styled.div`
-    display: flex;
-    align-items: flex-start;
-    gap: 1.4rem;
+    width: 5.6rem;
+    height: 5.6rem;
 
-    .profileImg {
-      width: 5.6rem;
-      height: 5.6rem;
-      padding: 1.68rem;
-      border-radius: 9999px; //todo 왜안되는지 파악
-      ${skeletonStyle}
-    }
+    ${skeletonStyle}
+    border-radius: 999px; //todo 왜안되는지 파악
   `,
 
   NameContainer: styled.div`
@@ -63,7 +54,7 @@ const Styled = {
   `,
 
   Message: styled.div`
-    width: 100%;
+    width: 30rem;
     height: 10.6rem;
 
     .content {
@@ -75,11 +66,10 @@ const Styled = {
     }
   `,
 
-  Date: styled.span`
-    font-size: 1.2rem;
-    line-height: 1.8rem;
-    letter-spacing: -0.006rem;
-    color: #999;
+  Date: styled.div`
+    width: 8rem;
+    height: 1.3rem;
+    ${skeletonStyle}
   `,
 };
 
@@ -88,18 +78,17 @@ function CardMessagesSkeleton() {
     <Styled.CardContainer>
       <Styled.TopContainer>
         <Styled.ProfileContainer>
-          <div className="profileImg">
+          <Shimmer />
+        </Styled.ProfileContainer>
+
+        <Styled.NameContainer>
+          <div className="sender">
             <Shimmer />
           </div>
-          <Styled.NameContainer>
-            <div className="sender">
-              <Shimmer />
-            </div>
-            <div className="relation">
-              <Shimmer />
-            </div>
-          </Styled.NameContainer>
-        </Styled.ProfileContainer>
+          <div className="relation">
+            <Shimmer />
+          </div>
+        </Styled.NameContainer>
       </Styled.TopContainer>
       <Styled.Message>
         <div className="content">
@@ -108,11 +97,10 @@ function CardMessagesSkeleton() {
         <div className="content">
           <Shimmer />
         </div>
-        <div className="content">
-          <Shimmer />
-        </div>
       </Styled.Message>
-      <Styled.Date></Styled.Date>
+      <Styled.Date>
+        <Shimmer />
+      </Styled.Date>
     </Styled.CardContainer>
   );
 }

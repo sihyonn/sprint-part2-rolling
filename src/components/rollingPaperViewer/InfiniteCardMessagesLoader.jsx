@@ -31,9 +31,9 @@ function InfiniteCardMessagesLoader({ loaderRef, ...props }) {
   }, [windowWidth]);
 
   return (
-    <GridTemplate ref={loaderRef} style={{ margin: '3rem 0' }} {...props}>
+    <GridTemplate ref={loaderRef} {...props}>
       {Array.from({ length: componentNumberRef.current }).map((_, index) => (
-        <CardMessagesSkeleton key={index} />
+        <CardMessagesSkeleton className="카드" key={index} />
       ))}
     </GridTemplate>
   );
