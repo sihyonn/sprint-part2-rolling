@@ -92,7 +92,7 @@ const Styled = {
       font-size: 1.8rem;
       line-height: 2.8rem;
       letter-spacing: -0.018rem;
-      white-space: nowrap;
+      word-break: auto-phrase;
     }
   `,
   SubInfo: styled.span`
