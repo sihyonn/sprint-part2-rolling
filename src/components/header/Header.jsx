@@ -48,6 +48,11 @@ const Styled = {
     font-weight: 700;
     line-height: 4.2rem;
     letter-spacing: -0.028rem;
+    @media (max-width: 767px) {
+      font-size: 1.8rem;
+      line-height: 2.8rem; /* 155.556% */
+      letter-spacing: -0.018rem;
+    }
   `,
   Bar: styled.div`
     width: 100%;
