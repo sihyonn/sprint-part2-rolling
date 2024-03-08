@@ -17,7 +17,7 @@ function InfiniteCardMessages({ recipientId, isEditPage }) {
   const loaderRef = useRef();
 
   const { data: cardMessagesData, fetchNextPage } =
-    useInfiniteCardMessagesQuery(recipientId);
+    useInfiniteCardMessagesQuery(recipientId, isEditPage);
 
   const isLastPage = cardMessagesData?.pages?.at(-1)?.next === null;
 

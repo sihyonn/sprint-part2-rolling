@@ -8,7 +8,6 @@ import useMobile from '@hooks/useMobile';
 const Styled = {
   Container: styled.div`
     width: 100vw;
-    height: 100vh;
     background-color: ${({ theme }) => theme.color.white};
     padding-top: 6.6rem;
 
@@ -28,7 +27,7 @@ function Layout({ children }) {
   return (
     <>
       {!invisibelGnb && <Gnb />}
-      <Styled.Container className="내가 맨위" $invisibelGnb={invisibelGnb}>
+      <Styled.Container $invisibelGnb={invisibelGnb}>
         <Outlet />
         {children}
       </Styled.Container>

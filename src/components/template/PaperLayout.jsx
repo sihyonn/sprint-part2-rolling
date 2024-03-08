@@ -1,19 +1,27 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { styled } from 'styled-components';
+import { styled, useTheme } from 'styled-components';
+import { Outlet, useParams } from 'react-router-dom';
 
 import Header from '@components/header/Header';
+import useGetRecipientsQuery from '@hooks/api/recipientsAPI/useGetRecipients';
+import { API_RECIPIENTS } from '@constants/API';
+import recipientsAPI from '@/api/recipientsAPI';
+import { mapColorToTheme } from '@styles/commonStyle';
 
 const Styled = {
   Container: styled.div`
-    // PC, Tablet, Mobile 별 gnb,header에 맞춰 위 싱크맞추고 양옆 반응형만 관여
     width: 100vw;
     min-height: 100vh;
     padding: 0 calc((100vw - 120rem) / 2);
     padding-top: 6.8rem;
-
     border-top: 1px solid #ededed;
-    background: #ffe2ad;
+
+    background-color: ${({ backgroundColor }) => backgroundColor};
+    background-image: ${({ backgroundImageURL }) =>
+      backgroundImageURL ? `url(${backgroundImageURL})` : 'none'};
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     @media (min-width: 768px) and (max-width: 1247px) {
       padding: 6.4rem 2.4rem 0;
@@ -24,26 +32,36 @@ const Styled = {
   `,
 
   InnerWrap: styled.div`
-    // PC, Tablet, Mobile별 헤더로부터 카드목록의 시작위치에 관여
     width: 100%;
-    max-height: 100vh; //조정 필요해보임
-    padding-top: 6.3rem;
+    padding: 6.3rem 0 24.5rem;
 
     @media (min-width: 768px) and (max-width: 1247px) {
-      padding-top: 9.3rem;
+      padding: 9.3rem 0 13.5rem;
     }
     @media (max-width: 767px) {
-      padding-top: 2.4rem;
+      padding: 2.4rem 0 3.8rem;
     }
   `,
 };
 
 function PaperLayout({ children }) {
+  const theme = useTheme();
+  const { id: user_id } = useParams();
+
+  const { data } = useGetRecipientsQuery(
+    API_RECIPIENTS.BY_ID(user_id),
+    recipientsAPI.getRecipientDataById,
+    user_id,
+  );
+
   return (
     <>
-      <Header />
-      <Styled.Container className="나레이아웃">
-        <Styled.InnerWrap className="난 inner">
+      <Header data={data} user_id={user_id} />
+      <Styled.Container
+        backgroundColor={mapColorToTheme(data?.backgroundColor, theme)}
+        backgroundImageURL={data?.backgroundImageURL}
+      >
+        <Styled.InnerWrap>
           <Outlet />
           {children}
         </Styled.InnerWrap>

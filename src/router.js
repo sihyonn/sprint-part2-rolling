@@ -3,16 +3,10 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import routes from '@constants/routes';
 
-import TestPage from '@pages/TestPage';
-import Sh from '@pages/Sh';
-import Hi from '@pages/Hi';
-import Yj from '@pages/Yj';
-import Choi from '@pages/Choi';
-
 import Layout from '@components/template/Layout';
 import MainLayout from '@components/template/MainLayout';
-import PaperLayout from '@components/template/PaperLayout';
 import PaperCreationLayout from '@components/template/PaperCreationLayout';
+import PaperLayout from '@components/template/PaperLayout';
 
 import MainPage from '@pages/MainPage';
 import PaperListPage from '@pages/PaperListPage';
@@ -23,9 +17,6 @@ import WriteMessagePage from '@pages/WriteMessagePage';
 import ErrorPage from '@pages/ErrorPage';
 
 const router = createBrowserRouter([
-  /**
-   * 진짜 찐 프로젝트 페이지
-   */
   {
     path: '',
     element: <Layout />,
@@ -81,28 +72,6 @@ const router = createBrowserRouter([
         ],
       },
     ],
-  },
-
-  // 개인 테스트용 페이지
-  {
-    path: '/test',
-    element: <TestPage />,
-  },
-  {
-    path: '/sh',
-    element: <Sh />,
-  },
-  {
-    path: '/hi',
-    element: <Hi />,
-  },
-  {
-    path: '/yj',
-    element: <Yj />,
-  },
-  {
-    path: '/choi',
-    element: <Choi />,
   },
 ]);
 

@@ -42,3 +42,18 @@ export const skeletonStyle = css`
   overflow: hidden;
   border-radius: 0.25rem;
 `;
+
+export const mapColorToTheme = (color, theme) => {
+  switch (color) {
+    case 'beige':
+      return theme.color.lightOr2;
+    case 'purple':
+      return theme.color.lightPu2;
+    case 'blue':
+      return theme.color.lightBl2;
+    case 'green':
+      return theme.color.lightGn2;
+    default:
+      return null;
+  }
+};
