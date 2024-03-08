@@ -14,7 +14,7 @@ const Styled = {
     .slick-list {
       width: 1198px;
       transform: translate3d(0, 0, 0);
-      @media (max-width: 360px) {
+      @media (max-width: 767px) {
         width: 900px;
       }
     }

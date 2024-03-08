@@ -13,6 +13,10 @@ const Styled = {
     border-radius: 3.2rem;
     background: ${({ theme }) => theme.color.badgeBg};
     overflow: hidden;
+    @media (max-width: 767px) {
+      width: 5.5rem;
+      height: 2.8rem;
+    }
   `,
   Count: styled.span`
     color: ${({ theme }) => theme.color.white};
@@ -20,6 +24,9 @@ const Styled = {
     font-style: normal;
     font-weight: 400;
     line-height: 2rem;
+    @media (max-width: 767px) {
+      font-size: 1.4rem;
+    }
   `,
   Emoji: styled.span`
     font-size: 1.4rem;

@@ -29,12 +29,11 @@ const Styled = {
 
     @media (max-width: 767px) {
       padding: 1.2rem 2rem;
-      height: 6.4rem;
     }
   `,
   MobileContainer: styled.div`
     display: flex;
-    height: 6.4rem;
+
     padding: 1rem 2rem;
     align-items: center;
   `,
@@ -48,6 +47,11 @@ const Styled = {
     font-weight: 700;
     line-height: 4.2rem;
     letter-spacing: -0.028rem;
+    @media (max-width: 767px) {
+      font-size: 1.8rem;
+      line-height: 2.8rem; /* 155.556% */
+      letter-spacing: -0.018rem;
+    }
   `,
   Bar: styled.div`
     width: 100%;

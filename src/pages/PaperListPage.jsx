@@ -23,6 +23,7 @@ const Styled = {
     margin-bottom: 2.5rem;
     @media (max-width: 767px) {
       margin-bottom: 1.2rem;
+      font-size: 2rem;
     }
   `,
   Recent: styled.h2`
@@ -33,6 +34,7 @@ const Styled = {
     margin-bottom: 2.5rem;
     @media (max-width: 767px) {
       margin-bottom: 1.2rem;
+      font-size: 2rem;
     }
   `,
   Container1: styled.div`

@@ -9,7 +9,7 @@ import arrowdown from '@/assets/arrowdownIcon.svg';
 const Styled = {
   Container: styled.div`
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.2rem;
   `,
   EmojiButton: styled.button`
