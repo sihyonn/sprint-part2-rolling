@@ -7,7 +7,7 @@ import Input from '@components/common/form/Input';
 
 import ToggleButton from '@components/common/button/ToggleButton';
 import Button from '@components/common/button/Button';
-import { PLACEHOLDER } from '@constants/PLACEHOLDER';
+import { PLACEHOLDER } from '@constants/MESSAGE';
 import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
 
 import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
 import Input from '@components/common/form/Input';
 import Button from '@components/common/button/Button';
 import Dropdown from '@components/common/form/Dropdown';
@@ -8,7 +9,7 @@ import TextEditor from '@components/common/TextEditor';
 import ProfileBadgeSelect from '@components/common/badge/ProfileBadgeSelect';
 import ProfileBadgeCard from '@components/common/badge/ProfileBadgeCard';
 
-import { PLACEHOLDER } from '@constants/PLACEHOLDER';
+import { PLACEHOLDER } from '@constants/MESSAGE';
 import { DROPDOWN_DATA } from '@constants/DROPDOWN_DATA';
 import { API_IMAGES } from '@constants/API';
 

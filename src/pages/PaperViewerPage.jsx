@@ -6,6 +6,7 @@ import Button from '@components/common/button/Button';
 import routes from '@constants/routes';
 import InfiniteCardMessages from '@components/paperViewer/InfiniteCardMessages';
 import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMessagesLoader';
+import { BUTTON_NAME } from '@constants/BUTTON';
 
 const Styled = {
   ButtonContainer: styled.div`
@@ -47,7 +48,7 @@ function PaperViewerPage() {
           className="button"
           onClick={() => navigate(`${routes.post}/${recipientId}/edit`)}
         >
-          편집하기
+          {BUTTON_NAME.EDIT}
         </Button>
       </Styled.ButtonContainer>
 

@@ -8,6 +8,7 @@ import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMess
 import useDeleteRecipientMutation from '@hooks/api/recipientsAPI/useDeleteRecipientMutation';
 import routes from '@constants/routes';
 import OutlinedButton from '@components/common/button/OutlinedButton';
+import { BUTTON_NAME } from '@constants/BUTTON';
 
 const Styled = {
   ButtonContainer: styled.div`
@@ -81,13 +82,13 @@ function PaperEditPage() {
           className="delete-button"
           onClick={handleClickDeleteBtn}
         >
-          삭제하기
+          {BUTTON_NAME.DELETE}
         </Styled.DeleteBtn>
         <Button
           className="complete-edit-button"
           onClick={() => navigate(`${routes.post}/${recipientId}`)}
         >
-          편집완료
+          {BUTTON_NAME.COMPLETE_EDIT}
         </Button>
       </Styled.ButtonContainer>
 
