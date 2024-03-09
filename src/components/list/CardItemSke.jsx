@@ -75,7 +75,10 @@ const Styled = {
     ${skeletonStyle}
   `,
 };
-
+/**
+ * 카드 아이템의 스켈레톤을 디자인하는 컴포넌트입니다.
+ * @returns {JSX.Element} 카드 아이템의 스켈레톤을 나타내는 JSX 요소-> CarouselSke에서 쓰입니다.
+ */
 function CardItemSke() {
   return (
     <Styled.Card>
