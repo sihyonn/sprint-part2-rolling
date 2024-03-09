@@ -138,7 +138,18 @@ const Styled = {
     right: 0;
   `,
 };
-
+/**
+ * 카드 아이템 컴포넌트입니다.
+ * @param {Object} props 프로퍼티 객체
+ * @param {string} props.id 카드 아이디
+ * @param {string} props.name 카드 이름
+ * @param {string} props.color 카드 색상
+ * @param {string} props.cardUrl 카드 URL
+ * @param {Array} props.recentMessages 최근 메시지 배열
+ * @param {Array} props.topReactions 최상위 반응 배열
+ * @param {number} props.messageCount 메시지 수
+ * @returns {JSX.Element} 카드 아이템 컴포넌트 JSX 요소
+ */
 function CardItem({
   id,
   name,

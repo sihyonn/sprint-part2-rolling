@@ -47,6 +47,29 @@ const Styled = {
   `,
 };
 
+/**
+ * react-slick 라이브러리를 이용해 만든 Carousel 컴포넌트입니다.
+ *
+ * @component
+ * @param {Object} data - Carousel에 표시할 데이터 객체
+ * @returns {JSX.Element} Carousel 컴포넌트의 JSX 요소
+ *
+ * @typedef {Object} Settings - react-slick의 내장 api를 적어놓는 객체
+ * @property {boolean} dots - 점 표시 여부
+ * @property {boolean} infinite - 무한 반복 여부
+ * @property {number} speed - 슬라이드 전환 속도
+ * @property {number} slidesToShow - 표시할 슬라이드 수
+ * @property {number} slidesToScroll - 슬라이드를 넘길 때 이동할 슬라이드 수
+ * @property {boolean} arrows - 화살표 표시 여부
+ * @property {boolean} swipeToSlide - 스와이프로 슬라이드 이동 여부
+ * @property {boolean} draggable - 드래그로 슬라이드 이동 여부
+ * @property {boolean} touchMove - 터치로 슬라이드 이동 여부
+ * @property {string} cssEase - 슬라이드 전환 애니메이션 이징
+ * @property {number} initialSlide - 초기 슬라이드 인덱스
+ * @property {Function} beforeChange - 슬라이드 전환 이전 콜백 함수
+ * @property {boolean} focusOnSelect - 슬라이드 선택 시 포커스 여부
+ * @property {Array} responsive - 반응형 설정 배열(breakpoint는 px입니다!)
+ */
 function Carousel({ data }) {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleBeforeChange = (oldIndex, newIndex) => {
@@ -73,7 +96,6 @@ function Carousel({ data }) {
     touchMove: false,
     cssEase: 'ease-in-out',
     initialSlide: 0,
-    slideToShow: 1,
     beforeChange: handleBeforeChange,
     focusOnSelect: true,
     responsive: [

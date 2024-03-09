@@ -18,6 +18,11 @@ const Styled = {
   `,
 };
 
+/**
+ * CardItemSke를 담는 틀의 역할을 하는 스켈레톤 컴포넌트입니다.
+ * @returns {JSX.Element} 4개의 CardItemSke가 담겨있습니다.
+ *
+ */
 function CarouselSke() {
   const settings = {
     dots: false,
