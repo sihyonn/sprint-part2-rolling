@@ -79,7 +79,7 @@ function PaperListPage() {
   );
   return (
     <>
-      <PageTitle title="모아보기" />
+      <PageTitle title="구경하기" />
 
       <Styled.Container>
         <Styled.CarouselContainer>
