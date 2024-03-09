@@ -53,7 +53,7 @@ function ProfileBadgeCard({ profileImg, onSelect }) {
   const { pathname } = location;
   const postPathRegex = /\/post\/\d+\/message/;
   const permitOnSelect = postPathRegex.test(pathname);
-  const handleClick = permitOnSelect ? () => onSelect(profileImg) : null;
+  const handleClick = permitOnSelect ? () => onSelect(profileImg) : undefined;
   return (
     <Styled.Container
       $profileImg={profileImg}
