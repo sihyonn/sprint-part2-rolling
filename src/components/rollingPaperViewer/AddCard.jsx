@@ -17,7 +17,6 @@ const Styled = {
     border-radius: 1.6rem;
     background: ${({ theme }) => theme.color.white};
     box-shadow: ${({ theme }) => theme.boxShadow.card};
-    cursor: pointer;
   `,
 };
 
@@ -25,12 +24,13 @@ function AddCard({ recipientId }) {
   const navigate = useNavigate();
 
   return (
-    <Styled.CardContainer
-      onClick={() => {
-        navigate(`${routes.post}/${recipientId}/message`);
-      }}
-    >
-      <IconButton shape="plus" />
+    <Styled.CardContainer>
+      <IconButton
+        onClick={() => {
+          navigate(`${routes.post}/${recipientId}/message`);
+        }}
+        shape="plus"
+      />
     </Styled.CardContainer>
   );
 }
