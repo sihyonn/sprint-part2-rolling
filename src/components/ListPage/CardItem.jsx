@@ -51,6 +51,10 @@ const Styled = {
       opacity: 0.4;
       background-color: ${({ $cardUrl }) => $cardUrl && ' #181818'};
     }
+    &:hover {
+      opacity: 0.7;
+      transition: 0.3s ease-out;
+    }
   `,
   Name: styled.h2`
     display: -webkit-box;
