@@ -1,3 +1,6 @@
-.css-17o22dy-MuiAvatar-root {
+/* .css-17o22dy-MuiAvatar-root {
   z-index: 10;
+} */
+.MuiAvatar-colorDefault {
+  z-index: 100;
 }
