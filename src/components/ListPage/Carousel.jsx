@@ -7,6 +7,7 @@ import nextArrImg from 'src/assets/nextarrow.svg';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
+import CarouselSke from './CarouselSke';
 
 const Styled = {
   Container: styled.div`
@@ -92,7 +93,7 @@ function Carousel({ data }) {
 
   const slideCount = data?.results.length;
   if (!data || data.results.length === 0) {
-    return <div>Loading...</div>;
+    return <CarouselSke />;
   } else {
     return (
       <div>
