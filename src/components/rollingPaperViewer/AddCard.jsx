@@ -25,13 +25,12 @@ function AddCard({ recipientId }) {
   const navigate = useNavigate();
 
   return (
-    <Styled.CardContainer>
-      <IconButton
-        shape="plus"
-        onClick={() => {
-          navigate(`${routes.post}/${recipientId}/message`);
-        }}
-      />
+    <Styled.CardContainer
+      onClick={() => {
+        navigate(`${routes.post}/${recipientId}/message`);
+      }}
+    >
+      <IconButton shape="plus" />
     </Styled.CardContainer>
   );
 }

@@ -28,6 +28,9 @@ const Styled = {
       transition: all ease-in-out 0.25s;
     }
     cursor: pointer;
+    & * {
+      cursor: pointer;
+    }
   `,
 
   TopContainer: styled.div`

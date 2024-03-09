@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 
@@ -24,7 +24,8 @@ const Styled = {
     background-position: top;
     background-size: cover;
 
-    cursor: pointer;
+    cursor: ${({ $permitOnSelect }) =>
+      $permitOnSelect ? 'pointer' : 'default'};
   `,
   Div: styled.div`
     display: flex;
@@ -48,10 +49,16 @@ const Styled = {
 };
 
 function ProfileBadgeCard({ profileImg, onSelect }) {
+  const location = useLocation();
+  const { pathname } = location;
+  const postPathRegex = /\/post\/\d+\/message/;
+  const permitOnSelect = postPathRegex.test(pathname);
+  const handleClick = permitOnSelect ? () => onSelect(profileImg) : null;
   return (
     <Styled.Container
       $profileImg={profileImg}
-      onClick={() => onSelect(profileImg)}
+      $permitOnSelect={permitOnSelect}
+      onClick={handleClick}
     >
       <Styled.Div>
         <Styled.Head $profileImg={profileImg} />
