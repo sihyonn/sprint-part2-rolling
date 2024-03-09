@@ -61,7 +61,7 @@ const Styled = {
 function PaperEditPage() {
   const { id: recipientId } = useParams();
   const navigate = useNavigate();
-  const handleSuccess = () => navigate(`${routes.list}`);
+  const handleSuccess = () => navigate(`${routes.list}`, { replace: true });
 
   const { mutate: deleteRecipitentMutate } = useDeleteRecipientMutation({
     recipientId,
