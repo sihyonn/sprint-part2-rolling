@@ -166,7 +166,7 @@ function CardItem({
   }, [color]);
   return (
     <Styled.Card onClick={goToPostPage} color={color} $cardUrl={cardUrl}>
-      <Styled.Container $name={name}>
+      <Styled.Container $name={name} className="container">
         <Styled.Info $messageCount={messageCount}>
           <Styled.Name $cardUrl={cardUrl}>To. {name}</Styled.Name>
           {messageCount != 0 ? (
