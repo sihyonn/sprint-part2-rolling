@@ -75,7 +75,6 @@ function PaperListPage() {
     2000,
     0,
   );
-  console.log(Data);
   return (
     <Styled.Container>
       <Styled.CarouselContainer>
