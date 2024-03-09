@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import Button from '@/components/common/button/Button';
+import PageTitle from '@components/common/PageTitle';
+
 import useMobile from '@hooks/useMobile';
 import pcCard from '@/assets/pcCard.svg';
 import mobileCard from '@/assets/mobileCard.svg';
 import EmojiExample from '@/assets/EmojiExample.svg';
-import Button from '@/components/common/button/Button';
 
 const Styled = {
   Landing: styled.div`
@@ -197,48 +200,51 @@ function MainPage() {
   const isMobile = useMobile();
   const navigate = useNavigate();
   return (
-    <Styled.Landing>
-      <Styled.Point1Container>
-        <Styled.PointContainer>
-          <Styled.Point>Point. 01</Styled.Point>
-          <Styled.InfoContainer>
-            <Styled.Info>
-              누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요
-            </Styled.Info>
-            <Styled.SubInfo>로그인 없이 자유롭게 만들어요.</Styled.SubInfo>
-          </Styled.InfoContainer>
-        </Styled.PointContainer>
-        <Styled.CardContainer>
-          <img src={isMobile ? mobileCard : pcCard} alt="cardexample" />
-        </Styled.CardContainer>
-      </Styled.Point1Container>
-      <Styled.Point2Container>
-        <Styled.EmojiContainer>
-          <img src={EmojiExample} alt="emojiexample" />
-        </Styled.EmojiContainer>
-        <Styled.PointContainer>
-          <Styled.Point>Point. 02</Styled.Point>
-          <Styled.InfoContainer>
-            <Styled.Info>서로에게 이모지로 감정을 표현해보세요</Styled.Info>
-            <Styled.SubInfo>
-              롤링 페이퍼에 이모지를 추가할 수 있어요.
-            </Styled.SubInfo>
-          </Styled.InfoContainer>
-        </Styled.PointContainer>
-      </Styled.Point2Container>
-      <Styled.ButtonContainer>
-        <Button
-          size="L"
-          style={{
-            width: '100%',
-            maxWidth: '128rem',
-          }}
-          onClick={() => navigate('/list')}
-        >
-          구경해보기
-        </Button>
-      </Styled.ButtonContainer>
-    </Styled.Landing>
+    <>
+      <PageTitle title="" />
+      <Styled.Landing>
+        <Styled.Point1Container>
+          <Styled.PointContainer>
+            <Styled.Point>Point. 01</Styled.Point>
+            <Styled.InfoContainer>
+              <Styled.Info>
+                누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요
+              </Styled.Info>
+              <Styled.SubInfo>로그인 없이 자유롭게 만들어요.</Styled.SubInfo>
+            </Styled.InfoContainer>
+          </Styled.PointContainer>
+          <Styled.CardContainer>
+            <img src={isMobile ? mobileCard : pcCard} alt="cardexample" />
+          </Styled.CardContainer>
+        </Styled.Point1Container>
+        <Styled.Point2Container>
+          <Styled.EmojiContainer>
+            <img src={EmojiExample} alt="emojiexample" />
+          </Styled.EmojiContainer>
+          <Styled.PointContainer>
+            <Styled.Point>Point. 02</Styled.Point>
+            <Styled.InfoContainer>
+              <Styled.Info>서로에게 이모지로 감정을 표현해보세요</Styled.Info>
+              <Styled.SubInfo>
+                롤링 페이퍼에 이모지를 추가할 수 있어요.
+              </Styled.SubInfo>
+            </Styled.InfoContainer>
+          </Styled.PointContainer>
+        </Styled.Point2Container>
+        <Styled.ButtonContainer>
+          <Button
+            size="L"
+            style={{
+              width: '100%',
+              maxWidth: '128rem',
+            }}
+            onClick={() => navigate('/list')}
+          >
+            구경해보기
+          </Button>
+        </Styled.ButtonContainer>
+      </Styled.Landing>
+    </>
   );
 }
 

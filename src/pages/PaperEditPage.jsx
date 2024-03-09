@@ -2,12 +2,14 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+import PageTitle from '@components/common/PageTitle';
 import Button from '@components/common/button/Button';
+import OutlinedButton from '@components/common/button/OutlinedButton';
 import InfiniteCardMessages from '@components/paperViewer/InfiniteCardMessages';
 import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMessagesLoader';
+
 import useDeleteRecipientMutation from '@hooks/api/recipientsAPI/useDeleteRecipientMutation';
 import routes from '@constants/routes';
-import OutlinedButton from '@components/common/button/OutlinedButton';
 import { BUTTON_NAME } from '@constants/BUTTON';
 
 const Styled = {
@@ -77,6 +79,7 @@ function PaperEditPage() {
 
   return (
     <>
+      <PageTitle title="수정" />
       <Styled.ButtonContainer>
         <Styled.DeleteBtn
           className="delete-button"

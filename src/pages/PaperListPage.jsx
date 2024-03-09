@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Carousel from '@components/list/Carousel';
 import Button from '@components/common/button/Button';
+import PageTitle from '@components/common/PageTitle';
 import recipientsAPI from '@/api/recipientsAPI';
 import { API_RECIPIENTS } from '@constants/API';
 import useGetRecipientsList from '@hooks/api/recipientsAPI/useGetRecipientsList';
@@ -77,34 +78,38 @@ function PaperListPage() {
     0,
   );
   return (
-    <Styled.Container>
-      <Styled.CarouselContainer>
-        <div>
+    <>
+      <PageTitle title="모아보기" />
+
+      <Styled.Container>
+        <Styled.CarouselContainer>
           <div>
-            <Styled.Popular>인기 롤링 페이퍼 🔥</Styled.Popular>
+            <div>
+              <Styled.Popular>인기 롤링 페이퍼 🔥</Styled.Popular>
+            </div>
+            <div>
+              <Carousel data={likeData} />
+            </div>
           </div>
           <div>
-            <Carousel data={likeData} />
+            <Styled.Recent>최근에 만든 롤링 페이퍼️️ ⭐️️</Styled.Recent>
           </div>
-        </div>
-        <div>
-          <Styled.Recent>최근에 만든 롤링 페이퍼️️ ⭐️️</Styled.Recent>
-        </div>
-        <div>
-          <Carousel data={Data} />
-        </div>
-      </Styled.CarouselContainer>
-      <Styled.Container1>
-        <Button
-          onClick={goToPostPage}
-          className="Button"
-          size="M"
-          style={{ maxWidth: '128rem', width: '100%' }}
-        >
-          나도 만들어보기
-        </Button>
-      </Styled.Container1>
-    </Styled.Container>
+          <div>
+            <Carousel data={Data} />
+          </div>
+        </Styled.CarouselContainer>
+        <Styled.Container1>
+          <Button
+            onClick={goToPostPage}
+            className="Button"
+            size="M"
+            style={{ maxWidth: '128rem', width: '100%' }}
+          >
+            나도 만들어보기
+          </Button>
+        </Styled.Container1>
+      </Styled.Container>
+    </>
   );
 }
 
