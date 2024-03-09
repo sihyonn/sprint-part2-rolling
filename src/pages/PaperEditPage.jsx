@@ -7,29 +7,53 @@ import InfiniteCardMessages from '@components/paperViewer/InfiniteCardMessages';
 import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMessagesLoader';
 import useDeleteRecipientMutation from '@hooks/api/recipientsAPI/useDeleteRecipientMutation';
 import routes from '@constants/routes';
+import OutlinedButton from '@components/common/button/OutlinedButton';
 
 const Styled = {
   ButtonContainer: styled.div`
     display: flex;
     justify-content: flex-end;
+    gap: 0.8rem;
     margin-bottom: 1.1rem;
 
     @media (max-width: 1247px) {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 1rem;
+
       position: fixed;
       left: 0;
       bottom: 0;
-      margin-bottom: 2.4rem;
       width: 100%;
+      padding: 0 2.3rem;
+      margin-bottom: 2.4rem;
       z-index: 10;
+      border-radius: 1.2rem;
 
-      .button {
-        min-width: 94%;
+      .delete-button,
+      .complete-edit-button {
+        width: 100%;
         padding: 1.4rem 0;
         font-size: 1.8rem;
         font-weight: 700;
       }
+      .complete-edit-button {
+        max-width: 60rem;
+      }
+    }
+  `,
+
+  DeleteBtn: styled(OutlinedButton)`
+    border: ${({ theme }) => theme.border.pu1};
+    background-color: #fff;
+    color: ${({ theme }) => theme.color.mainPu};
+
+    &:hover,
+    &:focus {
+      background-color: #f7f2fc;
+    }
+    &:active {
+      border: ${({ theme }) => theme.border.pu1};
     }
   `,
 };
@@ -37,7 +61,7 @@ const Styled = {
 function PaperEditPage() {
   const { id: recipientId } = useParams();
   const navigate = useNavigate();
-  const handleSuccess = () => navigate(`${routes.home}`);
+  const handleSuccess = () => navigate(`${routes.list}`);
 
   const { mutate: deleteRecipitentMutate } = useDeleteRecipientMutation({
     recipientId,
@@ -53,8 +77,17 @@ function PaperEditPage() {
   return (
     <>
       <Styled.ButtonContainer>
-        <Button className="button" onClick={handleClickDeleteBtn}>
+        <Styled.DeleteBtn
+          className="delete-button"
+          onClick={handleClickDeleteBtn}
+        >
           삭제하기
+        </Styled.DeleteBtn>
+        <Button
+          className="complete-edit-button"
+          onClick={() => navigate(`${routes.post}/${recipientId}`)}
+        >
+          편집완료
         </Button>
       </Styled.ButtonContainer>
 

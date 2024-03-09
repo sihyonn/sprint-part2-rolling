@@ -19,12 +19,15 @@ const Styled = {
       position: fixed;
       left: 0;
       bottom: 0;
-      margin-bottom: 2.4rem;
+
       width: 100%;
+      padding: 0 2.3rem;
+      margin-bottom: 2.4rem;
       z-index: 10;
+      border-radius: 1.2rem;
 
       .button {
-        min-width: 94%;
+        min-width: 100%;
         padding: 1.4rem 0;
         font-size: 1.8rem;
         font-weight: 700;
