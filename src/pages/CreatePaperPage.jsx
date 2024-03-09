@@ -152,7 +152,7 @@ function CreatePaperPage() {
 
         <Button
           size="L"
-          disabled={!name}
+          disabled={!name || name.length > 16}
           style={{ width: '100%', marginBottom: '2.4rem' }}
           onClick={handleCreateRecipient}
         >

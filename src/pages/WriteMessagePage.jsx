@@ -198,7 +198,7 @@ function WriteMessagePage() {
 
         <Button
           size="L"
-          disabled={!name || !content}
+          disabled={!name || !content || name.length > 16}
           style={{ width: '100%', marginBottom: '2.4rem' }}
           onClick={handleSubmitMessage}
         >

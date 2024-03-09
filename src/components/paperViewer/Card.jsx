@@ -28,6 +28,9 @@ const Styled = {
       transition: all ease-in-out 0.25s;
     }
     cursor: pointer;
+    & * {
+      cursor: pointer;
+    }
   `,
 
   TopContainer: styled.div`
@@ -61,6 +64,12 @@ const Styled = {
       color: ${({ theme }) => theme.color.black};
       font-size: 2rem;
       line-height: 2.4rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      word-break: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     strong {

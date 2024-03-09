@@ -33,7 +33,6 @@ const Styled = {
     display: flex;
     justify-content: center;
     align-items: center;
-
     cursor: pointer;
   `,
 
@@ -53,6 +52,7 @@ const Styled = {
       width: 90%;
       max-width: 100%;
     }
+    cursor: default;
   `,
 };
 

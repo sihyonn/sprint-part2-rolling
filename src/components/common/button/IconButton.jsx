@@ -28,6 +28,7 @@ const Styled = {
     }};
     border: ${({ $status }) =>
       $status === 'Focus' ? '1px solid #2B2B2B' : ''};
+    cursor: pointer;
   `,
 };
 
