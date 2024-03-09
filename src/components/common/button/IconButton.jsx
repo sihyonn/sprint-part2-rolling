@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BUTTON_STATUS } from '@/constants/BUTTON_STATUS';
+import { BUTTON_STATUS } from '@constants/BUTTON';
 import check from '@/assets/checkIcon.svg';
 import plus from '@/assets/plusIcon.svg';
 

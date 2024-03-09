@@ -5,7 +5,7 @@ import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
 import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
-import DetailCardModal from '@components/rollingPaperViewer/DetailCardModal';
+import DetailCardModal from '@components/paperViewer/DetailCardModal';
 import QuillStrToHtml from '@components/common/QuillStrToHtml';
 import useDeleteMessageMutation from '@hooks/api/recipientsAPI/useDeleteMessageMutation';
 
@@ -101,6 +101,12 @@ const Styled = {
     color: #999;
   `,
 };
+
+/**
+ * Card - 각각의 페이퍼 카드 컴포넌트
+ * @param {Object} data 카드 메시지 정보 데이터
+ * @param {boolean} isEditPage 편집페이지 여부
+ */
 
 function Card({ data, isEditPage = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

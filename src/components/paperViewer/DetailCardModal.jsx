@@ -60,6 +60,12 @@ const Styled = {
   `,
 };
 
+/**
+ * DetailCardModal - 카드 클릭시 나타나는 세부 메시지를 나타내는 모달 컴포넌트
+ * @param {function} setOpen 모달 오픈 여부
+ * @param data 모달에 들어갈 카드 메시지 데이터
+ */
+
 function DetailCardModal({ setOpen, data }) {
   return (
     <BackdropModal setOpen={setOpen}>

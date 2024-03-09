@@ -20,6 +20,11 @@ const Styled = {
   `,
 };
 
+/**
+ * AddCard - 클릭 시 메시지 생성창으로 넘어가는 플러스 모양 아이콘을 가진 카드 컴포넌트
+ * @param {string} recipientId 대상의 아이디
+ */
+
 function AddCard({ recipientId }) {
   const navigate = useNavigate();
 

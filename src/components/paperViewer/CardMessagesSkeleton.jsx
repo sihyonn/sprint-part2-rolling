@@ -73,6 +73,11 @@ const Styled = {
   `,
 };
 
+/**
+ * CardMessagesSkeleton
+ * 무한스크롤 카드 목록을 불러올 때 로딩 시 보여지는 카드모양 스켈레톤
+ */
+
 function CardMessagesSkeleton() {
   return (
     <Styled.CardContainer>

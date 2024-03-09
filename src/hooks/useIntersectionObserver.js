@@ -11,14 +11,14 @@ function useIntersectionObserver(callback, loaderRef) {
     );
 
     const observe = (element) => {
-      observer.observe(element);
-      return () => observer.unobserve(element);
+      if (element) {
+        observer.observe(element);
+        return () => observer.unobserve(element);
+      }
     };
 
     const unobserve = observe(loaderRef.current);
-    return () => {
-      observer && unobserve();
-    };
+    return unobserve;
   }, [loaderRef, callback]);
 }
 

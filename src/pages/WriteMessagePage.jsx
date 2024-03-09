@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
 import Input from '@components/common/form/Input';
 import Button from '@components/common/button/Button';
 import Dropdown from '@components/common/form/Dropdown';
@@ -8,13 +9,14 @@ import TextEditor from '@components/common/TextEditor';
 import ProfileBadgeSelect from '@components/common/badge/ProfileBadgeSelect';
 import ProfileBadgeCard from '@components/common/badge/ProfileBadgeCard';
 
-import { PLACEHOLDER } from '@constants/PLACEHOLDER';
+import { PLACEHOLDER } from '@constants/MESSAGE';
 import { DROPDOWN_DATA } from '@constants/DROPDOWN_DATA';
 import { API_IMAGES } from '@constants/API';
 
 import imagesAPI from '@/api/imagesAPI';
 import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
 import usePostMessageMutation from '@hooks/api/recipientsAPI/usePostMessageMutation';
+import PageTitle from '@components/common/PageTitle';
 
 const Styled = {
   Container: styled.div`
@@ -127,79 +129,83 @@ function WriteMessagePage() {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Styled.Container>
-        <Styled.Section>
-          <Styled.Text>From.</Styled.Text>
-          <Input
-            placeholder={PLACEHOLDER.FROM}
-            value={name}
-            onInputChange={(value) => handleInputChange(value)}
-          />
-        </Styled.Section>
+    <>
+      <PageTitle title="메시지 생성" />
 
-        <Styled.Section>
-          <Styled.Text>프로필 이미지</Styled.Text>
-          <Styled.ProfileSection>
-            <ProfileBadgeSelect profileImg={image} />
-            <Styled.Section style={{ alignItems: 'flex-start' }}>
-              <Styled.SubText>프로필 이미지를 선택해 주세요!</Styled.SubText>
-              <Styled.Profile>
-                {profileImages &&
-                  profileImages['imageUrls'].map((imgUrl, idx) => (
-                    <ProfileBadgeCard
-                      key={idx}
-                      profileImg={imgUrl}
-                      onSelect={handleImage}
-                    />
-                  ))}
-              </Styled.Profile>
-            </Styled.Section>
-          </Styled.ProfileSection>
-        </Styled.Section>
-
-        <Styled.Section>
-          <Styled.Text>상대와의 관계</Styled.Text>
-          <Dropdown
-            data={DROPDOWN_DATA.RELATIONSHIP}
-            onSelect={handleRelationshipSelect}
-          />
-        </Styled.Section>
-
-        <Styled.Section>
-          <Styled.Text>내용을 입력해 주세요</Styled.Text>
-          <TextEditor
-            text={content}
-            setText={setContent}
-            style={{ height: '22rem' }}
-          />
-        </Styled.Section>
-
-        <Styled.Section>
-          <Styled.Text>폰트 선택</Styled.Text>
-          <Styled.Dropdown
-            data={DROPDOWN_DATA.FONT}
-            onSelect={handleFontSelect}
-          />
-        </Styled.Section>
-      </Styled.Container>
-
-      <Button
-        size="L"
-        disabled={!name || !content || name.length > 16}
-        style={{ width: '100%', marginBottom: '2.4rem' }}
-        onClick={handleSubmitMessage}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
-        생성하기
-      </Button>
-    </div>
+        <Styled.Container>
+          <Styled.Section>
+            <Styled.Text>From.</Styled.Text>
+            <Input
+              placeholder={PLACEHOLDER.FROM}
+              value={name}
+              onInputChange={(value) => handleInputChange(value)}
+            />
+          </Styled.Section>
+
+          <Styled.Section>
+            <Styled.Text>프로필 이미지</Styled.Text>
+            <Styled.ProfileSection>
+              <ProfileBadgeSelect profileImg={image} />
+              <Styled.Section style={{ alignItems: 'flex-start' }}>
+                <Styled.SubText>프로필 이미지를 선택해 주세요!</Styled.SubText>
+                <Styled.Profile>
+                  {profileImages &&
+                    profileImages['imageUrls'].map((imgUrl, idx) => (
+                      <ProfileBadgeCard
+                        key={idx}
+                        profileImg={imgUrl}
+                        onSelect={handleImage}
+                      />
+                    ))}
+                </Styled.Profile>
+              </Styled.Section>
+            </Styled.ProfileSection>
+          </Styled.Section>
+
+          <Styled.Section>
+            <Styled.Text>상대와의 관계</Styled.Text>
+            <Dropdown
+              data={DROPDOWN_DATA.RELATIONSHIP}
+              onSelect={handleRelationshipSelect}
+            />
+          </Styled.Section>
+
+          <Styled.Section>
+            <Styled.Text>내용을 입력해 주세요</Styled.Text>
+            <TextEditor
+              text={content}
+              setText={setContent}
+              style={{ height: '22rem' }}
+            />
+          </Styled.Section>
+
+          <Styled.Section>
+            <Styled.Text>폰트 선택</Styled.Text>
+            <Styled.Dropdown
+              data={DROPDOWN_DATA.FONT}
+              onSelect={handleFontSelect}
+            />
+          </Styled.Section>
+        </Styled.Container>
+
+        <Button
+          size="L"
+          disabled={!name || !content || name.length > 16}
+          style={{ width: '100%', marginBottom: '2.4rem' }}
+          onClick={handleSubmitMessage}
+        >
+          생성하기
+        </Button>
+      </div>
+    </>
   );
 }
 

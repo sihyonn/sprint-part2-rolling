@@ -2,10 +2,13 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+import PageTitle from '@components/common/PageTitle';
 import Button from '@components/common/button/Button';
+import InfiniteCardMessages from '@components/paperViewer/InfiniteCardMessages';
+import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMessagesLoader';
 import routes from '@constants/routes';
-import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
-import InfiniteCardMessagesLoader from '@components/rollingPaperViewer/InfiniteCardMessagesLoader';
+
+import { BUTTON_NAME } from '@constants/BUTTON';
 
 const Styled = {
   ButtonContainer: styled.div`
@@ -19,12 +22,15 @@ const Styled = {
       position: fixed;
       left: 0;
       bottom: 0;
-      margin-bottom: 2.4rem;
+
       width: 100%;
+      padding: 0 2.3rem;
+      margin-bottom: 2.4rem;
       z-index: 10;
+      border-radius: 1.2rem;
 
       .button {
-        min-width: 94%;
+        min-width: 100%;
         padding: 1.4rem 0;
         font-size: 1.8rem;
         font-weight: 700;
@@ -39,12 +45,13 @@ function PaperViewerPage() {
 
   return (
     <>
+      <PageTitle title="💌" />
       <Styled.ButtonContainer>
         <Button
           className="button"
           onClick={() => navigate(`${routes.post}/${recipientId}/edit`)}
         >
-          편집하기
+          {BUTTON_NAME.EDIT}
         </Button>
       </Styled.ButtonContainer>
 

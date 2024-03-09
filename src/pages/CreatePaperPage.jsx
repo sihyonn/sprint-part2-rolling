@@ -4,15 +4,15 @@ import styled from 'styled-components';
 
 import Option from '@components/common/Option';
 import Input from '@components/common/form/Input';
-
 import ToggleButton from '@components/common/button/ToggleButton';
 import Button from '@components/common/button/Button';
-import { PLACEHOLDER } from '@constants/PLACEHOLDER';
-import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
+import PageTitle from '@components/common/PageTitle';
 
+import imagesAPI from '@/api/imagesAPI';
+import usePostRecipientMutation from '@hooks/api/recipientsAPI/usePostRecipientMutation';
 import useImagesQuery from '@hooks/api/imagesAPI/useImagesQuery';
 import { API_IMAGES } from '@constants/API';
-import imagesAPI from '@/api/imagesAPI';
+import { PLACEHOLDER } from '@constants/MESSAGE';
 
 const Styled = {
   ToSection: styled.div`
@@ -115,47 +115,51 @@ function CreatePaperPage() {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Styled.ToSection>
-        <Styled.Text>To.</Styled.Text>
-        <Input
-          placeholder={PLACEHOLDER.TO}
-          value={name}
-          onInputChange={(value) => handleInputChange(value)}
-        />
-      </Styled.ToSection>
+    <>
+      <PageTitle title="생성" />
 
-      <Styled.BackgroundSection>
-        <Styled.Text>배경화면을 선택해 주세요.</Styled.Text>
-        <Styled.SubText>
-          컬러를 선택하거나, 이미지를 선택할 수 있습니다.
-        </Styled.SubText>
-
-        <Styled.Toggle onToggle={handleToggledValue} />
-
-        <Option
-          background={toggledValue === '컬러' ? 'color' : 'img'}
-          backgroundImages={backgroundImages}
-          onSelect={handleBackground}
-        />
-      </Styled.BackgroundSection>
-
-      <Button
-        size="L"
-        disabled={!name || name.length > 16}
-        style={{ width: '100%', marginBottom: '2.4rem' }}
-        onClick={handleCreateRecipient}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
-        생성하기
-      </Button>
-    </div>
+        <Styled.ToSection>
+          <Styled.Text>To.</Styled.Text>
+          <Input
+            placeholder={PLACEHOLDER.TO}
+            value={name}
+            onInputChange={(value) => handleInputChange(value)}
+          />
+        </Styled.ToSection>
+
+        <Styled.BackgroundSection>
+          <Styled.Text>배경화면을 선택해 주세요.</Styled.Text>
+          <Styled.SubText>
+            컬러를 선택하거나, 이미지를 선택할 수 있습니다.
+          </Styled.SubText>
+
+          <Styled.Toggle onToggle={handleToggledValue} />
+
+          <Option
+            background={toggledValue === '컬러' ? 'color' : 'img'}
+            backgroundImages={backgroundImages}
+            onSelect={handleBackground}
+          />
+        </Styled.BackgroundSection>
+
+        <Button
+          size="L"
+          disabled={!name || name.length > 16}
+          style={{ width: '100%', marginBottom: '2.4rem' }}
+          onClick={handleCreateRecipient}
+        >
+          생성하기
+        </Button>
+      </div>
+    </>
   );
 }
 

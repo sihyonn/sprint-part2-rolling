@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import { useRef } from 'react';
-import CardItem from '@components/ListPage/CardItem';
+import CardItem from '@components/list/CardItem';
 import preArrImg from 'src/assets/prearrow.svg';
 import nextArrImg from 'src/assets/nextarrow.svg';
 import 'slick-carousel/slick/slick.css';

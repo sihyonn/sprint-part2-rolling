@@ -3,6 +3,7 @@ import { styled, useTheme } from 'styled-components';
 import { Outlet, useParams } from 'react-router-dom';
 
 import Header from '@components/header/Header';
+import TopButton from '@components/paperViewer/TopButton';
 import useGetRecipientsQuery from '@hooks/api/recipientsAPI/useGetRecipients';
 import { API_RECIPIENTS } from '@constants/API';
 import recipientsAPI from '@/api/recipientsAPI';
@@ -61,10 +62,11 @@ function PaperLayout({ children }) {
         $backgroundColor={mapColorToTheme(data?.backgroundColor, theme)}
         $backgroundImageURL={data?.backgroundImageURL}
       >
-        <Styled.InnerWrap>
+        <Styled.InnerWrap className="inner">
           <Outlet />
           {children}
         </Styled.InnerWrap>
+        <TopButton className="top-button" />
       </Styled.Container>
     </>
   );
