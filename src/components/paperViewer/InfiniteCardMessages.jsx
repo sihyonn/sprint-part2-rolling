@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRef } from 'react';
 
-import Card from '@/components/rollingPaperViewer/Card';
-import AddCard from '@/components/rollingPaperViewer/AddCard';
+import Card from '@components/paperViewer/Card';
+import AddCard from '@components/paperViewer/AddCard';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useInfiniteCardMessagesQuery from '@hooks/api/messagesAPI/useInfiniteCardMessagesQuery';
 import InfiniteCardMessagesLoader from './InfiniteCardMessagesLoader';

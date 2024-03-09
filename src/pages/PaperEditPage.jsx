@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import Button from '@components/common/button/Button';
-import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
-import InfiniteCardMessagesLoader from '@components/rollingPaperViewer/InfiniteCardMessagesLoader';
+import InfiniteCardMessages from '@components/paperViewer/InfiniteCardMessages';
+import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMessagesLoader';
 import useDeleteRecipientMutation from '@hooks/api/recipientsAPI/useDeleteRecipientMutation';
 import routes from '@constants/routes';
 

@@ -5,7 +5,7 @@ import ProfileBadgeCard from '@/components/common/badge/ProfileBadgeCard';
 import RelationBadge from '@/components/common/badge/RelationBadge';
 import OutlinedButton from '@/components/common/button/OutlinedButton';
 import { formatDateToYYYYMMDD } from '@utils/formatDate';
-import DetailCardModal from '@components/rollingPaperViewer/DetailCardModal';
+import DetailCardModal from '@components/paperViewer/DetailCardModal';
 import QuillStrToHtml from '@components/common/QuillStrToHtml';
 import useDeleteMessageMutation from '@hooks/api/recipientsAPI/useDeleteMessageMutation';
 

@@ -4,8 +4,8 @@ import { styled } from 'styled-components';
 
 import Button from '@components/common/button/Button';
 import routes from '@constants/routes';
-import InfiniteCardMessages from '@components/rollingPaperViewer/InfiniteCardMessages';
-import InfiniteCardMessagesLoader from '@components/rollingPaperViewer/InfiniteCardMessagesLoader';
+import InfiniteCardMessages from '@components/paperViewer/InfiniteCardMessages';
+import InfiniteCardMessagesLoader from '@components/paperViewer/InfiniteCardMessagesLoader';
 
 const Styled = {
   ButtonContainer: styled.div`
