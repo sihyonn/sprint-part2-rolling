@@ -15,8 +15,14 @@ const Styled = {
     .slick-list {
       width: 1198px;
       transform: translate3d(0, 0, 0);
+      @media (min-width: 768px) and(max-width: 1247px) {
+        margin-left: -24px;
+        padding-left: 16px;
+      }
       @media (max-width: 767px) {
         width: 900px;
+        margin-left: -24px;
+        padding-left: 16px;
       }
     }
   `,
