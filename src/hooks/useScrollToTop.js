@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function useScrollToTop(threshold = 300) {
+function useScrollToTop(threshold = 500) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
