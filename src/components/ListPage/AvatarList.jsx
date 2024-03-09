@@ -1,7 +1,12 @@
 import React from 'react';
 import { Avatar, AvatarGroup } from '@mui/material';
 import '@/styles/avatar.custom.css';
-
+/**
+ * 최근 메시지와 메시지 수를 기반으로 AvatarList를 생성하는 컴포넌트입니다.
+ * @param {Object[]} recentMessages - 최근 메시지 배열
+ * @param {number} messageCount - 메시지 수
+ * @returns {JSX.Element} AvatarList를 나타내는 JSX 요소
+ */
 function AvatarList({ recentMessages, messageCount }) {
   return (
     <AvatarGroup
