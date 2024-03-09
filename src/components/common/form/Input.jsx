@@ -11,8 +11,8 @@ const Styled = {
     justify-content: center;
 
     border-radius: 0.5rem;
-    border: ${({ $isEmpty, theme }) =>
-      $isEmpty ? theme.border.rd1 : theme.border.gr1};
+    border: ${({ $isEmpty, $isLimit, theme }) =>
+      $isEmpty || $isLimit ? theme.border.rd1 : theme.border.gr1};
     background: ${({ theme }) => theme.color.white};
 
     color: ${({ theme }) => theme.color.textGr};
@@ -51,10 +51,12 @@ const Styled = {
 
 const Input = ({ value, placeholder, onInputChange }) => {
   const [isEmpty, setIsEmpty] = useState(false);
+  const [isLimit, setIsLimit] = useState(false);
 
   const handleInputChange = (e) => {
     setIsEmpty(false);
     onInputChange(e.target.value);
+    setIsLimit(e.target.value.length > 16);
   };
   const handleInputBlur = (e) => {
     if (!e.target.value) setIsEmpty(true);
@@ -68,10 +70,14 @@ const Input = ({ value, placeholder, onInputChange }) => {
         value={value}
         placeholder={placeholder}
         $isEmpty={isEmpty}
+        $isLimit={isLimit}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
       />
       {isEmpty && <Styled.InputError>값을 입력해 주세요.</Styled.InputError>}
+      {isLimit && (
+        <Styled.InputError>이름은 16자 이하여야 합니다.</Styled.InputError>
+      )}
     </>
   );
 };
