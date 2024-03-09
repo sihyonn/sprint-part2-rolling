@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 function useScrollToTop(threshold = 500) {
   const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => {
+  const toggleVisibility = useCallback(() => {
     window.scrollY > threshold ? setIsVisible(true) : setIsVisible(false);
-  };
+  }, [threshold]);
 
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
@@ -13,7 +13,7 @@ function useScrollToTop(threshold = 500) {
     return () => {
       window.removeEventListener('scroll', toggleVisibility);
     };
-  }, [threshold]);
+  }, [toggleVisibility]);
 
   return isVisible;
 }
