@@ -93,6 +93,12 @@ const Styled = {
   `,
 };
 
+/**
+ * Card - 각각의 페이퍼 카드 컴포넌트
+ * @param {Object} data 카드 메시지 정보 데이터
+ * @param {boolean} isEditPage 편집페이지 여부
+ */
+
 function Card({ data, isEditPage = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -33,6 +33,7 @@ const Styled = {
  * @param {string} recipientId 메시지 받는 대상의 id
  * @param {boolean} iseEditPage 편집모드인지 여부
  */
+
 function InfiniteCardMessages({ recipientId, isEditPage }) {
   const loaderRef = useRef();
 
