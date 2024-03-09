@@ -2,13 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Carousel from '@components/list/Carousel';
 import Button from '@components/common/button/Button';
 import PageTitle from '@components/common/PageTitle';
 import recipientsAPI from '@/api/recipientsAPI';
 import { API_RECIPIENTS } from '@constants/API';
 import useGetRecipientsList from '@hooks/api/recipientsAPI/useGetRecipientsList';
 import useGetRecipientsLikeList from '@hooks/api/recipientsAPI/useGetRecipientsLikeList';
+import Carousel from '@components/list/Carousel';
 
 const Styled = {
   Container: styled.div`
